@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.buytandoors.webapp.entity.AdminUser;
 
 @Repository
-public interface AdminUserRepository extends JpaRepository<AdminUser, Long>{
-
+public interface AdminUserRepository extends JpaRepository<AdminUser, Long> {
+	AdminUser findByUsername(String username);
 }

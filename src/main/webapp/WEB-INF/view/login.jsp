@@ -139,7 +139,7 @@
 								<input type="password" id="password" name="password" class="form-control" placeholder="Password" required="required">
 							</div>
 							<div class="form-group">
-								<input type="submit" class="btn btn-primary btn-block">Log in</input>
+								<input type="submit" class="btn btn-primary btn-block" />
 							</div>
 							<div class="clearfix">
 								<label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
