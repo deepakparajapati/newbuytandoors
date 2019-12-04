@@ -34,30 +34,23 @@ public class ProductController {
 //	consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE
 	@RequestMapping(value = "/auth", method = RequestMethod.POST)
 	@ResponseBody
-	public boolean auth(@RequestParam("username") String username, @RequestParam("password") String password) {
-//		AdminUser adminUser = new AdminUser();
-//		adminUser.setUsername(username);
-//		adminUser.setPassword(password);
-//		EntityManager em = this.getEntityManager();
-//		AdminUser adminUser = (AdminUser) em.createQuery("from admin_user u where u.username = :username && u.password = :password")
-//		.setParameter("username", username)
-//		.setParameter("password", password)
-//		.getSingleResult();
-//		if(adminUser != null) {
-//			return true;
-//		}
-//		return false;
-		
+	public ModelAndView auth(@RequestParam("username") String username, @RequestParam("password") String password) {
 		AdminUser adminUser = adminUserRepository.findByUsername(username);
-		System.out.println(adminUser.getUsername());
-		if(adminUser.getUsername() == null) {
-            return false;
+		
+		System.out.println(adminUser);
+		ModelAndView error = new ModelAndView();
+		if(adminUser == null || adminUser.getUsername() == "") {
+			error.addObject("message", "User name not exist.");
+			error.setViewName("error");
+            return error;
         }
 		 if(!adminUser.getPassword().equals(password)){
-			 return false;
+				error.addObject("message", "Password is not matching.");
+				error.setViewName("error");
+	            return error;
 	        }
 		
-		return true;
+		 return new ModelAndView("dashboard");
 	}
 
 	public EntityManager getEntityManager() {
