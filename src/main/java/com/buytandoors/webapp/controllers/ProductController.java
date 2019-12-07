@@ -36,8 +36,6 @@ public class ProductController {
 	@ResponseBody
 	public ModelAndView auth(@RequestParam("username") String username, @RequestParam("password") String password) {
 		AdminUser adminUser = adminUserRepository.findByUsername(username);
-		
-		System.out.println(adminUser);
 		ModelAndView error = new ModelAndView();
 		if(adminUser == null || adminUser.getUsername() == "") {
 			error.addObject("message", "User name not exist.");
