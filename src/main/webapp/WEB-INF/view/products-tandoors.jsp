@@ -95,14 +95,13 @@
 									<!-- Collect the nav links, forms, and other content for toggling -->
 									<div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
 										<ul class="nav navbar-nav navbar-right">
-											<li class="active">
-											<a href="./">Home</a></li>
-											<li><a href="./">About</a></li>
-											<li><a href="./">Services</a></li>
-											<li><a href="./">Portfolio</a></li>
-											<li><a href="./">Clients</a></li>
-											<li><a href="./">Contact</a></li>
-											<li><a href="./login">Admin</a></li>
+											<li class="active"><a href="#banner">Home</a></li>
+											<li><a href="#about">About</a></li>
+											<li><a href="#services">Services</a></li>
+											<li><a href="#portfolio">Portfolio</a></li>
+											<li><a href="#clients">Clients</a></li>
+											<li><a href="#contact">Contact</a></li>
+											<li><a href="#Admin">Admin</a></li>
 										</ul>
 									</div>
 
@@ -129,24 +128,13 @@
 		<div class="banner-caption">
 			<div class="container">
 				<div class="row">
-					<div class="object-non-visible" data-animation-effect="fadeIn">
-						<div class="login-form">
-							<h2 class="text-center">Dash<span> Board</span></h2>
+					<div class="col-md-5 col-md-offset-3 object-non-visible" data-animation-effect="fadeIn">
+					<div class="login-form">
+					<h2 class="text-center">Dash<span> Board</span></h2>
+
 						</div>
 					</div>
 				</div>
-			</div>
-			<!-- Button trigger modal -->
-			<div class="btn-group-toggle text-center"  data-toggle="buttons">
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-					AddProduct
-				</button>
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-					ViewProduct
-				</button>
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-					DeleteProduct
-				</button>
 			</div>
 		</div>
 	</div>
@@ -156,61 +144,7 @@
 <!-- footer start -->
 <!-- ================ -->
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-
-				<form>
-					<div class="form-group">
-
-						<div class="form-row">
-							<div class="form-group">
-								<label for="inputEmail4">Product Name</label>
-								<input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-							</div>
-							<div class="form-group">
-								<label for="desc">Product Description</label>
-								<textarea class="form-control" id="desc" rows="3"></textarea>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="inputAddress">Product Size</label>
-							<input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-						</div>
-						<div class="form-group">
-							<label for="inputAddress2">Feature</label>
-							<input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-						</div>
-						<div class="form-group">
-							<div class="form-check">
-								<label for="tandoorphotos">Select Image</label>
-								<input type="file" class="form-control-file" id="tandoorphotos" multiple>
-							</label>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-primary">Save changes</button>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-   <!--    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button> 
-    </div>-->
-</div>
-</div>
-</div>
-
+<button onclick="">AddProduct</button>
 
 
 <footer id="footer">

@@ -21,7 +21,7 @@ public class ProductController {
 	@Autowired
 	AdminUserRepository adminUserRepository;
 
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView homePage() {
 		return new ModelAndView("index");
 	}
@@ -47,7 +47,6 @@ public class ProductController {
 				error.setViewName("error");
 	            return error;
 	        }
-		
 		 return new ModelAndView("dashboard");
 	}
 

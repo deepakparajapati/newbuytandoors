@@ -23,7 +23,17 @@ public class ProductList {
 	@Column
 	private String productSize;
 	@Column
+	private String feature;
+	@Column
 	private ArrayList<String> productPicUrl;
+
+	public String getFeature() {
+		return feature;
+	}
+
+	public void setFeature(String feature) {
+		this.feature = feature;
+	}
 
 	public String getProductDescription() {
 		return productDescription;
