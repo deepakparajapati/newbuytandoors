@@ -5,6 +5,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.buytandoors.webapp.entity.AdminUser;
+import com.buytandoors.webapp.entity.ProductList;
 import com.buytandoors.webapp.repository.AdminUserRepository;
 
 @RestController
@@ -37,17 +41,23 @@ public class ProductController {
 	public ModelAndView auth(@RequestParam("username") String username, @RequestParam("password") String password) {
 		AdminUser adminUser = adminUserRepository.findByUsername(username);
 		ModelAndView error = new ModelAndView();
-		if(adminUser == null || adminUser.getUsername() == "") {
+		if (adminUser == null || adminUser.getUsername() == "") {
 			error.addObject("message", "User name not exist.");
 			error.setViewName("error");
-            return error;
-        }
-		 if(!adminUser.getPassword().equals(password)){
-				error.addObject("message", "Password is not matching.");
-				error.setViewName("error");
-	            return error;
-	        }
-		 return new ModelAndView("dashboard");
+			return error;
+		}
+		if (!adminUser.getPassword().equals(password)) {
+			error.addObject("message", "Password is not matching.");
+			error.setViewName("error");
+			return error;
+		}
+		return new ModelAndView("dashboard");
+	}
+	
+	@RequestMapping(value = "/submitproduct", method = RequestMethod.POST)
+	public String submitProduct(@ModelAttribute("productList") ProductList productList,  BindingResult result, ModelMap model) {
+		System.out.println("Model Map: "+productList.toString());
+		return "Submit successfully";
 	}
 
 	public EntityManager getEntityManager() {

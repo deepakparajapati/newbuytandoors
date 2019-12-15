@@ -5,7 +5,7 @@
 <!--<![endif]-->
 	<head>
 		<meta charset="utf-8">
-		<title>Worthy | Free Powerful Theme by HtmlCoder</title>
+		<title>Buy Tandoors | Ram Chander Tandoors Pvt. Ltd | Manufacturer Tandoors and kitchen Equipment</title>
 		<meta name="description" content="Worthy a Bootstrap-based, Responsive HTML5 Template">
 		<meta name="author" content="htmlcoder.me">
 

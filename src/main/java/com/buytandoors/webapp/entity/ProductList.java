@@ -75,4 +75,11 @@ public class ProductList {
 		this.productPicUrl = productPicUrl;
 	}
 
+	@Override
+	public String toString() {
+		return "ProductList [productid=" + productid + ", productName=" + productName + ", productDescription="
+				+ productDescription + ", productSize=" + productSize + ", feature=" + feature + ", productPicUrl="
+				+ productPicUrl + "]";
+	}
+
 }

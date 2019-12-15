@@ -168,7 +168,7 @@
 			</div>
 			<div class="modal-body">
 
-				<form>
+				<form action="/submitproduct">
 					<div class="form-group">
 
 						<div class="form-row">
@@ -197,7 +197,7 @@
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-primary">Save changes</button>
+							<input type="submit" class="btn btn-primary">Save changes</input>
 						</div>
 					</div>
 				</form>
