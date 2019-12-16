@@ -5,6 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.buytandoors.webapp.entity.AdminUser;
@@ -38,7 +40,7 @@ public class ProductController {
 //	consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE
 	@RequestMapping(value = "/auth", method = RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView auth(@RequestParam("username") String username, @RequestParam("password") String password) {
+	public ModelAndView auth(@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
 		AdminUser adminUser = adminUserRepository.findByUsername(username);
 		ModelAndView error = new ModelAndView();
 		if (adminUser == null || adminUser.getUsername() == "") {
@@ -51,11 +53,13 @@ public class ProductController {
 			error.setViewName("error");
 			return error;
 		}
+		model.addAttribute("productList", new ProductList());
 		return new ModelAndView("dashboard");
 	}
 	
 	@RequestMapping(value = "/submitproduct", method = RequestMethod.POST)
-	public String submitProduct(@ModelAttribute("productList") ProductList productList,  BindingResult result, ModelMap model) {
+	public String submitProduct(@RequestParam("productPicUrl") MultipartFile[] productPicUrl, @ModelAttribute("productList") ProductList productList,  BindingResult result, ModelMap model) {
+		System.out.println("========>"+productPicUrl.length);
 		System.out.println("Model Map: "+productList.toString());
 		return "Submit successfully";
 	}

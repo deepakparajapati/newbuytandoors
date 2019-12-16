@@ -1,3 +1,5 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
@@ -168,39 +170,39 @@
 			</div>
 			<div class="modal-body">
 
-				<form action="/submitproduct">
+				<form:form action="/submitproduct" method = "POST" enctype="multipart/form-data"  modelAttribute = "productList">
 					<div class="form-group">
 
 						<div class="form-row">
 							<div class="form-group">
-								<label for="inputEmail4">Product Name</label>
-								<input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+								<form:label path="productName" for="inputEmail4">Product Name</form:label>
+								<form:input path="productName" type="text" class="form-control" id="productName" placeholder="Product-Name" />
 							</div>
 							<div class="form-group">
-								<label for="desc">Product Description</label>
-								<textarea class="form-control" id="desc" rows="3"></textarea>
+								<form:label path="productDescription" for="desc">Product Description</form:label>
+								<form:textarea path="productDescription" class="form-control" id="productDescription" rows="3" />
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="inputAddress">Product Size</label>
-							<input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+							<form:label path="productSize" for="inputAddress">Product Size</form:label>
+							<form:input path="productSize" type="text" class="form-control" id="productSize" placeholder="33x33x32" />
 						</div>
 						<div class="form-group">
-							<label for="inputAddress2">Feature</label>
-							<input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+							<form:label path="feature" for="inputAddress2">Feature</form:label>
+							<form:input path="feature" type="text" class="form-control" id="feature" placeholder="Iron, Best Price, Catering" />
 						</div>
 						<div class="form-group">
 							<div class="form-check">
-								<label for="tandoorphotos">Select Image</label>
-								<input type="file" class="form-control-file" id="tandoorphotos" multiple>
+								<form:label path="productPicUrl" for="tandoorphotos">Select Image</form:label>
+								<input path="productPicUrl" type="file" class="form-control-file" id="productPicUrl" multiple />
 							</label>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-							<input type="submit" class="btn btn-primary">Save changes</input>
+							<input type="submit" class="btn btn-primary"></input>
 						</div>
-					</div>
-				</form>
+				</form:form>
+				</div>
 			</div>
 		</div>
    <!--    <div class="modal-footer">

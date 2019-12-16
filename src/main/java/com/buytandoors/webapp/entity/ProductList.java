@@ -1,6 +1,7 @@
 package com.buytandoors.webapp.entity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table
@@ -25,7 +28,7 @@ public class ProductList {
 	@Column
 	private String feature;
 	@Column
-	private ArrayList<String> productPicUrl;
+	private MultipartFile[] productPicUrl;
 
 	public String getFeature() {
 		return feature;
@@ -67,11 +70,11 @@ public class ProductList {
 		this.productName = productName;
 	}
 
-	public ArrayList<String> getProductPicUrl() {
+	public MultipartFile[] getProductPicUrl() {
 		return productPicUrl;
 	}
 
-	public void setProductPicUrl(ArrayList<String> productPicUrl) {
+	public void setProductPicUrl(MultipartFile[] productPicUrl) {
 		this.productPicUrl = productPicUrl;
 	}
 
@@ -79,7 +82,7 @@ public class ProductList {
 	public String toString() {
 		return "ProductList [productid=" + productid + ", productName=" + productName + ", productDescription="
 				+ productDescription + ", productSize=" + productSize + ", feature=" + feature + ", productPicUrl="
-				+ productPicUrl + "]";
+				+ Arrays.toString(productPicUrl) + "]";
 	}
 
 }
