@@ -1,4 +1,3 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
@@ -170,38 +169,38 @@
 			</div>
 			<div class="modal-body">
 
-				<form:form action="/submitproduct" method = "POST" enctype="multipart/form-data"  modelAttribute = "productList">
-					<div class="form-group">
+	<form:form action="/submitproduct" method = "POST" enctype="multipart/form-data"  modelAttribute = "productList">
+		<div class="form-group">
 
-						<div class="form-row">
-							<div class="form-group">
-								<form:label path="productName" for="inputEmail4">Product Name</form:label>
-								<form:input path="productName" type="text" class="form-control" id="productName" placeholder="Product-Name" />
-							</div>
-							<div class="form-group">
-								<form:label path="productDescription" for="desc">Product Description</form:label>
-								<form:textarea path="productDescription" class="form-control" id="productDescription" rows="3" />
-							</div>
-						</div>
-						<div class="form-group">
-							<form:label path="productSize" for="inputAddress">Product Size</form:label>
-							<form:input path="productSize" type="text" class="form-control" id="productSize" placeholder="33x33x32" />
-						</div>
-						<div class="form-group">
-							<form:label path="feature" for="inputAddress2">Feature</form:label>
-							<form:input path="feature" type="text" class="form-control" id="feature" placeholder="Iron, Best Price, Catering" />
-						</div>
-						<div class="form-group">
-							<div class="form-check">
-								<form:label path="productPicUrl" for="tandoorphotos">Select Image</form:label>
-								<input path="productPicUrl" type="file" class="form-control-file" id="productPicUrl" multiple />
-							</label>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-							<input type="submit" class="btn btn-primary"></input>
-						</div>
-				</form:form>
+			<div class="form-row">
+				<div class="form-group">
+					<form:label path="productName" for="inputEmail4">Product Name</form:label>
+					<form:input path="productName" type="text" class="form-control" id="productName" placeholder="Product-Name" />
+				</div>
+				<div class="form-group">
+					<form:label path="productDescription" for="desc">Product Description</form:label>
+					<form:textarea path="productDescription" class="form-control" id="productDescription" rows="3" />
+				</div>
+			</div>
+			<div class="form-group">
+				<form:label path="productSize" for="inputAddress">Product Size</form:label>
+				<form:input path="productSize" type="text" class="form-control" id="productSize" placeholder="33x33x32" />
+			</div>
+			<div class="form-group">
+				<form:label path="feature" for="inputAddress2">Feature</form:label>
+				<form:input path="feature" type="text" class="form-control" id="feature" placeholder="Iron, Best Price, Catering" />
+			</div>
+			<div class="form-group">
+				<div class="form-check">
+					<form:label path="productPicUrl" for="productPicUrl">Select Images</form:label>
+					<form:input path="productPicUrl" type="file" class="form-control-file" name="productPicUrl" multiple="multiple" />
+				</label>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<input type="submit" class="btn btn-primary"></input>
+			</div>
+	</form:form>
 				</div>
 			</div>
 		</div>
