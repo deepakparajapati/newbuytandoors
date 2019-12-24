@@ -22,11 +22,14 @@ import org.springframework.web.servlet.ModelAndView;
 import com.buytandoors.webapp.entity.AdminUser;
 import com.buytandoors.webapp.entity.ProductList;
 import com.buytandoors.webapp.repository.AdminUserRepository;
+import com.buytandoors.webapp.repository.ProductRepository;
 
 @RestController
-public class ProductController {
+public class ProductController{
 
 	@Autowired
+	ProductRepository productRepository;
+	@Autowired	
 	AdminUserRepository adminUserRepository;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -38,8 +41,12 @@ public class ProductController {
 	public ModelAndView loginPage() {
 		return new ModelAndView("login");
 	}
+	
+	@RequestMapping(value = "/error", method = RequestMethod.GET)
+	public ModelAndView error() {
+		return new ModelAndView("error");
+	}
 
-//	consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE
 	@RequestMapping(value = "/auth", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView auth(@RequestParam("username") String username, @RequestParam("password") String password,
@@ -63,10 +70,7 @@ public class ProductController {
 	@RequestMapping(value = "/submitproduct", method = RequestMethod.POST)
 	public ModelAndView submitProduct(@ModelAttribute("productList") ProductList productList, ModelMap model)
 			throws IllegalStateException, IOException {
-		System.out.println("Model Map: " + productList.getProductPicUrl()[0].getOriginalFilename());
-		System.out.println("Model Map: " + productList.getProductPicUrl()[1].getOriginalFilename());
 		File file = new File("src\\main\\resources\\static", "productimages");
-//      System.err.println(file.getAbsolutePath());
 		if (!file.exists()) {
 			if (file.mkdir()) {
 				System.out.println("Directory is created!");
@@ -74,7 +78,6 @@ public class ProductController {
 				System.out.println("Failed to create directory!");
 			}
 		}
-//     String orgName = employee.getImagepath()[0].getOriginalFilename();
 		String filePath = file.getAbsolutePath() + "\\" + productList.getProductPicUrl()[0].getOriginalFilename();
 		String filePath2 = file.getAbsolutePath() + "\\" + productList.getProductPicUrl()[1].getOriginalFilename();
 		productList.getProductPicUrl()[0].transferTo(new File(filePath));
@@ -87,8 +90,8 @@ public class ProductController {
 			i++;
 			model.addAttribute("image" + i, iterable_element.getOriginalFilename());
 		}
-
-//		ServletUriComponentsBuilder.fromCurrentContextPath().
+		ProductList product = productRepository.save(productList);
+		System.out.println(product.getProductDescription());
 		return new ModelAndView("productView");
 	}
 

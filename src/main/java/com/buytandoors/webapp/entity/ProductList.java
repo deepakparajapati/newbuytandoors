@@ -1,6 +1,6 @@
 package com.buytandoors.webapp.entity;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.Arrays;
 
 import javax.persistence.Column;
@@ -14,8 +14,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table
-public class ProductList {
+public class ProductList implements Serializable {
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5668360308108665832L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long productid;
