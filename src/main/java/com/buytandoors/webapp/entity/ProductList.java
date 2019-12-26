@@ -1,7 +1,6 @@
 package com.buytandoors.webapp.entity;
 
 import java.io.Serializable;
-import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,12 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.web.multipart.MultipartFile;
-
 @Entity
 @Table
 public class ProductList implements Serializable {
-
 
 	/**
 	 * 
@@ -33,7 +29,7 @@ public class ProductList implements Serializable {
 	@Column
 	private String feature;
 	@Column
-	private MultipartFile[] productPicUrl;
+	private String productPicUrl;
 
 	public String getFeature() {
 		return feature;
@@ -75,19 +71,19 @@ public class ProductList implements Serializable {
 		this.productName = productName;
 	}
 
-	public MultipartFile[] getProductPicUrl() {
+	public String getProductPicUrl() {
 		return productPicUrl;
-	}
-
-	public void setProductPicUrl(MultipartFile[] productPicUrl) {
-		this.productPicUrl = productPicUrl;
 	}
 
 	@Override
 	public String toString() {
 		return "ProductList [productid=" + productid + ", productName=" + productName + ", productDescription="
 				+ productDescription + ", productSize=" + productSize + ", feature=" + feature + ", productPicUrl="
-				+ Arrays.toString(productPicUrl) + "]";
+				+ productPicUrl + "]";
+	}
+
+	public void setProductPicUrl(String productPicUrl) {
+		this.productPicUrl = productPicUrl;
 	}
 
 }
