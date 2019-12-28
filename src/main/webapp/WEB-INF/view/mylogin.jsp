@@ -1,5 +1,4 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
 <html lang="en">
@@ -97,7 +96,7 @@
 									<div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
 										<ul class="nav navbar-nav navbar-right">
 											<li class="active">
-											<a href="./">Home</a></li>
+												<a href="./">Home</a></li>
 											<li><a href="./">About</a></li>
 											<li><a href="./">Services</a></li>
 											<li><a href="./">Portfolio</a></li>
@@ -130,90 +129,35 @@
 		<div class="banner-caption">
 			<div class="container">
 				<div class="row">
-					<div class="object-non-visible" data-animation-effect="fadeIn">
-						<div class="login-form">
-							<h2 class="text-center">Dash<span> Board</span></h2>
+					<div class="col-md-5 col-md-offset-3 object-non-visible" data-animation-effect="fadeIn">
+					<div class="login-form">
+						<form action="./auth" method="post">
+							<h2 class="text-center">Login to<span> TANDOORS</span></h2>   
+							<div class="form-group">
+								<input type="text" id="username" name="username" class="form-control" placeholder="Username" required="required">
+							</div>
+							<div class="form-group">
+								<input type="password" id="password" name="password" class="form-control" placeholder="Password" required="required">
+							</div>
+							<div class="form-group">
+								<input type="submit" class="btn btn-primary btn-block" />
+							</div>
+							<div class="clearfix">
+								<label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+								<a href="#" class="pull-right">Forgot Password?</a>
+							</div>        
+						</form>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- Button trigger modal -->
-			<div class="btn-group-toggle text-center"  data-toggle="buttons">
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProductModal">
-					AddProduct
-				</button>
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-					ViewProduct
-				</button>
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-					DeleteProduct
-				</button>
-			</div>
 		</div>
 	</div>
-	<!-- banner end  -->
+	<!-- banner end -->
 </div>
 <!-- section end -->
 <!-- footer start -->
 <!-- ================ -->
-
-<!-- Modal -->
-<div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-
-	<form:form action="/submitproduct" method = "POST" enctype="multipart/form-data"  modelAttribute = "productList" onsubmit="return validation()>
-		<div class="form-group">
-
-			<div class="form-row">
-				<div class="form-group">
-					<form:label path="productName" for="inputEmail4">Product Name</form:label>
-					<form:input path="productName" type="text" class="form-control" id="productName" placeholder="Product-Name" />
-				</div>
-				<div class="form-group">
-					<form:label path="productDescription" for="desc">Product Description</form:label>
-					<form:textarea path="productDescription" class="form-control" id="productDescription" rows="3" />
-				</div>
-			</div>
-			<div class="form-group">
-				<form:label path="productSize" for="inputAddress">Product Size</form:label>
-				<form:input path="productSize" type="text" class="form-control" id="productSize" placeholder="33x33x32" />
-			</div>
-			<div class="form-group">
-				<form:label path="feature" for="inputAddress2">Feature</form:label>
-				<form:input path="feature" type="text" class="form-control" id="feature" placeholder="Iron, Best Price, Catering" />
-			</div>
-			<div class="form-group">
-				<div class="form-check">
-					<form:label path="productPicUrl" for="productPicUrl">Select Images</form:label>
-					<form:input path="productPicUrl" type="file" class="form-control-file" name="productPicUrl" multiple="multiple" />
-				</label>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<input type="submit" class="btn btn-primary"></input>
-			</div>
-	</form:form>
-				</div>
-			</div>
-		</div>
-   <!--    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button> 
-    </div>-->
-</div>
-</div>
-</div>
-
-
-
 <footer id="footer">
 
 	<!-- .footer start -->
@@ -277,7 +221,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<p class="text-center">Copyright � 2014 Worthy by <a target="_blank" href="http://htmlcoder.me">HtmlCoder</a>.</p>
+					<p class="text-center">Copyright © 2014 Worthy by <a target="_blank" href="http://htmlcoder.me">HtmlCoder</a>.</p>
 				</div>
 			</div>
 		</div>

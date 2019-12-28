@@ -40,7 +40,7 @@ public class ProductController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView loginPage() {
-		return new ModelAndView("login");
+		return new ModelAndView("mylogin");
 	}
 
 	@RequestMapping(value = "/error", method = RequestMethod.GET)
@@ -71,9 +71,8 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/submitproduct", method = RequestMethod.POST)
-	public ModelAndView submitProduct(@ModelAttribute("productList") ProductModel productModel, ModelMap model)
+	public String submitProduct(@ModelAttribute("productList") ProductModel productModel, ModelMap model)
 			throws IllegalStateException, IOException {
-		System.out.println(">>>>>>>>>>>>" + productModel);
 
 		File file = new File("src\\main\\resources\\static", "productimages");
 		if (!file.exists()) {
@@ -84,10 +83,10 @@ public class ProductController {
 			}
 		}
 
-		String filePath = file.getAbsolutePath() + "\\" + productModel.getProductPicUrl()[0].getOriginalFilename();
-		String filePath2 = file.getAbsolutePath() + "\\" + productModel.getProductPicUrl()[1].getOriginalFilename();
-		productModel.getProductPicUrl()[0].transferTo(new File(filePath));
-		productModel.getProductPicUrl()[1].transferTo(new File(filePath2));
+//		String filePath = file.getAbsolutePath() + "\\" + productModel.getProductPicUrl()[0].getOriginalFilename();
+//		String filePath2 = file.getAbsolutePath() + "\\" + productModel.getProductPicUrl()[1].getOriginalFilename();
+//		productModel.getProductPicUrl()[0].transferTo(new File(filePath));
+//		productModel.getProductPicUrl()[1].transferTo(new File(filePath2));
 
 		model.addAttribute("name", productModel.getProductName());
 		model.addAttribute("contactNumber", productModel.getFeature());
@@ -95,7 +94,8 @@ public class ProductController {
 		int i = 0;
 		String urls = "";
 		for (MultipartFile iterable_element : productModel.getProductPicUrl()) {
-
+			String filePath = file.getAbsolutePath() + "\\" + productModel.getProductPicUrl()[i].getOriginalFilename();
+			productModel.getProductPicUrl()[i].transferTo(new File(filePath));
 			model.addAttribute("image" + i, iterable_element.getOriginalFilename());
 			if (i == 0)
 				urls = iterable_element.getOriginalFilename();
@@ -110,9 +110,12 @@ public class ProductController {
 		pl.setProductName(productModel.getProductName());
 		pl.setProductPicUrl(urls);
 		ProductList product = productRepository.save(pl);
+		if(product == null) {
+			return "fail";
+		}
 		// System.out.println(product.getProductDescription());
 
-		return new ModelAndView("productView");
+		return "success";
 	}
 
 	public EntityManager getEntityManager() {
