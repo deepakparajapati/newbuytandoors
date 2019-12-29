@@ -1,6 +1,5 @@
 package com.buytandoors.webapp.controllers;
 
-import java.io.File;
 import java.io.IOException;
 
 import javax.persistence.EntityManager;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.buytandoors.webapp.entity.AdminUser;
@@ -24,6 +22,7 @@ import com.buytandoors.webapp.entity.ProductList;
 import com.buytandoors.webapp.model.ProductModel;
 import com.buytandoors.webapp.repository.AdminUserRepository;
 import com.buytandoors.webapp.repository.ProductRepository;
+import com.buytandoors.webapp.serviceImpl.ProductServicesImpli;
 
 @RestController
 public class ProductController {
@@ -74,47 +73,20 @@ public class ProductController {
 	public String submitProduct(@ModelAttribute("productList") ProductModel productModel, ModelMap model)
 			throws IllegalStateException, IOException {
 
-		File file = new File("src\\main\\resources\\static", "productimages");
-		if (!file.exists()) {
-			if (file.mkdir()) {
-				System.out.println("Directory is created!");
-			} else {
-				System.out.println("Failed to create directory!");
-			}
-		}
-
 //		String filePath = file.getAbsolutePath() + "\\" + productModel.getProductPicUrl()[0].getOriginalFilename();
 //		String filePath2 = file.getAbsolutePath() + "\\" + productModel.getProductPicUrl()[1].getOriginalFilename();
 //		productModel.getProductPicUrl()[0].transferTo(new File(filePath));
 //		productModel.getProductPicUrl()[1].transferTo(new File(filePath2));
 
-		model.addAttribute("name", productModel.getProductName());
-		model.addAttribute("contactNumber", productModel.getFeature());
-		model.addAttribute("id", productModel.getProductSize());
-		int i = 0;
-		String urls = "";
-		for (MultipartFile iterable_element : productModel.getProductPicUrl()) {
-			String filePath = file.getAbsolutePath() + "\\" + productModel.getProductPicUrl()[i].getOriginalFilename();
-			productModel.getProductPicUrl()[i].transferTo(new File(filePath));
-			model.addAttribute("image" + i, iterable_element.getOriginalFilename());
-			if (i == 0)
-				urls = iterable_element.getOriginalFilename();
-			else
-				urls += "," + iterable_element.getOriginalFilename();
-
-			i++;
-		}
-		ProductList pl = new ProductList();
-		pl.setFeature(productModel.getFeature());
-		pl.setProductDescription(productModel.getProductDescription());
-		pl.setProductName(productModel.getProductName());
-		pl.setProductPicUrl(urls);
-		ProductList product = productRepository.save(pl);
-		if(product == null) {
+//		model.addAttribute("name", productModel.getProductName());
+//		model.addAttribute("contactNumber", productModel.getFeature());
+//		model.addAttribute("id", productModel.getProductSize());
+//		model.addAttribute("image" + i, iterable_element.getOriginalFilename());
+		ProductServicesImpli productServicesImpli = new ProductServicesImpli();
+		ProductList product = productServicesImpli.addProduct(productModel);
+		if (product == null) {
 			return "fail";
 		}
-		// System.out.println(product.getProductDescription());
-
 		return "success";
 	}
 

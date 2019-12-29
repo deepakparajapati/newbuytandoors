@@ -169,7 +169,7 @@
 			</div>
 			<div class="modal-body">
 
-	<form:form action="/submitproduct" method = "POST" enctype="multipart/form-data"  modelAttribute = "productList" onsubmit="return validation()>
+	<form:form action="/submitproduct" method = "POST" enctype="multipart/form-data"  modelAttribute = "productList" onsubmit="return validation()">
 		<div class="form-group">
 
 			<div class="form-row">
