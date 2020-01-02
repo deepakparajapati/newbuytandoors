@@ -1,4 +1,4 @@
-package com.buytandoors.webapp.entity;
+package com.buytandoors.webapp.dao;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -1,4 +1,4 @@
-package com.buytandoors.webapp.entity;
+package com.buytandoors.webapp.dao;
 
 import java.io.Serializable;
 

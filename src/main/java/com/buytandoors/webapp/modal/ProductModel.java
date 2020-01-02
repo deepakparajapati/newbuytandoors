@@ -1,4 +1,4 @@
-package com.buytandoors.webapp.model;
+package com.buytandoors.webapp.modal;
 
 import java.util.Arrays;
 

@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -17,20 +18,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.buytandoors.webapp.entity.AdminUser;
-import com.buytandoors.webapp.entity.ProductList;
-import com.buytandoors.webapp.model.ProductModel;
+import com.buytandoors.webapp.dao.AdminUser;
+import com.buytandoors.webapp.dao.ProductList;
+import com.buytandoors.webapp.modal.ProductModel;
 import com.buytandoors.webapp.repository.AdminUserRepository;
-import com.buytandoors.webapp.repository.ProductRepository;
 import com.buytandoors.webapp.serviceImpl.ProductServicesImpli;
 
 @RestController
 public class ProductController {
 
 	@Autowired
-	ProductRepository productRepository;
-	@Autowired
 	AdminUserRepository adminUserRepository;
+
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView homePage() {
@@ -39,33 +38,34 @@ public class ProductController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView loginPage() {
-		return new ModelAndView("mylogin");
+		return new ModelAndView("login");
 	}
 
 	@RequestMapping(value = "/error", method = RequestMethod.GET)
 	public ModelAndView error() {
 		return new ModelAndView("error");
 	}
+	
+	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
+	public ModelAndView dashboard() {
+		return new ModelAndView("dashboard");
+	}
+
 
 	// SPRING SECURITY
 
-	@RequestMapping(value = "/auth", method = RequestMethod.POST)
+	@RequestMapping( value = "/auth", method = RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView auth(@RequestParam("username") String username, @RequestParam("password") String password,
-			Model model) {
+	public ModelAndView auth(@Valid @RequestParam("username") String username, @RequestParam("password") String password, Model model) {
 		AdminUser adminUser = adminUserRepository.findByUsername(username);
-		ModelAndView error = new ModelAndView();
 		if (adminUser == null || adminUser.getUsername() == "") {
-			error.addObject("message", "User name not exist.");
-			error.setViewName("error");
-			return error;
+			model.addAttribute("message", "No user name found.");
+			new ModelAndView("error");
 		}
 		if (!adminUser.getPassword().equals(password)) {
-			error.addObject("message", "Password is not matching.");
-			error.setViewName("error");
-			return error;
+			model.addAttribute("message", "password is incorrect");
+			new ModelAndView("error");
 		}
-		model.addAttribute("productList", new ProductList());
 		return new ModelAndView("dashboard");
 	}
 

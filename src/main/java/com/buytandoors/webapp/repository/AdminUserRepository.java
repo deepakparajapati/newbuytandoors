@@ -3,10 +3,11 @@ package com.buytandoors.webapp.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.buytandoors.webapp.entity.AdminUser;
+import com.buytandoors.webapp.dao.AdminUser;
 
 @Repository
 public interface AdminUserRepository extends JpaRepository<AdminUser, Long> {
+	
 	AdminUser findByUsername(String username);
 
 //	   @Query(value = "SELECT * FROM country WHERE COUNTRY_ID = :countryId", nativeQuery = true)
