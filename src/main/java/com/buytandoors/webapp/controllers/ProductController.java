@@ -5,7 +5,6 @@ import java.io.IOException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -56,7 +55,7 @@ public class ProductController {
 
 	@RequestMapping( value = "/auth", method = RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView auth(@Valid @RequestParam("username") String username, @RequestParam("password") String password, Model model) {
+	public ModelAndView auth(@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
 		AdminUser adminUser = adminUserRepository.findByUsername(username);
 		if (adminUser == null || adminUser.getUsername() == "") {
 			model.addAttribute("message", "No user name found.");
@@ -83,7 +82,7 @@ public class ProductController {
 //		model.addAttribute("id", productModel.getProductSize());
 //		model.addAttribute("image" + i, iterable_element.getOriginalFilename());
 		ProductServicesImpli productServicesImpli = new ProductServicesImpli();
-		ProductList product = productServicesImpli.addProduct(productModel);
+		ProductList product = productServicesImpli.addProductProcess(productModel);
 		if (product == null) {
 			return "fail";
 		}

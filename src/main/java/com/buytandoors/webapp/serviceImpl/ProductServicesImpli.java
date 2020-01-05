@@ -17,7 +17,7 @@ public class ProductServicesImpli implements ProductService {
 	ProductRepository productRepository;
 
 	@Override
-	public ProductList addProduct(ProductModel productModel) throws IllegalStateException {
+	public ProductList addProductProcess(ProductModel productModel) throws IllegalStateException {
 		ProductList pl = new ProductList();
 		pl.setFeature(productModel.getFeature());
 		pl.setProductDescription(productModel.getProductDescription());
