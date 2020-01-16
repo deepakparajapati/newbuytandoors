@@ -1,8 +1,5 @@
 package com.buytandoors.webapp;
 
-import java.util.Arrays;
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,22 +7,18 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.buytandoors.webapp.dao.AdminUser;
 import com.buytandoors.webapp.repository.AdminUserRepository;
 
 @Configuration
 @EnableWebSecurity
-public class SpringSecurityConfig extends WebSecurityConfigurerAdapter implements UserDetailsService {
+public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Resource(name = "userDetailService")
 	private UserDetailsService userDetailsService;
@@ -33,6 +26,13 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter implement
 	@Autowired
 	AdminUserRepository adminUserRepository;
 
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web
+            .ignoring()
+                .antMatchers("/auth");
+    }
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
@@ -47,20 +47,20 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter implement
 //		auth.userDetailsService(userDetailsService);
 //	}
 
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
-		AdminUser user = adminUserRepository.findByUsername(username);
-		if (user == null) {
-			throw new UsernameNotFoundException("Invalid username or password.");
-		}
-		return new User(user.getUsername(), user.getPassword(), getAuthority());
-
-	}
+//	@Override
+//	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//
+//		AdminUser user = adminUserRepository.findByUsername(username);
+//		if (user == null) {
+//			throw new UsernameNotFoundException("Invalid username or password.");
+//		}
+//		return new User(user.getUsername(), user.getPassword(), getAuthority());
+//
+//	}
 	
-	private List<SimpleGrantedAuthority> getAuthority() {
-		return Arrays.asList(new SimpleGrantedAuthority("Admin"));
-	}
+//	private List<SimpleGrantedAuthority> getAuthority() {
+//		return Arrays.asList(new SimpleGrantedAuthority("Admin"));
+//	}
 
 	// Converts com.mkyong.users.model.User user to
 	// org.springframework.security.core.userdetails.User

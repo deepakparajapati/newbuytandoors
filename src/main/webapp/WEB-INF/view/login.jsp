@@ -131,7 +131,7 @@
 				<div class="row">
 					<div class="col-md-5 col-md-offset-3 object-non-visible" data-animation-effect="fadeIn">
 					<div class="login-form">
-						<form action="./auth" method="post">
+						<form action="/auth" method="post">
 							<h2 class="text-center">Login to<span> TANDOORS</span></h2>   
 							<div class="form-group">
 								<input type="text" id="username" name="username" class="form-control" placeholder="Username" required="required">

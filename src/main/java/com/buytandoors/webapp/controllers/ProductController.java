@@ -46,7 +46,8 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-	public ModelAndView dashboard() {
+	public ModelAndView dashboard(@RequestParam Model model) {
+		model.addAttribute("productList", new ProductList());
 		return new ModelAndView("dashboard");
 	}
 
@@ -56,6 +57,7 @@ public class ProductController {
 	@RequestMapping( value = "/auth", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView auth(@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
+		System.out.println("auth cont"+username + password);
 		AdminUser adminUser = adminUserRepository.findByUsername(username);
 		if (adminUser == null || adminUser.getUsername() == "") {
 			model.addAttribute("message", "No user name found.");
@@ -65,6 +67,7 @@ public class ProductController {
 			model.addAttribute("message", "password is incorrect");
 			new ModelAndView("error");
 		}
+		model.addAttribute("productList", new ProductList());
 		return new ModelAndView("dashboard");
 	}
 
