@@ -29,7 +29,6 @@ public class ProductController {
 	@Autowired
 	AdminUserRepository adminUserRepository;
 
-
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView homePage() {
 		return new ModelAndView("index");
@@ -44,28 +43,28 @@ public class ProductController {
 	public ModelAndView error() {
 		return new ModelAndView("error");
 	}
-	
+
 	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
 	public ModelAndView dashboard(@RequestParam Model model) {
 		model.addAttribute("productList", new ProductList());
 		return new ModelAndView("dashboard");
 	}
 
-
 	// SPRING SECURITY
 
-	@RequestMapping( value = "/auth", method = RequestMethod.POST)
+	@RequestMapping(value = "/auth", method = RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView auth(@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
-		System.out.println("auth cont"+username + password);
+	public ModelAndView auth(@RequestParam("username") String username, @RequestParam("password") String password,
+			Model model) {
+		System.out.println("auth cont" + username + password);
 		AdminUser adminUser = adminUserRepository.findByUsername(username);
-		if (adminUser == null || adminUser.getUsername() == "") {
+		if (adminUser == null || adminUser.getUsername().equals("")) {
 			model.addAttribute("message", "No user name found.");
-			new ModelAndView("error");
+			return new ModelAndView("error");
 		}
-		if (!adminUser.getPassword().equals(password)) {
+		if (!(adminUser.getPassword() == null || adminUser.getPassword().equals(password))) {
 			model.addAttribute("message", "password is incorrect");
-			new ModelAndView("error");
+			return new ModelAndView("error");
 		}
 		model.addAttribute("productList", new ProductList());
 		return new ModelAndView("dashboard");
