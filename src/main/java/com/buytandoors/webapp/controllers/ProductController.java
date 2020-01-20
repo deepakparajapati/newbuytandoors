@@ -23,11 +23,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.buytandoors.webapp.UserDetailsServiceImpl;
 import com.buytandoors.webapp.dao.ProductList;
 import com.buytandoors.webapp.modal.ProductModel;
 import com.buytandoors.webapp.repository.AdminUserRepository;
 import com.buytandoors.webapp.serviceimpl.ProductServicesImpli;
+import com.buytandoors.webapp.serviceimpl.UserDetailServiceImpl;
 
 @Controller
 public class ProductController {
@@ -39,7 +39,7 @@ public class ProductController {
 	AuthenticationManager authenticationManager;
 	
 	@Autowired
-	UserDetailsServiceImpl uds;
+	UserDetailServiceImpl uds;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView homePage() {
