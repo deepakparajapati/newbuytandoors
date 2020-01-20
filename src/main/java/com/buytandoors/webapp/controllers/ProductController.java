@@ -7,27 +7,39 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.buytandoors.webapp.dao.AdminUser;
+import com.buytandoors.webapp.UserDetailsServiceImpl;
 import com.buytandoors.webapp.dao.ProductList;
 import com.buytandoors.webapp.modal.ProductModel;
 import com.buytandoors.webapp.repository.AdminUserRepository;
-import com.buytandoors.webapp.serviceImpl.ProductServicesImpli;
+import com.buytandoors.webapp.serviceimpl.ProductServicesImpli;
 
-@RestController
+@Controller
 public class ProductController {
 
 	@Autowired
 	AdminUserRepository adminUserRepository;
+
+	@Autowired
+	AuthenticationManager authenticationManager;
+	
+	@Autowired
+	UserDetailsServiceImpl uds;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView homePage() {
@@ -45,30 +57,45 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-	public ModelAndView dashboard(@RequestParam Model model) {
+	public String dashboard(@RequestParam Model model) {
 		model.addAttribute("productList", new ProductList());
-		return new ModelAndView("dashboard");
+		return "dashboard";
 	}
 
 	// SPRING SECURITY
 
-	@RequestMapping(value = "/auth", method = RequestMethod.POST)
-	@ResponseBody
-	public ModelAndView auth(@RequestParam("username") String username, @RequestParam("password") String password,
-			Model model) {
+	@PostMapping(value = "/auth")
+	public String auth(@Validated @RequestParam("username") String username,
+			@RequestParam("password") String password, Model model) {
 		System.out.println("auth cont" + username + password);
-		AdminUser adminUser = adminUserRepository.findByUsername(username);
-		if (adminUser == null || adminUser.getUsername().equals("")) {
-			model.addAttribute("message", "No user name found.");
-			return new ModelAndView("error");
-		}
-		if (!(adminUser.getPassword() == null || adminUser.getPassword().equals(password))) {
-			model.addAttribute("message", "password is incorrect");
-			return new ModelAndView("error");
-		}
-		model.addAttribute("productList", new ProductList());
-		return new ModelAndView("dashboard");
+			try {
+				Authentication authentication = authenticationManager
+						.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+				System.out.println("isAuthenticated"+authentication.isAuthenticated());
+				SecurityContextHolder.getContext().setAuthentication(authentication);
+				uds.loadUserByUsername(username);
+				model.addAttribute("productList", new ProductList());
+				return "redirect:dashboard";
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new UsernameNotFoundException("UnAuthorized User");
+			}
+//		} else {
+//			return ResponseEntity.status(HttpStatus.OK).body("Invalid User");
+//		}
 	}
+
+//		AdminUser adminUser = adminUserRepository.findByUsername(username);
+//		if (adminUser == null || adminUser.getUsername().equals("")) {
+//			model.addAttribute("message", "No user name found.");
+//			return new ModelAndView("error");
+//		}
+//		if (!(adminUser.getPassword() == null || adminUser.getPassword().equals(password))) {
+//			model.addAttribute("message", "password is incorrect");
+//			return new ModelAndView("error");
+//		}
+//		model.addAttribute("productList", new ProductList());
+//		return new ModelAndView("dashboard");
 
 	@RequestMapping(value = "/submitproduct", method = RequestMethod.POST)
 	public String submitProduct(@ModelAttribute("productList") ProductModel productModel, ModelMap model)

@@ -1,4 +1,4 @@
-package com.buytandoors.webapp.serviceImpl;
+package com.buytandoors.webapp.serviceimpl;
 
 import java.util.Arrays;
 import java.util.List;
@@ -28,7 +28,7 @@ public class UserDetailServiceImpl implements UserDetailsService{
 		return new User(user.getUsername(), user.getPassword(), getAuthority());
 	}
 
-	private List getAuthority() {
+	private List<SimpleGrantedAuthority> getAuthority() {
 		return Arrays.asList(new SimpleGrantedAuthority("ADMIN"));
 	}
 

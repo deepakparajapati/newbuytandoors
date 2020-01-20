@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -13,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
 import com.buytandoors.webapp.repository.AdminUserRepository;
 
@@ -36,44 +38,25 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		SimpleUrlAuthenticationSuccessHandler authSuccessHandler = new SimpleUrlAuthenticationSuccessHandler();
+	    authSuccessHandler.setUseReferer(true);
 		http.authorizeRequests()
-				.antMatchers("/", "/index")
-				.permitAll().anyRequest().authenticated().and().formLogin().loginPage("/login")
+				.antMatchers("/", "/index").permitAll()
+				.anyRequest().authenticated().and().formLogin().loginPage("/login")
 				.defaultSuccessUrl("/dashboard").permitAll().and().logout().permitAll();
 	}
-
-//	@Autowired
-//	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.userDetailsService(userDetailsService);
-//	}
-
-//	@Override
-//	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//
-//		AdminUser user = adminUserRepository.findByUsername(username);
-//		if (user == null) {
-//			throw new UsernameNotFoundException("Invalid username or password.");
-//		}
-//		return new User(user.getUsername(), user.getPassword(), getAuthority());
-//
-//	}
-	
-//	private List<SimpleGrantedAuthority> getAuthority() {
-//		return Arrays.asList(new SimpleGrantedAuthority("Admin"));
-//	}
-
-	// Converts com.mkyong.users.model.User user to
-	// org.springframework.security.core.userdetails.User
-
-//	private User buildUserForAuthentication(AdminUser user, List<GrantedAuthority> authorities) {
-//		return new User(user.getUsername(), user.getPassword(), user.isEnabled(), true, true, true, authorities);
-//	}
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
 
+	@Override
+	@Bean
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+	    return super.authenticationManagerBean();
+	}
+	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		PasswordEncoder encoder = new BCryptPasswordEncoder();
