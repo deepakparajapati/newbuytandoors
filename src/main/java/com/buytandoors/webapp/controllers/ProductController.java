@@ -7,17 +7,11 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,21 +21,20 @@ import com.buytandoors.webapp.dao.ProductList;
 import com.buytandoors.webapp.modal.ProductModel;
 import com.buytandoors.webapp.repository.AdminUserRepository;
 import com.buytandoors.webapp.serviceimpl.ProductServicesImpli;
-import com.buytandoors.webapp.serviceimpl.UserDetailServiceImpl;
 
 @Controller
 public class ProductController {
 
-	@Autowired
-	AdminUserRepository adminUserRepository;
+//	@Autowired
+//	AdminUserRepository adminUserRepository;
 
-	@Autowired
-	AuthenticationManager authenticationManager;
+//	@Autowired
+//	AuthenticationManager authenticationManager;
 	
-	@Autowired
-	UserDetailServiceImpl uds;
+//	@Autowired
+//	UserDetailServiceImpl uds;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@GetMapping(value = {"/", "home"})
 	public ModelAndView homePage() {
 		return new ModelAndView("index");
 	}
@@ -56,34 +49,34 @@ public class ProductController {
 		return new ModelAndView("error");
 	}
 
-	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-	public String dashboard(@RequestParam Model model) {
+	@GetMapping(value = "/dashboard")
+	public ModelAndView dashboard(Model model) {
 		model.addAttribute("productList", new ProductList());
-		return "dashboard";
+		return new ModelAndView("dashboard");
 	}
 
 	// SPRING SECURITY
 
-	@PostMapping(value = "/auth")
-	public String auth(@Validated @RequestParam("username") String username,
-			@RequestParam("password") String password, Model model) {
-		System.out.println("auth cont" + username + password);
-			try {
-				Authentication authentication = authenticationManager
-						.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-				System.out.println("isAuthenticated"+authentication.isAuthenticated());
-				SecurityContextHolder.getContext().setAuthentication(authentication);
-				uds.loadUserByUsername(username);
-				model.addAttribute("productList", new ProductList());
-				return "redirect:dashboard";
-			} catch (Exception e) {
-				e.printStackTrace();
-				throw new UsernameNotFoundException("UnAuthorized User");
-			}
-//		} else {
-//			return ResponseEntity.status(HttpStatus.OK).body("Invalid User");
-//		}
-	}
+//	@PostMapping(value = "/auth")
+//	public String auth(@Validated @RequestParam("username") String username,
+//			@RequestParam("password") String password, Model model) {
+//		System.out.println("auth cont" + username + password);
+//			try {
+//				Authentication authentication = authenticationManager
+//						.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+//				System.out.println("isAuthenticated"+authentication.isAuthenticated());
+//				SecurityContextHolder.getContext().setAuthentication(authentication);
+//				uds.loadUserByUsername(username);
+//				model.addAttribute("productList", new ProductList());
+//				return "redirect:dashboard";
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//				throw new UsernameNotFoundException("UnAuthorized User");
+//			}
+////		} else {
+////			return ResponseEntity.status(HttpStatus.OK).body("Invalid User");
+////		}
+//	}
 
 //		AdminUser adminUser = adminUserRepository.findByUsername(username);
 //		if (adminUser == null || adminUser.getUsername().equals("")) {

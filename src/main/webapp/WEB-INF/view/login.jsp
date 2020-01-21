@@ -102,7 +102,7 @@
 											<li><a href="./">Portfolio</a></li>
 											<li><a href="./">Clients</a></li>
 											<li><a href="./">Contact</a></li>
-											<li><a href="./login">Admin</a></li>
+											<li><a href="./dashboard">Admin</a></li>
 										</ul>
 									</div>
 
@@ -131,7 +131,7 @@
 				<div class="row">
 					<div class="col-md-5 col-md-offset-3 object-non-visible" data-animation-effect="fadeIn">
 					<div class="login-form">
-						<form action="/auth" method="post">
+						<form name='login' action="/login" method="POST">
 							<h2 class="text-center">Login to<span> TANDOORS</span></h2>   
 							<div class="form-group">
 								<input type="text" id="username" name="username" class="form-control" placeholder="Username" required="required">
@@ -145,8 +145,10 @@
 							<div class="clearfix">
 								<label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
 								<a href="#" class="pull-right">Forgot Password?</a>
-							</div>        
+							</div>
+							 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />    
 						</form>
+
 						</div>
 					</div>
 				</div>
