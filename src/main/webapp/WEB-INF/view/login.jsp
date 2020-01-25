@@ -102,7 +102,7 @@
 											<li><a href="./">Portfolio</a></li>
 											<li><a href="./">Clients</a></li>
 											<li><a href="./">Contact</a></li>
-											<li><a href="./dashboard">Admin</a></li>
+											<li><a href="./login">Admin</a></li>
 										</ul>
 									</div>
 

@@ -2,11 +2,6 @@ package com.buytandoors.webapp.controllers;
 
 import java.io.IOException;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -14,12 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.buytandoors.webapp.dao.ProductList;
 import com.buytandoors.webapp.modal.ProductModel;
-import com.buytandoors.webapp.repository.AdminUserRepository;
 import com.buytandoors.webapp.serviceimpl.ProductServicesImpli;
 
 @Controller
@@ -34,13 +27,14 @@ public class ProductController {
 //	@Autowired
 //	UserDetailServiceImpl uds;
 
-	@GetMapping(value = {"/", "home"})
+	@GetMapping(value = {"/", "/home"})
 	public ModelAndView homePage() {
 		return new ModelAndView("index");
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView loginPage() {
+		System.out.println("/login");
 		return new ModelAndView("login");
 	}
 
@@ -111,10 +105,10 @@ public class ProductController {
 		return "success";
 	}
 
-	public EntityManager getEntityManager() {
-		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("Eclipselink_JPA");
-		EntityManager entitymanager = emfactory.createEntityManager();
-		return entitymanager;
-
-	}
+//	public EntityManager getEntityManager() {
+//		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("Eclipselink_JPA");
+//		EntityManager entitymanager = emfactory.createEntityManager();
+//		return entitymanager;
+//
+//	}
 }
