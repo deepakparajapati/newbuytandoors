@@ -16,12 +16,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
-//	@Resource(name = "userDetailService")
-//	private UserDetailsService userDetailsService;
-//
-//	@Autowired
-//	AdminUserRepository adminUserRepository;
-
 	@Autowired
 	private UserDetailsService userDetailsService;
 	
@@ -32,7 +26,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/auth", "/error", "/productimages/**", "/plugins/**", "/js/**", "/images/**", "/bootstrap/**", "/css/**",
 						"/fonts/**");
     }
-    
     
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -49,41 +42,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				.permitAll();
 	}
 	
-//	@Override
-//	protected void configure(HttpSecurity http) throws Exception {
-//		SimpleUrlAuthenticationSuccessHandler authSuccessHandler = new SimpleUrlAuthenticationSuccessHandler();
-//	    authSuccessHandler.setUseReferer(true);
-//		http.authorizeRequests()
-//				.antMatchers("/", "/index").permitAll()
-//				.anyRequest().authenticated().and().formLogin().loginPage("/login")
-//				.defaultSuccessUrl("/dashboard").permitAll().and().logout().permitAll();
-//	}
-
-//	@Bean
-//	@Override
-//	public UserDetailsService userDetailsService() {
-//		UserDetails user =
-//			 User.withDefaultPasswordEncoder()
-//				.username("user")
-//				.password("password")
-//				.roles("USER")
-//				.build();
-//
-//		return new InMemoryUserDetailsManager(user);
-//	}
-//	
-	
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
-//
-//	@Override
-//	@Bean
-//	public AuthenticationManager authenticationManagerBean() throws Exception {
-//	    return super.authenticationManagerBean();
-//	}
-//	
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		PasswordEncoder encoder = new BCryptPasswordEncoder();

@@ -133,7 +133,7 @@
 					<div class="login-form">
 							<h2 class="text-center">Success,<span> Vola</span></h2>
 							<div class="text-center">${message}</div>
-					<form class="text-center" action="/dashboard" method="POST">
+					<form class="text-center" action="/dashboard" method="GET">
 						<input class="btn btn-primary" type="submit" value="Back to Dashboard">
 					</form>
 						</div>

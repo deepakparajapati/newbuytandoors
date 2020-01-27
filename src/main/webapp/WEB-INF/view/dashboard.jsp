@@ -149,6 +149,11 @@
 					DeleteProduct
 				</button>
 			</div>
+			<br><br>
+		<form class="text-center" action="/logout" method="POST">
+			<input class="btn btn-primary" type="submit" value="Logout">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />    
+		</form>
 		</div>
 	</div>
 	<!-- banner end  -->
@@ -167,8 +172,7 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<div class="modal-body">
-
+	<div class="modal-body">
 	<form:form action="/submitproduct" method = "POST" enctype="multipart/form-data"  modelAttribute = "productList" onsubmit="return validation()">
 		<div class="form-group">
 
@@ -200,10 +204,11 @@
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				<input type="submit" class="btn btn-primary"></input>
 			</div>
-	</form:form>
+			</form:form>
 				</div>
 			</div>
 		</div>
+
    <!--    <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button> 
