@@ -4,13 +4,15 @@ import java.io.File;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.buytandoors.webapp.dao.ProductList;
+import com.buytandoors.webapp.entity.ProductList;
 import com.buytandoors.webapp.modal.ProductModel;
 import com.buytandoors.webapp.repository.ProductRepository;
 import com.buytandoors.webapp.services.ProductService;
 
+@Service
 public class ProductServicesImpli implements ProductService {
 
 	@Autowired
@@ -48,8 +50,7 @@ public class ProductServicesImpli implements ProductService {
 			i++;
 		}
 		pl.setProductPicUrl(urls);
-		ProductList product = productRepository.save(pl);
-		return product;
+		return productRepository.save(pl);
 	}
 
 }

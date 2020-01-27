@@ -2,6 +2,7 @@ package com.buytandoors.webapp.controllers;
 
 import java.io.IOException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -11,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.buytandoors.webapp.dao.ProductList;
+import com.buytandoors.webapp.entity.ProductList;
 import com.buytandoors.webapp.modal.ProductModel;
-import com.buytandoors.webapp.serviceimpl.ProductServicesImpli;
+import com.buytandoors.webapp.services.ProductService;
 
 @Controller
 public class ProductController {
@@ -26,6 +27,9 @@ public class ProductController {
 	
 //	@Autowired
 //	UserDetailServiceImpl uds;
+	
+	@Autowired
+	ProductService productServicesImpli;
 
 	@GetMapping(value = {"/", "/home"})
 	public ModelAndView homePage() {
@@ -34,7 +38,6 @@ public class ProductController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView loginPage() {
-		System.out.println("/login");
 		return new ModelAndView("login");
 	}
 
@@ -43,6 +46,12 @@ public class ProductController {
 		return new ModelAndView("error");
 	}
 
+	@RequestMapping(value = "/success", method = RequestMethod.GET)
+	public ModelAndView success() {
+		return new ModelAndView("success");
+	}
+
+	
 	@GetMapping(value = "/dashboard")
 	public ModelAndView dashboard(Model model) {
 		model.addAttribute("productList", new ProductList());
@@ -97,7 +106,7 @@ public class ProductController {
 //		model.addAttribute("contactNumber", productModel.getFeature());
 //		model.addAttribute("id", productModel.getProductSize());
 //		model.addAttribute("image" + i, iterable_element.getOriginalFilename());
-		ProductServicesImpli productServicesImpli = new ProductServicesImpli();
+//		ProductServicesImpli productServicesImpli = new ProductServicesImpli();
 		ProductList product = productServicesImpli.addProductProcess(productModel);
 		if (product == null) {
 			return "fail";

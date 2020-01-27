@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.buytandoors.webapp.dao.AdminUser;
+import com.buytandoors.webapp.entity.AdminUser;
 import com.buytandoors.webapp.repository.AdminUserRepository;
 
 @Service
