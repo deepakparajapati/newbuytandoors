@@ -24,7 +24,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         web
             .ignoring()
                 .antMatchers("/auth", "/error", "/productimages/**", "/plugins/**", "/js/**", "/images/**", "/bootstrap/**", "/css/**",
-						"/fonts/**");
+						"/fonts/**", "/products/**", "/resources/**");
     }
     
 	@Override
@@ -35,8 +35,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
-				.loginPage("/login")
-				.permitAll().defaultSuccessUrl("/dashboard")
+				.loginPage("/login").permitAll()
+				.defaultSuccessUrl("/dashboard", true)
 				.and()
 			.logout()
 				.permitAll();
@@ -50,6 +50,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		PasswordEncoder encoder = new BCryptPasswordEncoder();
+		System.out.println(encoder.encode("admin"));
 		return encoder;
 	}
 }

@@ -20,19 +20,19 @@
 	<link href='http://fonts.googleapis.com/css?family=Raleway:700,400,300' rel='stylesheet' type='text/css'>
 
 	<!-- Bootstrap core CSS -->
-	<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
 
 	<!-- Font Awesome CSS -->
-	<link href="fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
+	<link href="/fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
 
 	<!-- Plugins -->
-	<link href="css/animations.css" rel="stylesheet">
+	<link href="/css/animations.css" rel="stylesheet">
 
 	<!-- Worthy core CSS file -->
-	<link href="css/style.css" rel="stylesheet">
+	<link href="/css/style.css" rel="stylesheet">
 
 	<!-- Custom css --> 
-	<link href="css/custom.css" rel="stylesheet">
+	<link href="/css/custom.css" rel="stylesheet">
 
 </head>
 
@@ -54,7 +54,7 @@
 
 						<!-- logo -->
 						<div class="logo smooth-scroll">
-							<a href="#banner"><img id="logo" src="images/logo.png" alt="Worthy"></a>
+							<a href="#banner"><img id="logo" src="/images/logo.png" alt="Worthy"></a>
 						</div>
 
 						<!-- name-and-slogan -->
@@ -95,7 +95,7 @@
 									<!-- Collect the nav links, forms, and other content for toggling -->
 									<div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
 										<ul class="nav navbar-nav navbar-right">
-											<li class="active"><a href="#banner">Home</a></li>
+											<li class="active"><a href="/">Home</a></li>
 											<li><a href="#about">About</a></li>
 											<li><a href="#services">Services</a></li>
 											<li><a href="#portfolio">Portfolio</a></li>
@@ -223,26 +223,26 @@
 		<!-- JavaScript files placed at the end of the document so the pages load faster
 		================================================== -->
 		<!-- Jquery and Bootstap core js files -->
-		<script type="text/javascript" src="plugins/jquery.min.js"></script>
-		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/plugins/jquery.min.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
 
 		<!-- Modernizr javascript -->
-		<script type="text/javascript" src="plugins/modernizr.js"></script>
+		<script type="text/javascript" src="/plugins/modernizr.js"></script>
 
 		<!-- Isotope javascript -->
-		<script type="text/javascript" src="plugins/isotope/isotope.pkgd.min.js"></script>
+		<script type="text/javascript" src="/plugins/isotope/isotope.pkgd.min.js"></script>
 		
 		<!-- Backstretch javascript -->
-		<script type="text/javascript" src="plugins/jquery.backstretch.min.js"></script>
+		<script type="text/javascript" src="/plugins/jquery.backstretch.min.js"></script>
 
 		<!-- Appear javascript -->
-		<script type="text/javascript" src="plugins/jquery.appear.js"></script>
+		<script type="text/javascript" src="/plugins/jquery.appear.js"></script>
 
 		<!-- Initialization of Plugins -->
-		<script type="text/javascript" src="js/template.js"></script>
+		<script type="text/javascript" src="/js/template.js"></script>
 
 		<!-- Custom Scripts -->
-		<script type="text/javascript" src="js/custom.js"></script>
+		<script type="text/javascript" src="/js/custom.js"></script>
 
 	</body>
 	</html>
