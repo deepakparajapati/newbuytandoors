@@ -129,8 +129,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-5 col-md-offset-3 object-non-visible" data-animation-effect="fadeIn">
-					<h2 class="text-center">Product<span> List</span></h2>
-   					</a>
+					<h2 class="text-center">${productName}<span> List</span></h2>
 					</div>
 				</div>
 			</div>
@@ -141,79 +140,9 @@
 <!-- section end -->
 <!-- footer start -->
 <!-- ================ -->
-<div class="section">
-<div class="container">
 
-<div class="bd-example">
-<div class="card productstyle" >
-<a href="#">
-	<img src="/images/portfolio-1.jpg" class="card-img-top" alt="..."> 
-  </a>
-  <div class="card-body">
-    <a style="text-decoration: none;" href="#"><h5 class="card-title">Card with stretched link</h5></a>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
+<button onclick="">AddProduct</button>
 
-<div class="card productstyle" >
-	
-<a href="#">
-	<img src="/images/portfolio-2.jpg" class="card-img-top" alt="...">
-  </a>
-  <div class="card-body">
-    <a style="text-decoration: none;" href="#"><h5 class="card-title">Card with stretched link</h5></a>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-
-<div class="card productstyle" >
-
-<a href="#">
-	<img src="/images/portfolio-3.jpg" class="card-img-top" alt="...">
-  </a>
-  <div class="card-body">
-    <a style="text-decoration: none;" href="#"><h5 class="card-title">Card with stretched link</h5></a>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-</div>
-
-<div class="bd-example">
-<div class="card productstyle" >
-<a href="#">
-	<img src="/images/portfolio-1.jpg" class="card-img-top" alt="..."> 
-  </a>
-  <div class="card-body">
-    <a style="text-decoration: none;" href="#"><h5 class="card-title">Card with stretched link</h5></a>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-
-<div class="card productstyle" >
-	
-<a href="#">
-	<img src="/images/portfolio-2.jpg" class="card-img-top" alt="...">
-  </a>
-  <div class="card-body">
-    <a style="text-decoration: none;" href="#"><h5 class="card-title">Card with stretched link</h5></a>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-
-<div class="card productstyle" >
-
-<a href="#">
-	<img src="/images/portfolio-3.jpg" class="card-img-top" alt="...">
-  </a>
-  <div class="card-body">
-    <a style="text-decoration: none;" href="#"><h5 class="card-title">Card with stretched link</h5></a>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-</div>
-
-</div>
-</div>
 
 <footer id="footer">
 
