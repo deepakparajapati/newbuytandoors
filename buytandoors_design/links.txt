@@ -1,3 +1,10 @@
+Download
+Java 8
+Spring Suite 4
+github
+
+
+
 slider
 https://bootsnipp.com/snippets/Vgqld
 https://bootsnipp.com/snippets/v2G5A
@@ -16,3 +23,32 @@ http://www.marunao.com/cms_en/products/
 
 31 wordpress website
 https://athemes.com/collections/best-restaurant-wordpress-themes/
+
+
+
+
+Some of my Ideas 
+
+https://bootsnipp.com/snippets/OlBWM   //blowup animation
+https://bootsnipp.com/snippets/WaXpO   //gradiant background
+https://bootsnipp.com/snippets/E1vzD   // feature idea
+https://bootsnipp.com/snippets/dbGv    //Cool realtable products 
+https://codepen.io/wagnermoschini/pen/bEcsK
+https://codepen.io/jouanmarcel/pen/NLgVjm
+
+
+// feature menu
+https://codepen.io/lbebber/pen/pvwZJp 
+https://codepen.io/lbebber/pen/LELBEo
+https://www.youtube.com/watch?time_continue=64&v=RrNSAnmgwbU&feature=emb_logo  // @1:00
+
+
+//DropDown Image
+https://codepen.io/joshwentz/pen/jEKVoz
+
+
+background: #304352;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #d7d2cc, #304352);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #d7d2cc, #304352); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
