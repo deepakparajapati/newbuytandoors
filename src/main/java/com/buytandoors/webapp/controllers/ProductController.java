@@ -20,4 +20,11 @@ public class ProductController {
 		model.addAttribute("productName", productName);
 		return "products-test";
 	}
+	
+	@GetMapping("product/{productsPage}")
+	public String productsPage(@PathVariable String productsPage, Model model) {
+		model.addAttribute("productName", productsPage);
+		return "products-page";
+	}
+	
 }
