@@ -1,4 +1,4 @@
-package com.buytandoors.webapp.modal;
+package com.buytandoors.webapp.model;
 
 public class AdminModel {
 

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.buytandoors.webapp.entity.ProductList;
-import com.buytandoors.webapp.modal.ProductModel;
+import com.buytandoors.webapp.model.ProductModel;
 import com.buytandoors.webapp.services.ProductService;
 
 @Controller

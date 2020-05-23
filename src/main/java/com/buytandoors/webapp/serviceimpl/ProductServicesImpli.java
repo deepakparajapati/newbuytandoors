@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.buytandoors.webapp.entity.ProductList;
-import com.buytandoors.webapp.modal.ProductModel;
+import com.buytandoors.webapp.model.ProductModel;
 import com.buytandoors.webapp.repository.ProductRepository;
 import com.buytandoors.webapp.services.ProductService;
 
