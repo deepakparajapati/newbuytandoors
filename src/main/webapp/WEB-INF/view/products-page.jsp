@@ -6,9 +6,9 @@
 <head>
 
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<!------ Include the above in your HEAD tag ---------->
 
 	<meta charset="utf-8">
 	<title>Buy Tandoors | Ram Chander Tandoors Pvt. Ltd | Manufacturer Tandoors and kitchen Equipment</title>
@@ -153,7 +153,7 @@
 		</div>
 	</div>
 
-		<div class="row">
+	<div class="row">
 		<div class="text-center object-non-visible" data-animation-effect="fadeIn">
 			<h2 class="text-center">Product Name: ${productName}}</h2>
 		</div>
@@ -161,85 +161,85 @@
 </div>
 
 <div class="section">
-<div class="container">
-  <div class="row" style="display: flex;">
-    <div class="col" style="width: 50%;">
-    	<img id="imageToSwap" class="profile" src="images/SSS/SSS4.jpg">
-    </div>
-    <div class="col" style="width: 50%;margin-left: 5%;">
-    	
-<table class="table table-striped table-dark">
-  <thead>
-    <tr>
-      <th scope="col">Type</th>
-      <th scope="col">Specification</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-        <tr>
-      <td>Size</td>
-      <td><select onchange="$('#imageToSwap').attr('src', this.options[this.selectedIndex].value);">
-    <option value="images/SSS/SSS1.jpg"> 23" X 23" X 37" ( Small ) </option>
-    <option value="images/SSS/SSS2.jpg"> 28" X 28" X 35" ( Standard ) </option>
-    <option value="images/SSS/SSS3.jpg"> 30" X 30" X 36" ( Medium ) </option>
-    <option value="images/SSS/SSS4.jpg" selected>32" X 32" X 37" ( Large ) </option>
-    <option value="images/SSS/SSS5.png"> 34" X 34" X 37" ( Extra Large ) </option>
-    <option value="images/SSS/SSS6.png"> 36" X 36" X 37" ( Jumbo )</option>
-		  </select></td>
-    </tr>
-    <tr>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-        <tr>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+	<div class="container">
+		<div class="row" style="display: flex;">
+			<div class="col" style="width: 50%;">
+				<img id="imageToSwap" class="profile" src="images/SSS/SSS4.jpg">
+			</div>
+			<div class="col" style="width: 50%;margin-left: 5%;">
 
-    </div>
-  </div>
+				<table class="table table-striped table-dark">
+					<thead>
+						<tr>
+							<th scope="col">Type</th>
+							<th scope="col">Specification</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Otto</td>
+							<td>@mdo</td>
+						</tr>
+						<tr>
+							<td>Thornton</td>
+							<td>@fat</td>
+						</tr>
+						<tr>
+							<td>the Bird</td>
+							<td>@twitter</td>
+						</tr>
+						<tr>
+							<td>Size</td>
+							<td><select onchange="$('#imageToSwap').attr('src', this.options[this.selectedIndex].value);">
+								<option value="images/SSS/SSS1.jpg"> 23" X 23" X 37" ( Small ) </option>
+								<option value="images/SSS/SSS2.jpg"> 28" X 28" X 35" ( Standard ) </option>
+								<option value="images/SSS/SSS3.jpg"> 30" X 30" X 36" ( Medium ) </option>
+								<option value="images/SSS/SSS4.jpg" selected>32" X 32" X 37" ( Large ) </option>
+								<option value="images/SSS/SSS5.png"> 34" X 34" X 37" ( Extra Large ) </option>
+								<option value="images/SSS/SSS6.png"> 36" X 36" X 37" ( Jumbo )</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td>Thornton</td>
+							<td>@fat</td>
+						</tr>
+						<tr>
+							<td>the Bird</td>
+							<td>@twitter</td>
+						</tr>
+						<tr>
+							<td>Otto</td>
+							<td>@mdo</td>
+						</tr>
+						<tr>
+							<td>Thornton</td>
+							<td>@fat</td>
+						</tr>
+						<tr>
+							<td>the Bird</td>
+							<td>@twitter</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
 </div>
-</div>
 
-<!-- Relatable Products Start -->
+<!-- related products start -->
 
 <div class="container">
-	<h2 class="text-center"><b>More Relatable Product</b></h2>
-  <div class="row1">
-	<img src="images/SSS/SSS1.jpg" alt="..." class="img-rounded">
-    <img src="images/SSS/SSS2.jpg" alt="..." class="img-rounded">
-    <img src="images/SSS/SSS3.jpg" alt="..." class="img-rounded">
-    <img src="images/SSS/SSS4.jpg" alt="..." class="img-rounded">
-    <img src="images/SSS/SSS5.png" alt="..." class="img-rounded">
-    <img src="images/SSS/SSS6.png" alt="..." class="img-rounded">
+	<h2 class="text-center"><b>More Related Products</b></h2>
+	<div class="row1">
+		<img src="images/SSS/SSS1.jpg" alt="..." class="img-rounded">
+		<img src="images/SSS/SSS2.jpg" alt="..." class="img-rounded">
+		<img src="images/SSS/SSS3.jpg" alt="..." class="img-rounded">
+		<img src="images/SSS/SSS4.jpg" alt="..." class="img-rounded">
+		<img src="images/SSS/SSS5.png" alt="..." class="img-rounded">
+		<img src="images/SSS/SSS6.png" alt="..." class="img-rounded">
 
-  </div>
+	</div>
 </div>
 <!-- Relatable Products end -->
 
@@ -247,14 +247,23 @@
 
 <div class="container">
 	<div class="row1" >
-  		<h2 style="padding: 10px ">Safty Measurement</h2>
-  		<div class="panel-group" style="padding: 10px;">
-    		<div class="panel panel-default" style="border-radius: 6px;">
-      			<div class="panel-heading" style="border-radius: 6px; padding: 10px;" >Before you Start </div>
-      			<div class="panel-body">Panel Content</div>
-    		</div>
-  		</div>
-  	</div>
+		<h2 style="padding: 10px ">Safty Measurement</h2>
+		<div class="panel-group" style="padding: 10px;">
+			<div class="panel panel-default" style="border-radius: 6px;">
+				<div class="panel-heading" style="border-radius: 6px; padding: 10px;" >Before you Start </div>
+				<div class="panel-body">Panel Content</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+		<div class="row">
+		<div class="text-center object-non-visible" data-animation-effect="fadeIn">
+			<h2 class="text-center">Tecnical Specification</h2>
+		</div>
+	</div>
+</div>
 </div>
 
 <!-- Technical end -->

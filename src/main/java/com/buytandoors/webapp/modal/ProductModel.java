@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class ProductModel {
+public class ProductModel extends ProductFeature{
 
 	public Long productid;
 	public String productName;
