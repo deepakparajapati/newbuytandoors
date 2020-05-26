@@ -1,6 +1,8 @@
 package com.buytandoors.webapp.controllers;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,7 +56,11 @@ public class FunctionController {
 	
 	@GetMapping(value = "/dashboard")
 	public ModelAndView dashboard(Model model) {
-		model.addAttribute("productList", new ProductList());
+		List<String> listofbodymaterial = Arrays.asList("Stainless Steel","Mild Steel","Copper", "Brass", "Other");
+		List<String> listofbodyshapes = Arrays.asList("Round","Square","Ractangular", "Barrel", "Other");
+		model.addAttribute("listofbodyshapes", listofbodyshapes);
+		model.addAttribute("listofbodymaterial", listofbodymaterial);
+		model.addAttribute("productModel", new ProductModel());
 		return new ModelAndView("dashboard");
 	}
 
@@ -94,9 +100,9 @@ public class FunctionController {
 //		return new ModelAndView("dashboard");
 
 	@RequestMapping(value = "/submitproduct", method = RequestMethod.POST)
-	public String submitProduct(@ModelAttribute("productList") ProductModel productModel, ModelMap model)
+	public String submitProduct(@ModelAttribute("productModel") ProductModel productModel, ModelMap model)
 			throws IllegalStateException, IOException {
-
+		System.out.println(productModel.toString());
 //		String filePath = file.getAbsolutePath() + "\\" + productModel.getProductPicUrl()[0].getOriginalFilename();
 //		String filePath2 = file.getAbsolutePath() + "\\" + productModel.getProductPicUrl()[1].getOriginalFilename();
 //		productModel.getProductPicUrl()[0].transferTo(new File(filePath));

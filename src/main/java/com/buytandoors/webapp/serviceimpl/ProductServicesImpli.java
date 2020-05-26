@@ -10,6 +10,9 @@ import org.springframework.web.multipart.MultipartFile;
 import com.buytandoors.webapp.entity.ProductList;
 import com.buytandoors.webapp.model.ProductModel;
 import com.buytandoors.webapp.repository.ProductRepository;
+import com.buytandoors.webapp.repository.ProductShapeRepository;
+import com.buytandoors.webapp.repository.ProductSizeRepository;
+import com.buytandoors.webapp.repository.ProductWeightRepository;
 import com.buytandoors.webapp.services.ProductService;
 
 @Service
@@ -17,10 +20,21 @@ public class ProductServicesImpli implements ProductService {
 
 	@Autowired
 	ProductRepository productRepository;
+	@Autowired
+	ProductSizeRepository productSizeRepository;
+	@Autowired
+	ProductShapeRepository productShapeRepository; 
+	@Autowired
+	ProductWeightRepository productWeightRepository; 
 
 	@Override
 	public ProductList addProductProcess(ProductModel productModel) throws IllegalStateException {
 		ProductList pl = new ProductList();
+		pl.setApplicationsUsage(String.join(",", productModel.getApplicationsUsage()));
+		pl.setBodyMaterial(productModel.getBodyMaterial());
+		pl.setBrandName(productModel.getBrandName());
+		
+		
 		pl.setFeature(productModel.getFeature());
 		pl.setProductDescription(productModel.getProductDescription());
 		pl.setProductName(productModel.getProductName());
