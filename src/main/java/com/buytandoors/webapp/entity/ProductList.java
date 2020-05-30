@@ -38,8 +38,6 @@ public class ProductList implements Serializable {
 	@Column
 	private String modelName;
 	@Column
-	private int modelNumber;
-	@Column
 	private String applicationsUsage;
 	@Column
 	private String fuleConsumptionType;
@@ -58,13 +56,13 @@ public class ProductList implements Serializable {
 	@Column
 	private String useCondition;
 	@Column
-	private String capacityPerBread;
-	@Column
 	private String certification;
 	@Column
 	private String insulation;
 	@Column
 	private String operatingTemperature;
+	@Column
+	private String operatingOutsideTemperature;
 	@Column
 	private String keywordMetadata;
 	@Column
@@ -74,13 +72,11 @@ public class ProductList implements Serializable {
 	@Column
 	private String packing;
 	@Column
-	private int grossWeight;
-	@Column
-	private int netWeight;
-	@Column
 	private String thermometer;
 	@Column
 	private String includes;
+	@Column
+	private String productCategory;
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "productList_Size")
 	@JoinColumns({@JoinColumn(name = "productid"),@JoinColumn(name = "sizeId")})

@@ -1,8 +1,8 @@
 package com.buytandoors.webapp.entity;
 
 import java.io.Serializable;
-import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -30,10 +30,11 @@ public class ProductShapeEntity implements Serializable{
 	@Column
 	private String shape;
 	
-	@ManyToOne
-	@JoinTable(name = "productSizeEntity")
-	private ProductSizeEntity productSizeEntity;
+	@ManyToOne(cascade=CascadeType.ALL)  
+	private ProductSizeEntity productSizeClassEntity;
 	
-	@OneToMany(mappedBy = "productShapeEntity")
-	private Set<ProductWeightEntity> weightid;
+	@OneToOne(mappedBy="productShapeWeightEntity")
+	private ProductWeightEntity weightid;
+//	@JoinTable(name = "productShapeWeightEntity")
+//	(mappedBy = "productShapeEntity")
 }

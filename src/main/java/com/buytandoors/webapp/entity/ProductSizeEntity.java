@@ -20,9 +20,6 @@ import lombok.Data;
 @Data
 public class ProductSizeEntity implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,6 +37,6 @@ public class ProductSizeEntity implements Serializable{
 	@ManyToMany(mappedBy = "productSizeEntity")
 	private Set<ProductList> productList;
 	
-	@OneToMany(mappedBy = "productSizeEntity", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "productSizeClassEntity", cascade = CascadeType.ALL)
 	private Set<ProductShapeEntity> productShapeEntity;
 }

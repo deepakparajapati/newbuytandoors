@@ -27,6 +27,7 @@ public class ProductModel {
 	private String certification;
 	private String[] insulation;
 	private String operatingTemperature;
+	private String operatingOutsideTemperature;
 	private String keywordMetadata;
 	private String[] usageArea;
 	private String manufacturingCountry;
@@ -35,6 +36,6 @@ public class ProductModel {
 //	private int[] netWeight;
 	private String thermometer;
 	private String includes;
-	private String[] category;
+	private String[] productCategory;
 
 }

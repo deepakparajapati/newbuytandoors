@@ -31,8 +31,27 @@ public class ProductServicesImpli implements ProductService {
 	public ProductList addProductProcess(ProductModel productModel) throws IllegalStateException {
 		ProductList pl = new ProductList();
 		pl.setApplicationsUsage(String.join(",", productModel.getApplicationsUsage()));
+		pl.setFuleConsumptionType(String.join(",", productModel.getFuleConsumptionType()));
+		pl.setModelName(productModel.getModelName());
+		pl.setShape(productModel.getShape());
 		pl.setBodyMaterial(productModel.getBodyMaterial());
 		pl.setBrandName(productModel.getBrandName());
+		pl.setProductSize(String.join(",", productModel.getProductSize()));
+		pl.setMeasurementUnit(productModel.getMeasurementUnit());
+		pl.setNumberOfWheels(productModel.getNumberOfWheels());
+		pl.setUseCondition(productModel.getUseCondition());
+		pl.setCertification(productModel.getCertification());
+		pl.setInsulation(String.join(",", productModel.getInsulation()));
+		pl.setOperatingTemperature(productModel.getOperatingTemperature());
+		pl.setOperatingOutsideTemperature(productModel.getOperatingOutsideTemperature());
+		pl.setKeywordMetadata(productModel.getKeywordMetadata());
+		pl.setUsageArea(String.join(",", productModel.getUsageArea()));
+		pl.setManufacturingCountry(productModel.getManufacturingCountry());
+		pl.setPacking(productModel.getPacking());
+		pl.setThermometer(productModel.getThermometer());
+		pl.setIncludes(productModel.getIncludes());
+		pl.setProductCategory(String.join(",", productModel.getProductCategory()));
+		
 		
 		
 		pl.setFeature(productModel.getFeature());
