@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.buytandoors.webapp.entity.ProductList;
 import com.buytandoors.webapp.model.ProductModel;
+import com.buytandoors.webapp.repository.ProductSizeRepository;
 import com.buytandoors.webapp.services.ProductService;
 
 @Controller
@@ -32,6 +33,9 @@ public class FunctionController {
 	
 	@Autowired
 	ProductService productServicesImpli;
+	
+	@Autowired
+	ProductSizeRepository productSizeRepository;
 
 	@GetMapping(value = {"/", "/home"})
 	public ModelAndView homePage() {
@@ -58,8 +62,11 @@ public class FunctionController {
 	public ModelAndView dashboard(Model model) {
 		List<String> listofbodymaterial = Arrays.asList("Stainless Steel","Mild Steel","Copper", "Brass", "Other");
 		List<String> listofbodyshapes = Arrays.asList("Round","Square","Ractangular", "Barrel", "Other");
-		model.addAttribute("listofbodyshapes", listofbodyshapes);
+		List<String> listofsize = productSizeRepository.findSize();
+		System.out.println(listofsize);
+ 		model.addAttribute("listofbodyshapes", listofbodyshapes);
 		model.addAttribute("listofbodymaterial", listofbodymaterial);
+		model.addAttribute("listofsize", listofsize);
 		model.addAttribute("productModel", new ProductModel());
 		return new ModelAndView("dashboard");
 	}

@@ -1,18 +1,12 @@
 package com.buytandoors.webapp.entity;
 
 import java.io.Serializable;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -77,8 +71,8 @@ public class ProductList implements Serializable {
 	private String includes;
 	@Column
 	private String productCategory;
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "productList_Size")
-	@JoinColumns({@JoinColumn(name = "productid"),@JoinColumn(name = "sizeId")})
-	private Set<ProductSizeEntity> productSizeEntity;
+//	@ManyToMany(cascade = CascadeType.ALL)
+//	@JoinTable(name = "productList_Size")
+//	@JoinColumns({@JoinColumn(name = "productid"),@JoinColumn(name = "sizeId")})
+//	private Set<ProductSizeEntity> productSizeEntity;
 }

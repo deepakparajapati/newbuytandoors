@@ -1,0 +1,1 @@
+insert into `tandoors`.`product_weight_entity` (`weightid`, `gross_weight`, `net_weight`, `shape`, `size_id` ) values ('1', '1', '1', '1', '1' );

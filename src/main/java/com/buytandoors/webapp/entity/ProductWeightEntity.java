@@ -2,6 +2,7 @@ package com.buytandoors.webapp.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,7 +34,7 @@ public class ProductWeightEntity implements Serializable{
 	private String shape;
 	@Column
 	private String sizeId;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@PrimaryKeyJoinColumn
 	private ProductShapeEntity productShapeWeightEntity;
 //	(mappedBy = "weightid")

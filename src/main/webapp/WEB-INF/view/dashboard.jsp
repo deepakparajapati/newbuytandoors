@@ -238,19 +238,23 @@
 
 							<div class="form-group">
 								<form:label path="productSize" for="productSize">Product Sizes</form:label>
-								<div class="container">
+								<div class="container">	
+
+								<div class="checkbox-inline"><label><form:checkboxes path="productSize" items="${listofsize}"/></label></div>
+							</div>
+<%--								<div class="container">	
 								<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Home X Extra Small"/>Home X Extra Small </label></div> 
 							  	<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Home Extra Small"/> Home Extra Small </label></div> 
 							  	<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Home Small"/> Home Small </label></div>
 							  	<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Small" checked="checked"/> Small </label></div> 
 							  	</div>
-							  	<div class="container"> 
+ 							  	<div class="container"> 
 						  		<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Standard" checked="checked"/> Standard </label></div>
 							  	<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Medium" checked="checked"/> Medium </label></div>
 							  	<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Large" checked="checked"/> Large </label></div>  
 								<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Extra Large" checked="checked"/> Extra Large </label></div>
 								<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Jumbo" checked="checked"/> Jumbo </label></div>
-								</div>
+								</div> --%>
 							</div>
 
 							<div class="form-group">

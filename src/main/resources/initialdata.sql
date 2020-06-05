@@ -1,0 +1,9 @@
+insert into `product_size_entity` (`size_id`, `capacity_per_bread`, `product_height`, `product_length`, `product_mouth`, `product_width`, `product_size`) values('1','5 to 8','20','15','9','15','Home X Extra Small');
+insert into `product_size_entity` (`size_id`, `capacity_per_bread`, `product_height`, `product_length`, `product_mouth`, `product_width`, `product_size`) values('2','8 to 10','22','16','10','16','Home Extra Small');
+insert into `product_size_entity` (`size_id`, `capacity_per_bread`, `product_height`, `product_length`, `product_mouth`, `product_width`, `product_size`) values('3','11 to 12','28','18','12','18','Home Small');
+insert into `product_size_entity` (`size_id`, `capacity_per_bread`, `product_height`, `product_length`, `product_mouth`, `product_width`, `product_size`) values('4','13 to 15','28','23','12','23','Small');
+insert into `product_size_entity` (`size_id`, `capacity_per_bread`, `product_height`, `product_length`, `product_mouth`, `product_width`, `product_size`) values('5','16 to 18','35','28','14','28','Standard');
+insert into `product_size_entity` (`size_id`, `capacity_per_bread`, `product_height`, `product_length`, `product_mouth`, `product_width`, `product_size`) values('6','19 to 20','36','30','15','30','Medium ');
+insert into `product_size_entity` (`size_id`, `capacity_per_bread`, `product_height`, `product_length`, `product_mouth`, `product_width`, `product_size`) values('7','21 to 25','37','32','15','32','Large');
+insert into `product_size_entity` (`size_id`, `capacity_per_bread`, `product_height`, `product_length`, `product_mouth`, `product_width`, `product_size`) values('8','26 to 28','37','34','16','34','Extra Large');
+insert into `product_size_entity` (`size_id`, `capacity_per_bread`, `product_height`, `product_length`, `product_mouth`, `product_width`, `product_size`) values('9','30+','37','36','16','36','Jumbo');

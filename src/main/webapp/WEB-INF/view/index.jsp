@@ -378,8 +378,40 @@
 														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque sed, quidem quis praesentium, ut unde. Quae sed, incidunt laudantium nesciunt, optio corporis quod earum pariatur omnis illo saepe numquam suscipit, nemo placeat dignissimos eius mollitia et quas officia doloremque ipsum labore rem deserunt vero! Magnam totam delectus accusantium voluptas et, tempora quos atque, fugiat, obcaecati voluptatibus commodi illo voluptates dolore nemo quo soluta quis.</p>
 														<p>Molestiae sed enim laboriosam atque delectus voluptates rerum nostrum sapiente obcaecati molestias quasi optio exercitationem, voluptate quis consequatur libero incidunt, in, quod. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nobis officiis, autem earum tenetur quidem. Quae non dicta earum. Ipsum autem eaque cum dolor placeat corporis quisquam dolorum at nesciunt.</p>
 													</div>
-													<div class="col-md-6">
-														<img src="images/portfolio-1.jpg" alt="">
+													<div class="col-md-6">		
+															  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+															    <!-- Indicators -->
+															    <ol class="carousel-indicators">
+															      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+															      <li data-target="#myCarousel" data-slide-to="1"></li>
+															      <li data-target="#myCarousel" data-slide-to="2"></li>
+															    </ol>
+
+															    <!-- Wrapper for slides -->
+															    <div class="carousel-inner">
+															      <div class="item active">
+															        <img src="images/portfolio-1.jpg" alt="Los Angeles" style="width:100%;">
+															      </div>
+
+															      <div class="item">
+															        <img src="images/portfolio-12.jpg" alt="Chicago" style="width:100%;">
+															      </div>
+															    
+															      <div class="item">
+															        <img src="images/portfolio-11.jpg" alt="New york" style="width:100%;">
+															      </div>
+															    </div>
+
+															    <!-- Left and right controls -->
+															    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+															      <span class="glyphicon glyphicon-chevron-left"></span>
+															      <span class="sr-only">Previous</span>
+															    </a>
+															    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+															      <span class="glyphicon glyphicon-chevron-right"></span>
+															      <span class="sr-only">Next</span>
+															    </a>
+															  </div>												
 													</div>
 												</div>
 											</div>

@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -33,7 +32,7 @@ public class ProductShapeEntity implements Serializable{
 	@ManyToOne(cascade=CascadeType.ALL)  
 	private ProductSizeEntity productSizeClassEntity;
 	
-	@OneToOne(mappedBy="productShapeWeightEntity")
+	@OneToOne(mappedBy="productShapeWeightEntity", cascade = CascadeType.ALL)
 	private ProductWeightEntity weightid;
 //	@JoinTable(name = "productShapeWeightEntity")
 //	(mappedBy = "productShapeEntity")

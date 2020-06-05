@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.buytandoors.webapp.entity.Product;
 import com.buytandoors.webapp.entity.ProductList;
 import com.buytandoors.webapp.model.ProductModel;
+import com.buytandoors.webapp.repository.ProductListRepository;
 import com.buytandoors.webapp.repository.ProductRepository;
 import com.buytandoors.webapp.repository.ProductShapeRepository;
 import com.buytandoors.webapp.repository.ProductSizeRepository;
@@ -19,17 +21,20 @@ import com.buytandoors.webapp.services.ProductService;
 public class ProductServicesImpli implements ProductService {
 
 	@Autowired
-	ProductRepository productRepository;
+	ProductListRepository productListRepository;
 	@Autowired
 	ProductSizeRepository productSizeRepository;
 	@Autowired
-	ProductShapeRepository productShapeRepository; 
+	ProductShapeRepository productShapeRepository;
+	@Autowired
+	ProductRepository productRepository;
 	@Autowired
 	ProductWeightRepository productWeightRepository; 
 
 	@Override
 	public ProductList addProductProcess(ProductModel productModel) throws IllegalStateException {
 		ProductList pl = new ProductList();
+		Product product = new Product();
 		pl.setApplicationsUsage(String.join(",", productModel.getApplicationsUsage()));
 		pl.setFuleConsumptionType(String.join(",", productModel.getFuleConsumptionType()));
 		pl.setModelName(productModel.getModelName());
@@ -51,12 +56,10 @@ public class ProductServicesImpli implements ProductService {
 		pl.setThermometer(productModel.getThermometer());
 		pl.setIncludes(productModel.getIncludes());
 		pl.setProductCategory(String.join(",", productModel.getProductCategory()));
-		
-		
-		
 		pl.setFeature(productModel.getFeature());
 		pl.setProductDescription(productModel.getProductDescription());
 		pl.setProductName(productModel.getProductName());
+
 		File file = new File("src\\main\\resources\\static", "productimages");
 		if (!file.exists()) {
 			if (file.mkdir()) {
@@ -83,7 +86,25 @@ public class ProductServicesImpli implements ProductService {
 			i++;
 		}
 		pl.setProductPicUrl(urls);
-		return productRepository.save(pl);
+		ProductList productList = productListRepository.save(pl);
+		
+		
+		// setting shape id
+				Long shapeId = productShapeRepository.findShapeId(productModel.getShape());
+				product.setShapeId(shapeId);
+				product.setProductid(productList.getProductid());
+
+//				for (int i = 0; i < productModel.getProductSize().length; i++) {
+				for (String size : productModel.getProductSize()) {
+					long sizeId = productSizeRepository.findSizeId(size);
+					long weightId = productWeightRepository.findWeightId(productModel.getShape(), sizeId);
+					product.setSizeId(sizeId);
+					product.setWeightId(weightId);
+					productRepository.save(product);
+				}
+				
+		
+		return productList;
 	}
 
 }

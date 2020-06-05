@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -34,8 +33,10 @@ public class ProductSizeEntity implements Serializable{
 	private int productMouth;
 	@Column
 	private String capacityPerBread;
-	@ManyToMany(mappedBy = "productSizeEntity")
-	private Set<ProductList> productList;
+	@Column
+	private String productSize;
+//	@ManyToMany(mappedBy = "productSizeEntity", cascade = CascadeType.ALL)
+//	private Set<ProductList> productList;
 	
 	@OneToMany(mappedBy = "productSizeClassEntity", cascade = CascadeType.ALL)
 	private Set<ProductShapeEntity> productShapeEntity;
