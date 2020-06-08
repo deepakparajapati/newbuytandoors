@@ -171,11 +171,12 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<form:form action="/submitproduct" method = "POST" enctype="multipart/form-data"  modelAttribute = "productModel" onsubmit="return validation()">
+						<form:form action="/submitproduct" method = "POST" enctype="multipart/form-data"  modelAttribute = "productModel" >
 						<div class="form-group">
 								<div class="form-group">
 									<form:label path="productName" for="productName">Product Name</form:label>
 									<form:input path="productName" type="text" class="form-control" id="productName" placeholder="Product-Name" />
+									 <td><form:errors path="productName" cssClass="alert alert-warning" /></td>
 								</div>
 								<div class="form-group">
 									<form:label path="productDescription" for="productDescription">Product Description</form:label>
@@ -238,9 +239,9 @@
 
 							<div class="form-group">
 								<form:label path="productSize" for="productSize">Product Sizes</form:label>
-								<div class="container">	
+								<div class="mycheckbox">	
 
-								<div class="checkbox-inline"><label><form:checkboxes path="productSize" items="${listofsize}"/></label></div>
+								<form:checkboxes path="productSize" items="${listofsize}" element="span class='span'" cssStyle="margin-right : 10px"/>
 							</div>
 <%--								<div class="container">	
 								<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Home X Extra Small"/>Home X Extra Small </label></div> 

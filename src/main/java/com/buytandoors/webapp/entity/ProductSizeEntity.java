@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
 import lombok.Data;
 
 @Entity
@@ -34,10 +36,11 @@ public class ProductSizeEntity implements Serializable{
 	@Column
 	private String capacityPerBread;
 	@Column
+	@UniqueElements
 	private String productSize;
 //	@ManyToMany(mappedBy = "productSizeEntity", cascade = CascadeType.ALL)
 //	private Set<ProductList> productList;
 	
-	@OneToMany(mappedBy = "productSizeClassEntity", cascade = CascadeType.ALL)
-	private Set<ProductShapeEntity> productShapeEntity;
+//	@OneToMany(mappedBy = "productSizeClassEntity", cascade = CascadeType.ALL)
+//	private Set<ProductShapeEntity> productShapeEntity;
 }

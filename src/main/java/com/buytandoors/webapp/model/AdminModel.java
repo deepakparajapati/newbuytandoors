@@ -1,10 +1,13 @@
 package com.buytandoors.webapp.model;
 
+import javax.validation.constraints.NotNull;
+
 public class AdminModel {
 
 	private Long id;
-
+	@NotNull
 	private String username;
+	@NotNull
 	private String password;
 	
 	public Long getId() {

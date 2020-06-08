@@ -4,18 +4,26 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.buytandoors.webapp.entity.Product;
 import com.buytandoors.webapp.entity.ProductList;
 import com.buytandoors.webapp.model.ProductModel;
+import com.buytandoors.webapp.repository.ProductRepository;
 import com.buytandoors.webapp.repository.ProductSizeRepository;
 import com.buytandoors.webapp.services.ProductService;
 
@@ -36,10 +44,16 @@ public class FunctionController {
 	
 	@Autowired
 	ProductSizeRepository productSizeRepository;
+	
+	@Autowired
+	ProductRepository productRepository;
 
 	@GetMapping(value = {"/", "/home"})
 	public ModelAndView homePage() {
-		return new ModelAndView("index");
+		ModelAndView model = new ModelAndView("index");
+//		List<Product> productList = productRepository.findAll();
+		
+		return model;
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -47,9 +61,11 @@ public class FunctionController {
 		return new ModelAndView("login");
 	}
 
-	@RequestMapping(value = "/error", method = RequestMethod.GET)
-	public ModelAndView error() {
-		return new ModelAndView("error");
+	@RequestMapping(value = "/myerror", method = RequestMethod.GET)
+	public Model myerror(@RequestParam("message") String errormessage, Model model) {
+		System.out.println(errormessage);
+		model.addAttribute("message", errormessage);
+		return model;
 	}
 
 	@RequestMapping(value = "/success", method = RequestMethod.GET)
@@ -70,7 +86,7 @@ public class FunctionController {
 		model.addAttribute("productModel", new ProductModel());
 		return new ModelAndView("dashboard");
 	}
-
+	
 	// SPRING SECURITY
 
 //	@PostMapping(value = "/auth")
@@ -106,10 +122,16 @@ public class FunctionController {
 //		model.addAttribute("productList", new ProductList());
 //		return new ModelAndView("dashboard");
 
-	@RequestMapping(value = "/submitproduct", method = RequestMethod.POST)
-	public String submitProduct(@ModelAttribute("productModel") ProductModel productModel, ModelMap model)
-			throws IllegalStateException, IOException {
-		System.out.println(productModel.toString());
+	@PostMapping(value = "/submitproduct")
+	public String submitProduct( @ModelAttribute("productModel") @Valid ProductModel productModel,BindingResult bindingResult, ModelMap model) {
+//		System.out.println(productModel.toString());
+		System.err.println(bindingResult);
+//		System.err.println(errors);
+		if (bindingResult.hasErrors()) {
+			System.out.println("myerror?message="+bindingResult.getFieldError().getDefaultMessage());
+			model.addAttribute("message", bindingResult.getFieldError().getField() + " " +bindingResult.getFieldError().getDefaultMessage());
+			return "myerror";
+		}
 //		String filePath = file.getAbsolutePath() + "\\" + productModel.getProductPicUrl()[0].getOriginalFilename();
 //		String filePath2 = file.getAbsolutePath() + "\\" + productModel.getProductPicUrl()[1].getOriginalFilename();
 //		productModel.getProductPicUrl()[0].transferTo(new File(filePath));

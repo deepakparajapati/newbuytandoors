@@ -29,8 +29,8 @@ public class ProductShapeEntity implements Serializable{
 	@Column
 	private String shape;
 	
-	@ManyToOne(cascade=CascadeType.ALL)  
-	private ProductSizeEntity productSizeClassEntity;
+//	@ManyToOne(cascade=CascadeType.ALL)  
+//	private ProductSizeEntity productSizeClassEntity;
 	
 	@OneToOne(mappedBy="productShapeWeightEntity", cascade = CascadeType.ALL)
 	private ProductWeightEntity weightid;

@@ -29,12 +29,11 @@ public class ProductServicesImpli implements ProductService {
 	@Autowired
 	ProductRepository productRepository;
 	@Autowired
-	ProductWeightRepository productWeightRepository; 
+	ProductWeightRepository productWeightRepository;
 
 	@Override
 	public ProductList addProductProcess(ProductModel productModel) throws IllegalStateException {
 		ProductList pl = new ProductList();
-		Product product = new Product();
 		pl.setApplicationsUsage(String.join(",", productModel.getApplicationsUsage()));
 		pl.setFuleConsumptionType(String.join(",", productModel.getFuleConsumptionType()));
 		pl.setModelName(productModel.getModelName());
@@ -87,23 +86,21 @@ public class ProductServicesImpli implements ProductService {
 		}
 		pl.setProductPicUrl(urls);
 		ProductList productList = productListRepository.save(pl);
-		
-		
-		// setting shape id
-				Long shapeId = productShapeRepository.findShapeId(productModel.getShape());
-				product.setShapeId(shapeId);
-				product.setProductid(productList.getProductid());
 
-//				for (int i = 0; i < productModel.getProductSize().length; i++) {
-				for (String size : productModel.getProductSize()) {
-					long sizeId = productSizeRepository.findSizeId(size);
-					long weightId = productWeightRepository.findWeightId(productModel.getShape(), sizeId);
-					product.setSizeId(sizeId);
-					product.setWeightId(weightId);
-					productRepository.save(product);
-				}
-				
-		
+		// setting shape id
+		Long shapeId = productShapeRepository.findShapeId(productModel.getShape());
+
+		for (String size : productModel.getProductSize()) {
+			long sizeId = productSizeRepository.findSizeId(size);
+			long weightId = productWeightRepository.findWeightId(productModel.getShape(), sizeId);
+			Product product = new Product();
+			product.setShapeId(shapeId);
+			product.setProductid(productList.getProductid());
+			product.setSizeId(sizeId);
+			product.setWeightId(weightId);
+			productRepository.save(product);
+		}
+
 		return productList;
 	}
 

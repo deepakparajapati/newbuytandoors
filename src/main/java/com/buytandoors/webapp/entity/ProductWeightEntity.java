@@ -12,6 +12,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
 import lombok.Data;
 
 @Entity
@@ -27,13 +29,16 @@ public class ProductWeightEntity implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long weightid;
 	@Column
+	@UniqueElements
+	private String weightName;
+	@Column
 	private int grossWeight;
 	@Column
 	private int netWeight;
 	@Column
 	private String shape;
 	@Column
-	private String sizeId;
+	private int sizeId;
 	@OneToOne(cascade = CascadeType.ALL)
 	@PrimaryKeyJoinColumn
 	private ProductShapeEntity productShapeWeightEntity;
