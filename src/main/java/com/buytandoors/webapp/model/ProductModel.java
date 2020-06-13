@@ -18,6 +18,8 @@ public class ProductModel {
 	public String feature;
 	@NotEmpty
 	public MultipartFile[] productPicUrl;
+	@NotEmpty
+	public String productSpecificationImage;
 	private String modelName;
 //	private int modelNumber;
 	@NotEmpty
@@ -50,6 +52,7 @@ public class ProductModel {
 //	private int[] netWeight;
 	private String thermometer;
 	private String includes;
+	private String productTopCategory;
 	private String[] productCategory;
 
 }

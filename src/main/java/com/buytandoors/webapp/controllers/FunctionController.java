@@ -1,6 +1,5 @@
 package com.buytandoors.webapp.controllers;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,25 +18,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.buytandoors.webapp.entity.Product;
 import com.buytandoors.webapp.entity.ProductList;
 import com.buytandoors.webapp.model.ProductModel;
+import com.buytandoors.webapp.repository.ProductListRepository;
 import com.buytandoors.webapp.repository.ProductRepository;
+import com.buytandoors.webapp.repository.ProductShapeRepository;
 import com.buytandoors.webapp.repository.ProductSizeRepository;
 import com.buytandoors.webapp.services.ProductService;
 
 @Controller
 public class FunctionController {
 
-//	@Autowired
-//	AdminUserRepository adminUserRepository;
-
-//	@Autowired
-//	AuthenticationManager authenticationManager;
-	
-//	@Autowired
-//	UserDetailServiceImpl uds;
-	
 	@Autowired
 	ProductService productServicesImpli;
 	
@@ -47,15 +37,29 @@ public class FunctionController {
 	
 	@Autowired
 	ProductRepository productRepository;
+	
+	@Autowired
+	ProductShapeRepository productShapeRepository;
+	
+	@Autowired
+	ProductListRepository productListRepository;
 
 	@GetMapping(value = {"/", "/home"})
 	public ModelAndView homePage() {
 		ModelAndView model = new ModelAndView("index");
-//		List<Product> productList = productRepository.findAll();
-		
+		List<ProductList> productList = productListRepository.findAll();
+		model.addObject("productList", productList);
 		return model;
 	}
 
+	@GetMapping(value = {"/home-tandoors"})
+	public ModelAndView homeTandoorsPage() {
+		ModelAndView model = new ModelAndView("hometandoors");
+//		List<ProductList> productList = productListRepository.findAll();
+//		model.addObject("productList", productList);
+		return model;
+	}
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView loginPage() {
 		return new ModelAndView("login");
@@ -76,13 +80,16 @@ public class FunctionController {
 	
 	@GetMapping(value = "/dashboard")
 	public ModelAndView dashboard(Model model) {
-		List<String> listofbodymaterial = Arrays.asList("Stainless Steel","Mild Steel","Copper", "Brass", "Other");
-		List<String> listofbodyshapes = Arrays.asList("Round","Square","Ractangular", "Barrel", "Other");
+		List<String> listofbodymaterial = Arrays.asList("Clay","Stainless Steel","Mild Steel","Copper", "Brass", "Other");
+//		List<String> listofbodyshapes = Arrays.asList("Round","Square","Ractangular", "Barrel", "Dome Shape","Cylindrical", "Other");
+		List<String> listofProductTopCategory = Arrays.asList("Tandoor","Pizza Oven", "Accessories");
 		List<String> listofsize = productSizeRepository.findSize();
-		System.out.println(listofsize);
+		List<String> listofbodyshapes = productShapeRepository.findShapes();
+//		System.out.println(listofsize);
  		model.addAttribute("listofbodyshapes", listofbodyshapes);
 		model.addAttribute("listofbodymaterial", listofbodymaterial);
 		model.addAttribute("listofsize", listofsize);
+		model.addAttribute("listofProductTopCategory", listofProductTopCategory);
 		model.addAttribute("productModel", new ProductModel());
 		return new ModelAndView("dashboard");
 	}

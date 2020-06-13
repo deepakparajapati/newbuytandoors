@@ -193,6 +193,12 @@
 								</div>
 							</div>
 							<div class="form-group">
+								<div class="form-check">
+									<form:label path="productSpecificationImage" for="productSpecificationImage">Select Images</form:label>
+									<form:input path="productSpecificationImage" type="file" class="form-control-file" name="productSpecificationImage"/>
+								</div>
+							</div>
+							<div class="form-group">
 								<form:label path="modelName" for="modelName">Model Name</form:label>
 								<form:input path="modelName" type="text" class="form-control" id="modelName" placeholder="DDR or MDR" />
 							</div>
@@ -357,15 +363,19 @@
 								<form:label path="includes" for="includes">Package Include</form:label>
 								<form:input path="includes" type="text" class="form-control" id="includes" placeholder="12 Skewers (including 2 bread removal skewers), 1 cushion pad, Stainless Steel Mouth Cover" />
 							</div>
-
+							<div class="form-group">
+								<form:label path="productTopCategory" for="productTopCategory">Product Top Category</form:label>
+							<form:select path="productTopCategory" class="form-control" id="productTopCategory">
+							<form:options items="${listofProductTopCategory}" />
+							</form:select>
+							</div>
 							<div class="form-group">
 								<form:label path="productCategory" for="productCategory">Product Category</form:label>
 								<div class="container">
-								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="Tandoors"/>Tandoors</label></div> 
+								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="Electric" /> Electric </label></div> 
 							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="Clay_Tandoor"/> Clay Tandoor </label></div>
 							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="Catering" /> Catering </label></div> 
 							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="Stainless_Steel" /> Stainless Steel </label></div>
-							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="Electric" /> Electric </label></div> 
 							  	</div>
 							  	<div class="container"> 
 						  		<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="MS_Body" /> MS Body </label></div>
@@ -375,15 +385,11 @@
 								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="Barbeque" /> Barbeque </label></div>
 								</div>
 								<div class="container"> 
-						  		<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="Pizza_Oven"/>Pizza Oven </label></div> 
 							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="Live_Kitchen" /> Live Kitchen </label></div>
 							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="Wood_Fire" /> Wood Fire </label></div>  
 								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="Gas_Fire" /> Gas_Fire </label></div>
 								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="Hybrid_Fire" /> Hybrid Fire </label></div>
 								</div>
-								<div class="container"> 
-								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="Accessories" /> Accessories </label></div>
-							</div>
 							</div>
 
 						</div>

@@ -34,6 +34,8 @@ public class ProductList implements Serializable {
 	@Column
 	private String productPicUrl;
 	@Column
+	private String productSpecificationImage;
+	@Column
 	private String modelName;
 	@Column
 	private String applicationsUsage;
@@ -75,6 +77,8 @@ public class ProductList implements Serializable {
 	private String includes;
 	@Column
 	private String productCategory;
+	@Column
+	private String productTopCategory;
 //	@ManyToMany(cascade = CascadeType.ALL)
 //	@JoinTable(name = "productList_Size")
 //	@JoinColumns({@JoinColumn(name = "productid"),@JoinColumn(name = "sizeId")})
