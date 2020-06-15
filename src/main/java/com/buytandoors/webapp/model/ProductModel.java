@@ -1,6 +1,7 @@
 package com.buytandoors.webapp.model;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -10,7 +11,7 @@ import lombok.Data;
 public class ProductModel {
 
 	public Long productid;
-	@NotEmpty
+	@NotNull
 	public String productName;
 	@NotEmpty
 	public String productDescription;
@@ -18,8 +19,8 @@ public class ProductModel {
 	public String feature;
 	@NotEmpty
 	public MultipartFile[] productPicUrl;
-	@NotEmpty
-	public String productSpecificationImage;
+	@NotNull
+	public MultipartFile productSpecificationImage;
 	private String modelName;
 //	private int modelNumber;
 	@NotEmpty

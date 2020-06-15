@@ -188,13 +188,13 @@
 							</div>
 							<div class="form-group">
 								<div class="form-check">
-									<form:label path="productPicUrl" for="productPicUrl">Select Images</form:label>
+									<form:label path="productPicUrl" for="productPicUrl">Select Images for Products</form:label>
 									<form:input path="productPicUrl" type="file" class="form-control-file" name="productPicUrl" multiple="multiple" />
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="form-check">
-									<form:label path="productSpecificationImage" for="productSpecificationImage">Select Images</form:label>
+									<form:label path="productSpecificationImage" for="productSpecificationImage">Select Images for specification</form:label>
 									<form:input path="productSpecificationImage" type="file" class="form-control-file" name="productSpecificationImage"/>
 								</div>
 							</div>

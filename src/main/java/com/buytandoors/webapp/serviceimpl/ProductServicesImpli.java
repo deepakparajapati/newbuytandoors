@@ -84,6 +84,24 @@ public class ProductServicesImpli implements ProductService {
 
 			i++;
 		}
+		
+		//specification image
+		File productspecimages = new File("src\\main\\resources\\static", "productspecimages");
+		if (!productspecimages.exists()) {
+			if (productspecimages.mkdir()) {
+				System.out.println("Directory productspecimages is created!");
+			} else {
+				System.out.println("Failed to productspecimages create directory!");
+			}
+		}
+			String filePath = productspecimages.getAbsolutePath() + "\\" + productModel.getProductSpecificationImage().getOriginalFilename();
+			try {
+				productModel.getProductSpecificationImage().transferTo(new File(filePath));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		
+		pl.setProductSpecificationImage(productModel.getProductSpecificationImage().getOriginalFilename());
 		pl.setProductPicUrl(urls);
 		ProductList productList = productListRepository.save(pl);
 
