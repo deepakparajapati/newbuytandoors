@@ -372,23 +372,23 @@
 							<div class="form-group">
 								<form:label path="productCategory" for="productCategory">Product Category</form:label>
 								<div class="container">
-								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="Electric" /> Electric </label></div> 
-							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="Clay_Tandoor"/> Clay Tandoor </label></div>
-							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="Catering" /> Catering </label></div> 
-							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="Stainless_Steel" /> Stainless Steel </label></div>
+								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="electric" /> Electric </label></div> 
+							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="clay_tandoor"/> Clay Tandoor </label></div>
+							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="catering" /> Catering </label></div> 
+							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="stainless_steel" /> Stainless Steel </label></div>
 							  	</div>
 							  	<div class="container"> 
-						  		<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="MS_Body" /> MS Body </label></div>
-							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="Barrel" /> Barrel </label></div>
-							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="Home" /> Home </label></div>  
-								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="Wall_Fitting" /> Wall Fitting </label></div>
-								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="Barbeque" /> Barbeque </label></div>
+						  		<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="ms_body" /> MS Body </label></div>
+							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="barrel" /> Barrel </label></div>
+							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="home" /> Home </label></div>  
+								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="wall_fitting" /> Wall Fitting </label></div>
+								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="barbeque" /> Barbeque </label></div>
 								</div>
 								<div class="container"> 
-							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="Live_Kitchen" /> Live Kitchen </label></div>
-							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="Wood_Fire" /> Wood Fire </label></div>  
-								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="Gas_Fire" /> Gas_Fire </label></div>
-								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="Hybrid_Fire" /> Hybrid Fire </label></div>
+							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="live_kitchen" /> Live Kitchen </label></div>
+							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="wood_fire" /> Wood Fire </label></div>  
+								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="gas_fire" /> Gas_Fire </label></div>
+								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="hybrid_fire" /> Hybrid Fire </label></div>
 								</div>
 							</div>
 

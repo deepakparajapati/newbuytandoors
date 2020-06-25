@@ -9,3 +9,7 @@
 .span{
 	margin-right: 12px;
 }
+
+.table-w50 > tbody > tr > td {
+  width: 50%;
+  }

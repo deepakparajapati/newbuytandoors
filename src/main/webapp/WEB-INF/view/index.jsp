@@ -97,13 +97,13 @@
 									<!-- Collect the nav links, forms, and other content for toggling -->
 									<div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
 										<ul class="nav navbar-nav navbar-right">
-											<li class="active"><a href="#banner">Home</a></li>
+											<li ><a href="#banner">Home</a></li>
 											<li><a href="#about">About</a></li>
 											<li><a href="#services">Services</a></li>
 											<li><a href="#product">Products</a></li>
 											<li><a href="#clients">Clients</a></li>
 											<li><a href="#contact">Contact</a></li>
-											<li><a href="./login">Admin</a></li>
+											<li class="active"><a href="./login">Admin</a></li>
 										</ul>
 									</div>
 
@@ -344,50 +344,76 @@
 					<div class="filters text-center">
 						<ul class="nav nav-pills">
 							<li class="active"><a href="#" data-filter="*">ALL</a></li>
-							<li><a href="#" data-filter=".web-design">Tandoors</a></li>
-							<li><a href="#" data-filter=".tandoor">Pizza Ovens</a></li>
-							<li><a href="#" data-filter=".app-development">Accessories</a></li>
-							<li><a href="#" data-filter=".site-building">Others</a></li>
+							<li><a href="#" data-filter=".tandoors">Tandoors</a></li>
+							<li><a href="#" data-filter=".pizza_ovens">Pizza Ovens</a></li>
+							<li><a href="#" data-filter=".accessories">Accessories</a></li>
+							<li><a href="#" data-filter=".kitchen_equipment">Kitchen Equipment</a></li>
+							<li><a href="#" data-filter=".other">Others</a></li>
 						</ul>
 					</div>
 
-				
+					<div class="filters text-center">
+						<ul class="nav nav-pills">
+							
+							<li><a href="#" data-filter=".clay-tandoor">Clay Tandoor</a></li>
+							<li><a href="#" data-filter=".catering">Catering</a></li>
+							<li><a href="#" data-filter=".stainless_steel">Stainless Steel</a></li>
+							<li><a href="#" data-filter=".ms-body">MS Body</a></li>
+							<li><a href="#" data-filter=".barrel">Barrel</a></li>
+							<li><a href="#" data-filter=".home">Home</a></li>
+							<li><a href="#" data-filter=".wall-fitting">Wall Fitting</a></li>
+							<li><a href="#" data-filter=".live-kitchen">Live Kitchen</a></li>
+						</ul>
+					</div>
+
+					<div class="filters text-center">
+						<ul class="nav nav-pills">
+							<li><a href="#" data-filter=".catering">Barbeque</a></li>
+							<li><a href="#" data-filter=".gas-fire">Gas Fire</a></li>
+							<li><a href="#" data-filter=".hybrid_fire">Hybrid Fire</a></li>
+							<li><a href="#" data-filter=".electric">Electric</a></li>
+
+						</ul>
+					</div>
 					<!-- isotope filters end -->
 
 					<!-- product items start -->
 					<div class="isotope-container row grid-space-20">
 
-						<%-- <c:forEach var="productList[flag]" items="${productList}" > --%>
-						<c:forEach var="flag" begin="0" end="${fn:length(productList)-1}">
-						<div class="col-sm-6 col-md-3 isotope-item web-design">
+						<%-- <c:forEach var="productList[productitem]" items="${productList}" > --%>
+						<c:forEach var="productitem" begin="0" end="${fn:length(productList)-1}">
+						<div class="col-sm-6 col-md-3 isotope-item ${productList[productitem].productTopCategory} ${productList[productitem].productCategory}">
 							<div class="image-box">
 								<div class="overlay-container">
-									<c:set var="imageString" value="${productList[flag].productPicUrl}" />
+									<c:set var="imageString" value="${productList[productitem].productPicUrl}" />
 									<c:set var="imageParts" value="${fn:split(imageString, ',')}" />
 									<img src="productimages/${imageParts[0]}" alt="">
-									<a class="overlay" data-toggle="modal" data-target="#project-${flag}">
+									<a class="overlay" data-toggle="modal" data-target="#project-${productitem}">
 										<i class="fa fa-search-plus"></i>
 										<span>Click for more details</span>
 									</a>
 								</div>
-								<a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-${flag}">${productList[flag].productName}</a>
+								<a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-${productitem}">${productList[productitem].productName}</a>
 							</div>
 							<!-- Modal -->
-							<div class="modal fade" id="project-${flag}" tabindex="-1" role="dialog" aria-labelledby="project-${flag}-label" aria-hidden="true">
+							<div class="modal fade" id="project-${productitem}" tabindex="-1" role="dialog" aria-labelledby="project-${productitem}-label" aria-hidden="true">
 								<div class="modal-dialog modal-lg">
 									<div class="modal-content">
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-											<h4 class="modal-title" id="project-${flag}-label">${productList[flag].productName}</h4>
+											<h2 class="modal-title" id="project-${productitem}-label" style="color: white; text-align: center;"> 
+<!-- 												<img id="logo" src="images/tandoorimage.png" alt="productlogoimage" style="display: inline-block;
+    											width: 45px;">	 -->
+												<bold>${productList[productitem].productName}</bold></h2>
 										</div>
 										<div class="modal-body">
 											<div class="col-md-6">		
-												<div id="myCarousel${flag}" class="carousel slide" data-ride="carousel">
+												<div id="myCarousel${productitem}" class="carousel slide" data-ride="carousel">
 													<!-- Indicators -->
 
 													<ol class="carousel-indicators">
 														<c:forEach var="slides" begin="1" end="${fn:length(imageParts)}">
-														<li data-target="#myCarousel${flag}" data-slide-to="${slides}" class="active"></li>
+														<li data-target="#myCarousel${productitem}" data-slide-to="${slides}" class="active"></li>
 													</c:forEach>
 												</ol>
 
@@ -415,23 +441,138 @@
 								</div>
 
 								<!-- Left and right controls -->
-								<a class="left carousel-control" href="#myCarousel${flag}" data-slide="prev">
+								<a class="left carousel-control" href="#myCarousel${productitem}" data-slide="prev">
 									<span class="glyphicon glyphicon-chevron-left"></span>
 									<span class="sr-only">Previous</span>
 								</a>
-								<a class="right carousel-control" href="#myCarousel${flag}" data-slide="next">
+								<a class="right carousel-control" href="#myCarousel${productitem}" data-slide="next">
 									<span class="glyphicon glyphicon-chevron-right"></span>
 									<span class="sr-only">Next</span>
 								</a>
 							</div>												
 						</div>
-						<h3>Product Description</h3>
-						<div class="row">
-							<div class="col-md-6">
-								<p>
-									${productList[flag].productDescription}
-								</p>
+
+						<h4>Product Information</h4>
+						<table class="table table-w50 table-striped table-dark" style="width: -webkit-fill-available;">
+							<thead>
+								<tr>
+									<th scope="col">Characteristics</th>
+									<th scope="col">Specification</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">Application Usage</th>
+									<td>${productList[productitem].applicationsUsage}</td>
+								</tr>
+								<tr>
+									<th scope="row">Brand Name</th>
+									<td>${productList[productitem].brandName}</td>
+								</tr>
+								<tr>
+									<th scope="row">Manufacturing Country</th>
+									<td>${productList[productitem].manufacturingCountry}</td>
+								</tr>
+								<tr>
+									<th scope="row">Model Name</th>
+									<td>${productList[productitem].modelName}</td>
+								</tr>
+								<tr>
+									<th scope="row">Shape</th>
+									<td>${productList[productitem].shape}</td>
+								</tr>
+									<tr>
+									<th scope="row">Thermometer Type</th>
+									<td>${productList[productitem].thermometer} (Available)</td>
+								</tr>
+								</tr>
+									<tr>
+									<th scope="row">Usage Area</th>
+									<td>${productList[productitem].usageArea}</td>
+								</tr>
+								</tr>
+									<tr>
+									<th scope="row">Use Condition</th>
+									<td>${productList[productitem].useCondition}</td>
+								</tr>
+							</tbody>
+						</table>
+						<c:set var="featureslist" value="${productList[productitem].feature}" />
+						<c:set var="featuresitems" value="${fn:split(featureslist, ',')}" />
+						<h4>Product Features</h4>
+						<div class="col-md-6">
+							<table class="table table-w50 table-striped table-dark" style="width: -webkit-fill-available;">
+						<ul>
+							<c:forEach var="featuresitem" begin="1" end="${fn:length(featuresitems)}">
+							<tr>
+						  <td><li>${featuresitems[featuresitem-1]}</li></td>
+						</tr>
+							</c:forEach>
+						</ul>  
+							<c:remove var="featureslist"/>
+							<c:remove var="featuresitems"/>
+						</table>
 							</div>
+						
+						<!-- <h3>${productList[productitem].productName} with lid & skewers</h3> -->
+						<div class="col-md-6" style="width: 100%;">
+						<h4>Product Description</h4>
+						This is stainless steel Tandoor. This is the outdoor version of the Clay Tandoor. The Body is available in single and double steel body which make rust-proof exterior has been reinforced, resulting in a robust and durable Tandoor. It is very hygienic and good in looking. It is very effective in insulation and very popular in restaurant and outdoor catering purpose. . Glass wool insulation acts as heat resistance between inner clay body and outer stainless steel body of tandoor. This product is light weight, comes with handles and large heavy duty wheels, for easier handling. Square and round shape bodies of this tandoor are more popular worldwide. Gas fitting also can be provided on the demand of the customer.
+
+						<h4>Technical Details</h4>
+						<table class="table table-w50 table-striped table-dark" style="width: -webkit-fill-available;">
+							<tbody>
+								<tr>
+									<th scope="row">Body Material</th>
+									<td>${productList[productitem].bodyMaterial}</td>
+								</tr>
+								<tr>
+									<th scope="row">Certification</th>
+									<td>${productList[productitem].certification}</td>
+								</tr>
+								<tr>
+									<th scope="row">Fule Consumption Type</th>
+									<td>${productList[productitem].fuleConsumptionType}</td>
+								</tr>
+								<tr>
+									<th scope="row">Insulation</th>
+									<td>${productList[productitem].insulation}</td>
+								</tr>
+								<tr>
+									<th scope="row">Measurement Unit</th>
+									<td>${productList[productitem].measurementUnit}</td>
+								</tr>
+								<tr>
+									<th scope="row">Number of Wheels</th>
+									<td>${productList[productitem].numberOfWheels}</td>
+								</tr>
+								<tr>
+									<th scope="row">Operating Inside Temperature</th>
+									<td>${productList[productitem].operatingTemperature}</td>
+								</tr>
+								<tr>
+									<th scope="row">Operating Outside Temperature</th>
+									<td>${productList[productitem].operatingOutsideTemperature}</td>
+								</tr>
+								<tr>
+									<th scope="row">Available Product Size</th>
+									<td>${productList[productitem].productSize}</td>
+								</tr>
+							</tbody>
+						</table>
+						<h4>What's in the box?</h4>
+						12 Skewes, 1 Gaddi
+						<h4>Details, specs, sizing</h4>
+
+						<h3>Additional information</h3>
+						<table class="table table-w50 table-striped table-dark" style="width: -webkit-fill-available;">
+							<tbody>
+								<tr>
+									<th scope="row">Packing type</th>
+									<td>${productList[productitem].packing}</td>
+								</tr>
+							</tbody>
+						</table>
 						</div>
 					</div>
 					<div class="modal-footer">

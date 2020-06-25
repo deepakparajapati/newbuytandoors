@@ -18,5 +18,4 @@ public interface ProductSizeRepository extends JpaRepository<ProductSizeEntity, 
 	@Query(value = "select size_id from product_size_entity where product_size = :productSize", nativeQuery = true)
 	public Long findSizeId(@Param("productSize") String productSize);
 	
-
 }

@@ -95,14 +95,14 @@
 									<!-- Collect the nav links, forms, and other content for toggling -->
 									<div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
 										<ul class="nav navbar-nav navbar-right">
-											<li class="active">
+											<li>
 												<a href="./">Home</a></li>
 											<li><a href="./">About</a></li>
 											<li><a href="./">Services</a></li>
 											<li><a href="./">Portfolio</a></li>
 											<li><a href="./">Clients</a></li>
 											<li><a href="./">Contact</a></li>
-											<li><a href="./login">Admin</a></li>
+											<li class="active"><a href="./login">Admin</a></li>
 										</ul>
 									</div>
 

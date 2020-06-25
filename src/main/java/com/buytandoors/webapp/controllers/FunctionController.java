@@ -1,6 +1,7 @@
 package com.buytandoors.webapp.controllers;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -19,11 +20,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.buytandoors.webapp.entity.ProductList;
+import com.buytandoors.webapp.entity.ProductSizeEntity;
+import com.buytandoors.webapp.entity.ProductWeightEntity;
 import com.buytandoors.webapp.model.ProductModel;
 import com.buytandoors.webapp.repository.ProductListRepository;
 import com.buytandoors.webapp.repository.ProductRepository;
 import com.buytandoors.webapp.repository.ProductShapeRepository;
 import com.buytandoors.webapp.repository.ProductSizeRepository;
+import com.buytandoors.webapp.repository.ProductWeightRepository;
 import com.buytandoors.webapp.services.ProductService;
 
 @Controller
@@ -31,35 +35,60 @@ public class FunctionController {
 
 	@Autowired
 	ProductService productServicesImpli;
-	
+
 	@Autowired
 	ProductSizeRepository productSizeRepository;
-	
+
 	@Autowired
 	ProductRepository productRepository;
-	
+
 	@Autowired
 	ProductShapeRepository productShapeRepository;
-	
+
 	@Autowired
 	ProductListRepository productListRepository;
+	
+	@Autowired
+	ProductWeightRepository productWeightRepository;
 
-	@GetMapping(value = {"/", "/home"})
+	@GetMapping(value = { "/", "/home" })
 	public ModelAndView homePage() {
 		ModelAndView model = new ModelAndView("index");
 		List<ProductList> productList = productListRepository.findAll();
+		List<ProductSizeEntity> productSizeEntities = productSizeRepository.findAll();
+		List<ProductWeightEntity> productWeightEntity = productWeightRepository.findAll();
+		HashMap<Integer, String> sizes = new HashMap<>();
+		HashMap<String, List<String>> allSizes = new HashMap<>();
+		HashMap<String, List<Integer>> weightSize = new HashMap<>();
+		// {Small, [W32xH32xL36 Mouth 15, Small, capacity]}
+		// {smallround, [50, 60]}
+
+		for (ProductSizeEntity productSizeEntity : productSizeEntities) {
+			allSizes.put(productSizeEntity.getProductSize(),
+					Arrays.asList(
+							"W" + productSizeEntity.getProductWidth() + "x" + "H" + productSizeEntity.getProductHeight()
+									+ "x" + "L" + productSizeEntity.getProductLength(),
+							Integer.toString(productSizeEntity.getProductMouth()),
+							productSizeEntity.getCapacityPerBread()));
+			sizes.put(productSizeEntity.getSizeId().intValue(), productSizeEntity.getProductSize());
+		}
+		
+		for (ProductWeightEntity pwe : productWeightEntity) {
+			weightSize.put(sizes.get(pwe.getSizeId()) + pwe.getShape(), Arrays.asList(pwe.getGrossWeight(), pwe.getNetWeight()));
+		}
+		
 		model.addObject("productList", productList);
 		return model;
 	}
 
-	@GetMapping(value = {"/home-tandoors"})
+	@GetMapping(value = { "/home-tandoors" })
 	public ModelAndView homeTandoorsPage() {
 		ModelAndView model = new ModelAndView("hometandoors");
 //		List<ProductList> productList = productListRepository.findAll();
 //		model.addObject("productList", productList);
 		return model;
 	}
-	
+
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView loginPage() {
 		return new ModelAndView("login");
@@ -77,23 +106,23 @@ public class FunctionController {
 		return new ModelAndView("success");
 	}
 
-	
 	@GetMapping(value = "/dashboard")
 	public ModelAndView dashboard(Model model) {
-		List<String> listofbodymaterial = Arrays.asList("Clay","Stainless Steel","Mild Steel","Copper", "Brass", "Other");
+		List<String> listofbodymaterial = Arrays.asList("Clay", "Stainless Steel", "Mild Steel", "Copper", "Brass",
+				"Other");
 //		List<String> listofbodyshapes = Arrays.asList("Round","Square","Ractangular", "Barrel", "Dome Shape","Cylindrical", "Other");
-		List<String> listofProductTopCategory = Arrays.asList("Tandoor","Pizza Oven", "Accessories");
+		List<String> listofProductTopCategory = Arrays.asList("Tandoor", "Pizza Oven", "Accessories");
 		List<String> listofsize = productSizeRepository.findSize();
 		List<String> listofbodyshapes = productShapeRepository.findShapes();
 //		System.out.println(listofsize);
- 		model.addAttribute("listofbodyshapes", listofbodyshapes);
+		model.addAttribute("listofbodyshapes", listofbodyshapes);
 		model.addAttribute("listofbodymaterial", listofbodymaterial);
 		model.addAttribute("listofsize", listofsize);
 		model.addAttribute("listofProductTopCategory", listofProductTopCategory);
 		model.addAttribute("productModel", new ProductModel());
 		return new ModelAndView("dashboard");
 	}
-	
+
 	// SPRING SECURITY
 
 //	@PostMapping(value = "/auth")
@@ -130,13 +159,15 @@ public class FunctionController {
 //		return new ModelAndView("dashboard");
 
 	@PostMapping(value = "/submitproduct")
-	public String submitProduct( @ModelAttribute("productModel") @Valid ProductModel productModel,BindingResult bindingResult, ModelMap model) {
+	public String submitProduct(@ModelAttribute("productModel") @Valid ProductModel productModel,
+			BindingResult bindingResult, ModelMap model) {
 //		System.out.println(productModel.toString());
 		System.err.println(bindingResult);
 //		System.err.println(errors);
 		if (bindingResult.hasErrors()) {
-			System.out.println("myerror?message="+bindingResult.getFieldError().getDefaultMessage());
-			model.addAttribute("message", bindingResult.getFieldError().getField() + " " +bindingResult.getFieldError().getDefaultMessage());
+			System.out.println("myerror?message=" + bindingResult.getFieldError().getDefaultMessage());
+			model.addAttribute("message",
+					bindingResult.getFieldError().getField() + " " + bindingResult.getFieldError().getDefaultMessage());
 			return "myerror";
 		}
 //		String filePath = file.getAbsolutePath() + "\\" + productModel.getProductPicUrl()[0].getOriginalFilename();
