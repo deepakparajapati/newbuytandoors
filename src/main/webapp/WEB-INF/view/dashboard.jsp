@@ -373,7 +373,7 @@
 								<form:label path="productCategory" for="productCategory">Product Category</form:label>
 								<div class="container">
 								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="electric" /> Electric </label></div> 
-							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="clay_tandoor"/> Clay Tandoor </label></div>
+							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="clay_tandoors"/> Clay Tandoor </label></div>
 							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="catering" /> Catering </label></div> 
 							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="stainless_steel" /> Stainless Steel </label></div>
 							  	</div>

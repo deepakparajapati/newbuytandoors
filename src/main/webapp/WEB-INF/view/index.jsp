@@ -355,7 +355,7 @@
 					<div class="filters text-center">
 						<ul class="nav nav-pills">
 							
-							<li><a href="#" data-filter=".clay-tandoor">Clay Tandoor</a></li>
+							<li><a href="#" data-filter=".clay_tandoors">Clay Tandoor</a></li>
 							<li><a href="#" data-filter=".catering">Catering</a></li>
 							<li><a href="#" data-filter=".stainless_steel">Stainless Steel</a></li>
 							<li><a href="#" data-filter=".ms-body">MS Body</a></li>
@@ -560,10 +560,49 @@
 								</tr>
 							</tbody>
 						</table>
+						<h4>Details, specs, sizing</h4>
+						<table class="table table-w50 table-striped table-dark" style="width: -webkit-fill-available;">
+							<tbody>
+								<tr>
+									<th scope="row">Available Sizes</th>
+									
+<!-- 									<td>
+										<select name="allavailablesizes" style="width: 	100%">
+											<c:set var="productSizesList" value="${productList[productitem].productSize}" />
+											<c:set var="productsizes" value="${fn:split(productSizesList, ',')}" />
+											<c:forEach var="productsizeitem" begin="0" end="${fn:length(productsizes)-1}">
+	    										<option value="${productsizeitem}" >${allSizes[productsizes[productsizeitem]][0]}</option>
+	    									</c:forEach>
+											</select> -->
+									<!-- ${productList[productitem].packing}</td> -->
+								<!-- </tr> -->
+								<td>
+										<select name="allavailablesizes" style="width: 	100%">
+											<c:set var="productSizesList" value="${productList[productitem].productSize}" />
+											<c:set var="productsizes" value="${fn:split(productSizesList, ',')}" />
+											<c:forEach var="productsizeitem" begin="0" end="${fn:length(productsizes)-1}">
+											<c:out value="${productsizes[productsizeitem]}" />
+	    										<option value="${productsizeitem}" >	
+	    										${allSizes[productsizes[productsizeitem]][0]}&nbsp;inch
+												&nbsp;&nbsp;Mouth:
+												${allSizes[productsizes[productsizeitem]][1]}&nbsp;inch
+												&nbsp;&nbsp;Bread Capacity:
+												${allSizes[productsizes[productsizeitem]][2]}&nbsp;breads
+	    										</option>
+	    									</c:forEach>
+											</select>
+									<!-- ${productList[productitem].packing} -->
+									</td>
+
+								</tr>
+							</tbody>
+						</table>
+						<div>
+						  <h2>Dimension view</h2>
+						  <img class="img-responsive" src="productspecimages/${productList[productitem].productSpecificationImage}" alt="tandoor-dimension-view" width="493px"> 
+						</div>
 						<h4>What's in the box?</h4>
 						12 Skewes, 1 Gaddi
-						<h4>Details, specs, sizing</h4>
-
 						<h3>Additional information</h3>
 						<table class="table table-w50 table-striped table-dark" style="width: -webkit-fill-available;">
 							<tbody>
@@ -814,7 +853,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<p class="text-center">Copyright © 2014 Buytandoors.com <a target="_blank" href="http://htmlcoder.me">HtmlCoder</a>.</p>
+					<p class="text-center">Copyright Â© 2014 Buytandoors.com <a target="_blank" href="http://htmlcoder.me">HtmlCoder</a>.</p>
 				</div>
 			</div>
 		</div>
