@@ -141,7 +141,7 @@
 					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProductModal">
 						AddProduct
 					</button>
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+					<button type="button" onclick="window.location.href='/product-view';" class="btn btn-primary">
 						ViewProduct
 					</button>
 					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">

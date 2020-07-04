@@ -108,7 +108,7 @@ public class FunctionController {
 	}
 
 	@GetMapping(value = "/dashboard")
-	public ModelAndView dashboard(Model model) {
+	public ModelAndView dashboard(ModelAndView model) {
 		List<String> listofbodymaterial = Arrays.asList("Clay", "Stainless Steel", "Mild Steel", "Copper", "Brass",
 				"Other");
 //		List<String> listofbodyshapes = Arrays.asList("Round","Square","Ractangular", "Barrel", "Dome Shape","Cylindrical", "Other");
@@ -116,12 +116,22 @@ public class FunctionController {
 		List<String> listofsize = productSizeRepository.findSize();
 		List<String> listofbodyshapes = productShapeRepository.findShapes();
 //		System.out.println(listofsize);
-		model.addAttribute("listofbodyshapes", listofbodyshapes);
-		model.addAttribute("listofbodymaterial", listofbodymaterial);
-		model.addAttribute("listofsize", listofsize);
-		model.addAttribute("listofProductTopCategory", listofProductTopCategory);
-		model.addAttribute("productModel", new ProductModel());
-		return new ModelAndView("dashboard");
+		model.addObject("listofbodyshapes", listofbodyshapes);
+		model.addObject("listofbodymaterial", listofbodymaterial);
+		model.addObject("listofsize", listofsize);
+		model.addObject("listofProductTopCategory", listofProductTopCategory);
+		model.addObject("productModel", new ProductModel());
+		model.setViewName("dashboard");
+		return model;
+	}
+	
+	@GetMapping(value = "/product-view")
+	public ModelAndView productView(ModelAndView model) {
+		List<ProductList> productList = productListRepository.findAll();
+		model.addObject("productList", productList);
+		model.setViewName("product-view");
+		model.addObject("productModel", new ProductModel());
+		return model;
 	}
 
 	// SPRING SECURITY

@@ -24,7 +24,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         web
             .ignoring()
                 .antMatchers("/auth", "/error", "/productimages/**","/productspecimages/**", "/plugins/**", "/js/**", "/images/**", "/bootstrap/**", "/css/**",
-						"/fonts/**", "/products/**", "/resources/**");
+						"/fonts/**", "/products/**", "/resources/**","/products/view-product/**");
     }
     
 	@Override

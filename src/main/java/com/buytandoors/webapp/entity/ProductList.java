@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import lombok.Data;
 
 @Entity
@@ -75,6 +77,8 @@ public class ProductList implements Serializable {
 	private String productCategory;
 	@Column
 	private String productTopCategory;
+	@Column(columnDefinition = "integer default 1")
+	private int isAvailable;
 //	@ManyToMany(cascade = CascadeType.ALL)
 //	@JoinTable(name = "productList_Size")
 //	@JoinColumns({@JoinColumn(name = "productid"),@JoinColumn(name = "sizeId")})
