@@ -17,9 +17,7 @@ public class ProductModel {
 	public String productDescription;
 	@NotEmpty
 	public String feature;
-	@NotEmpty
 	public MultipartFile[] productPicUrl;
-	@NotNull
 	public MultipartFile productSpecificationImage;
 	private String modelName;
 //	private int modelNumber;
@@ -55,5 +53,5 @@ public class ProductModel {
 	private String includes;
 	private String productTopCategory;
 	private String[] productCategory;
-
+	private Integer isAvailable;
 }

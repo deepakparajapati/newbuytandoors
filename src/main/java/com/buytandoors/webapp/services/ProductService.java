@@ -6,5 +6,7 @@ import com.buytandoors.webapp.model.ProductModel;
 public interface ProductService {
 
 	ProductList addProductProcess(ProductModel productModel);
-	
+
+	ProductModel productToProductModel(ProductList product);
+
 }

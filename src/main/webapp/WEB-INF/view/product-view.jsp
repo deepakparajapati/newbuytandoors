@@ -149,9 +149,11 @@
 									<td><button name="Update" style="color: black;">Update</button></td> -->
 								</tr>
 								<tr>
+									<form action="/products/view-product/1" method = "GET">
 									<td>Product Name</td>
 									<td><img src="productimages/sss4g.jpg" width="100px" height="auto"> </td>
 									<td><button name="Update" style="color: black;">Edit Details</button></td>
+									</form>
 								</tr>
 								<tr>
 									<td>Product Name</td>

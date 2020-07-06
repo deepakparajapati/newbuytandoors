@@ -15,11 +15,15 @@ import com.buytandoors.webapp.entity.ProductList;
 import com.buytandoors.webapp.repository.ProductListRepository;
 import com.buytandoors.webapp.repository.ProductShapeRepository;
 import com.buytandoors.webapp.repository.ProductSizeRepository;
+import com.buytandoors.webapp.services.ProductService;
 
 @Controller
 @RequestMapping("/products")
 public class ProductController {
-
+	
+	@Autowired
+	ProductService productServicesImpli;
+	
 	@Autowired
 	ProductListRepository productListRepository;
 	
@@ -34,7 +38,8 @@ public class ProductController {
 		ProductList product = productListRepository.getOne(productId);
 		model.setViewName("view-product");
 		//map  product to productModel
-		model.addObject("productModel", product);
+		model.addObject("productModel", productServicesImpli.productToProductModel(product));
+//		model.addObject("product", product);
 		
 		List<String> listofbodymaterial = Arrays.asList("Clay", "Stainless Steel", "Mild Steel", "Copper", "Brass",
 				"Other");
@@ -46,7 +51,7 @@ public class ProductController {
 		model.addObject("listofsize", listofsize);
 		model.addObject("listofProductTopCategory", listofProductTopCategory);
 		
-		System.err.println(product); 	
+		System.err.println(productServicesImpli.productToProductModel(product)); 	
 		return model;
 	}
 

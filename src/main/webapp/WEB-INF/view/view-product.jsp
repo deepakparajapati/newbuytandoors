@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
@@ -144,7 +143,7 @@
 			<div class="form-group">
 				<div class="form-group">
 					<form:label path="productid" for="productid">Product Id</form:label>
-					<form:input path="productid" type="text" class="form-control" id="productid" value="${product.productid}" disabled="true"/>
+					<form:input path="productid" type="text" class="form-control" id="productid" value="${product.productid}" readonly="true"/>
 					<td><form:errors path="productid" cssClass="alert alert-warning" /></td>
 				</div>
 				<div class="form-group">
@@ -152,25 +151,23 @@
 					<form:input path="productName" type="text" class="form-control" id="productName" value="${product.productName}" />
 					<td><form:errors path="productName" cssClass="alert alert-warning" /></td>
 				</div>
+<!-- 				<div class="form-group">
+					<form:label path="productPicUrl" for="productPicUrl">Product Pics</form:label>
+					<form:input path="productPicUrl" type="text" class="form-control" id="productName" value="${product.productPicUrl}" readonly="true"/>
+					<td><form:errors path="productPicUrl" cssClass="alert alert-warning" /></td>
+				</div>
 				<div class="form-group">
+					<form:label path="productSpecificationImage" for="productSpecificationImage">Product Specification Image</form:label>
+					<form:input path="productSpecificationImage" type="text" class="form-control" id="productName" value="${product.productSpecificationImage}" readonly="true"/>
+					<td><form:errors path="productSpecificationImage" cssClass="alert alert-warning" /></td>
+				</div>
+ -->				<div class="form-group">
 					<form:label path="productDescription" for="productDescription">Product Description</form:label>
 					<form:input path="productDescription" class="form-control" id="productDescription" rows="3" value="${product.productDescription}"/>
 				</div>
 				<div class="form-group">
 					<form:label path="feature" for="feature">Feature</form:label>
 					<form:input path="feature" type="text" class="form-control" id="feature" value="${product.feature}" />
-				</div>
-				<div class="form-group">
-					<div class="form-check">
-						<form:label path="productPicUrl" for="productPicUrl">Select Images for Products</form:label>
-						<form:input path="productPicUrl" type="file" class="form-control-file" name="productPicUrl" multiple="multiple" />
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="form-check">
-						<form:label path="productSpecificationImage" for="productSpecificationImage">Select Images for specification</form:label>
-						<form:input path="productSpecificationImage" type="file" class="form-control-file" name="productSpecificationImage"/>
-					</div>
 				</div>
 				<div class="form-group">
 					<form:label path="modelName" for="modelName">Model Name</form:label>
@@ -223,19 +220,6 @@
 
 				<form:checkboxes path="productSize" items="${listofsize}" element="span class='span'" cssStyle="margin-right : 10px"/>
 			</div>
-<%--								<div class="container">	
-								<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Home X Extra Small"/>Home X Extra Small </label></div> 
-							  	<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Home Extra Small"/> Home Extra Small </label></div> 
-							  	<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Home Small"/> Home Small </label></div>
-							  	<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Small" checked="checked"/> Small </label></div> 
-							  	</div>
- 							  	<div class="container"> 
-						  		<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Standard" checked="checked"/> Standard </label></div>
-							  	<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Medium" checked="checked"/> Medium </label></div>
-							  	<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Large" checked="checked"/> Large </label></div>  
-								<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Extra Large" checked="checked"/> Extra Large </label></div>
-								<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Jumbo" checked="checked"/> Jumbo </label></div>
-							</div> --%>
 						</div>
 
 						<div class="form-group">
@@ -261,19 +245,6 @@
 					<form:label path="useCondition" for="useCondition">Used Condition</form:label>
 					<form:input path="useCondition" type="text" class="form-control" id="useCondition" value="New" />
 				</div>
-
-							<%--<div class="form-group">
-								<form:label path="capacityPerBread" for="capacityPerBread">Capacity Per Bread</form:label>
-							<form:select path="capacityPerBread" class="form-control" id="capacityPerBread">
-								<form:option value="10 to 12" />
-								<form:option value="15 to 18" selected="true"/>
-								<form:option value="20 to 22" />
-								<form:option value="24 to 25" />
-								<form:option value="28 to 30" />
-								<form:option value="30+" />
-							</form:select>
-							</div>
-							--%>
 							<div class="form-group">
 								<form:label path="certification" for="certification">Certification</form:label>
 								<form:input path="certification" type="text" class="form-control" id="certification" value="ISO 9001:2008" />
@@ -365,7 +336,15 @@
 								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="hybrid_fire" /> Hybrid Fire </label></div>
 							</div>
 						</div>
-
+						<div class="form-group">
+							<form:label path="isAvailable" for="isAvailable">Is Available</form:label>
+							<div class="container">
+								<div class="checkbox-inline"><label>
+								NotAvailable<form:radiobutton path="isAvailable" value="0" checked="${productModel.isAvailable == 0 ? 'checked' : '' }"/>  
+       							Available<form:radiobutton path="isAvailable" value="1" checked="${productModel.isAvailable == 1 ? 'checked' : '' }"/> 	 
+									 </label></div> 
+							</div>
+						</div>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

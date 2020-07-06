@@ -169,10 +169,11 @@ public class FunctionController {
 //		model.addAttribute("productList", new ProductList());
 //		return new ModelAndView("dashboard");
 
+
 	@PostMapping(value = "/submitproduct")
 	public String submitProduct(@ModelAttribute("productModel") @Valid ProductModel productModel,
 			BindingResult bindingResult, ModelMap model) {
-//		System.out.println(productModel.toString());
+		System.out.println(productModel.toString());
 		System.err.println(bindingResult);
 //		System.err.println(errors);
 		if (bindingResult.hasErrors()) {
@@ -181,16 +182,6 @@ public class FunctionController {
 					bindingResult.getFieldError().getField() + " " + bindingResult.getFieldError().getDefaultMessage());
 			return "myerror";
 		}
-//		String filePath = file.getAbsolutePath() + "\\" + productModel.getProductPicUrl()[0].getOriginalFilename();
-//		String filePath2 = file.getAbsolutePath() + "\\" + productModel.getProductPicUrl()[1].getOriginalFilename();
-//		productModel.getProductPicUrl()[0].transferTo(new File(filePath));
-//		productModel.getProductPicUrl()[1].transferTo(new File(filePath2));
-
-//		model.addAttribute("name", productModel.getProductName());
-//		model.addAttribute("contactNumber", productModel.getFeature());
-//		model.addAttribute("id", productModel.getProductSize());
-//		model.addAttribute("image" + i, iterable_element.getOriginalFilename());
-//		ProductServicesImpli productServicesImpli = new ProductServicesImpli();
 		ProductList product = productServicesImpli.addProductProcess(productModel);
 		if (product == null) {
 			return "fail";
@@ -198,10 +189,4 @@ public class FunctionController {
 		return "success";
 	}
 
-//	public EntityManager getEntityManager() {
-//		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("Eclipselink_JPA");
-//		EntityManager entitymanager = emfactory.createEntityManager();
-//		return entitymanager;
-//
-//	}
 }

@@ -23,15 +23,15 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
             .ignoring()
-                .antMatchers("/auth", "/error", "/productimages/**","/productspecimages/**", "/plugins/**", "/js/**", "/images/**", "/bootstrap/**", "/css/**",
-						"/fonts/**", "/products/**", "/resources/**","/products/view-product/**");
+                .antMatchers("/", "/home","/auth", "/error", "/productimages/**","/productspecimages/**", "/plugins/**", "/js/**", "/images/**", "/bootstrap/**", "/css/**",
+						"/fonts/**", "/resources/**");
     }
     
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-				.antMatchers("/", "/home", "/error", "/success", "/testpage").permitAll()
+				.antMatchers("/error", "/success", "/testpage").permitAll()
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()

@@ -9,13 +9,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.hibernate.annotations.DynamicUpdate;
 
 import lombok.Data;
 
 @Entity
 @Table
 @Data
+@DynamicUpdate
 public class ProductList implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -78,7 +79,7 @@ public class ProductList implements Serializable {
 	@Column
 	private String productTopCategory;
 	@Column(columnDefinition = "integer default 1")
-	private int isAvailable;
+	private Integer isAvailable;
 //	@ManyToMany(cascade = CascadeType.ALL)
 //	@JoinTable(name = "productList_Size")
 //	@JoinColumns({@JoinColumn(name = "productid"),@JoinColumn(name = "sizeId")})
