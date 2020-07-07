@@ -28,8 +28,7 @@ public class ProductWeightEntity implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long weightid;
-	@Column
-	@UniqueElements
+	@Column(unique = true)
 	private String weightName;
 	@Column
 	private int grossWeight;
@@ -38,7 +37,7 @@ public class ProductWeightEntity implements Serializable{
 	@Column
 	private String shape;
 	@Column
-	private int sizeId;
+	private Long sizeId;
 	@OneToOne(cascade = CascadeType.ALL)
 	@PrimaryKeyJoinColumn
 	private ProductShapeEntity productShapeWeightEntity;

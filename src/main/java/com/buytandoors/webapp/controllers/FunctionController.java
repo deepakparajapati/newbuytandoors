@@ -23,6 +23,7 @@ import com.buytandoors.webapp.entity.ProductList;
 import com.buytandoors.webapp.entity.ProductSizeEntity;
 import com.buytandoors.webapp.entity.ProductWeightEntity;
 import com.buytandoors.webapp.model.ProductModel;
+import com.buytandoors.webapp.model.ProductSizeWeightShapeModel;
 import com.buytandoors.webapp.repository.ProductListRepository;
 import com.buytandoors.webapp.repository.ProductRepository;
 import com.buytandoors.webapp.repository.ProductShapeRepository;
@@ -121,6 +122,7 @@ public class FunctionController {
 		model.addObject("listofsize", listofsize);
 		model.addObject("listofProductTopCategory", listofProductTopCategory);
 		model.addObject("productModel", new ProductModel());
+		model.addObject("productSizeWeightShapeModel", new ProductSizeWeightShapeModel());
 		model.setViewName("dashboard");
 		return model;
 	}

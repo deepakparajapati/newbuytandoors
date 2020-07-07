@@ -32,8 +32,7 @@ public class ProductSizeEntity implements Serializable{
 	private int productMouth;
 	@Column
 	private String capacityPerBread;
-	@Column
-	@UniqueElements
+	@Column(unique = true)
 	private String productSize;
 //	@ManyToMany(mappedBy = "productSizeEntity", cascade = CascadeType.ALL)
 //	private Set<ProductList> productList;

@@ -144,8 +144,8 @@
 					<button type="button" onclick="window.location.href='/product-view';" class="btn btn-primary">
 						ViewProduct
 					</button>
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-						DeleteProduct
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCustomSize">
+						AddCustomSize
 					</button>
 				</div>
 				<br><br>
@@ -173,15 +173,15 @@
 					<div class="modal-body">
 						<form:form action="/submitproduct" method = "POST" enctype="multipart/form-data"  modelAttribute = "productModel" >
 						<div class="form-group">
-								<div class="form-group">
-									<form:label path="productName" for="productName">Product Name</form:label>
-									<form:input path="productName" type="text" class="form-control" id="productName" placeholder="Product-Name" />
-									 <td><form:errors path="productName" cssClass="alert alert-warning" /></td>
-								</div>
-								<div class="form-group">
-									<form:label path="productDescription" for="productDescription">Product Description</form:label>
-									<form:textarea path="productDescription" class="form-control" id="productDescription" rows="3" />
-								</div>
+							<div class="form-group">
+								<form:label path="productName" for="productName">Product Name</form:label>
+								<form:input path="productName" type="text" class="form-control" id="productName" placeholder="Product-Name" />
+								<td><form:errors path="productName" cssClass="alert alert-warning" /></td>
+							</div>
+							<div class="form-group">
+								<form:label path="productDescription" for="productDescription">Product Description</form:label>
+								<form:textarea path="productDescription" class="form-control" id="productDescription" rows="3" />
+							</div>
 							<div class="form-group">
 								<form:label path="feature" for="feature">Feature</form:label>
 								<form:input path="feature" type="text" class="form-control" id="feature" placeholder="Iron, Best Price, Catering" />
@@ -205,203 +205,257 @@
 							<div class="form-group">
 								<form:label path="applicationsUsage" for="applicationsUsage">Applications Usage</form:label>
 								<div class="container">
-								<div class="checkbox-inline"><label><form:checkbox path="applicationsUsage" value="Restaurants"/>Restaurants </label></div> 
-							  	<div class="checkbox-inline"><label><form:checkbox path="applicationsUsage" value="Commercial"/> Commercial </label></div> 
-							  	<div class="checkbox-inline"><label><form:checkbox path="applicationsUsage" value="Live Kitchen"/> Live Kitchen </label></div>
-							  	<div class="checkbox-inline"><label><form:checkbox path="applicationsUsage" value="Outdoor"/> Outdoor </label></div> 
-							  	</div>
-							  	<div class="container">
-							  	<div class="checkbox-inline"><label><form:checkbox path="applicationsUsage" value="Home"/> Home </label></div> 
-							  	<div class="checkbox-inline"><label><form:checkbox path="applicationsUsage" value="Hotel"/> Hotel </label></div>
-							  	<div class="checkbox-inline"><label><form:checkbox path="applicationsUsage" value="Other"/> Other </label></div>  
+									<div class="checkbox-inline"><label><form:checkbox path="applicationsUsage" value="Restaurants"/>Restaurants </label></div> 
+									<div class="checkbox-inline"><label><form:checkbox path="applicationsUsage" value="Commercial"/> Commercial </label></div> 
+									<div class="checkbox-inline"><label><form:checkbox path="applicationsUsage" value="Live Kitchen"/> Live Kitchen </label></div>
+									<div class="checkbox-inline"><label><form:checkbox path="applicationsUsage" value="Outdoor"/> Outdoor </label></div> 
+								</div>
+								<div class="container">
+									<div class="checkbox-inline"><label><form:checkbox path="applicationsUsage" value="Home"/> Home </label></div> 
+									<div class="checkbox-inline"><label><form:checkbox path="applicationsUsage" value="Hotel"/> Hotel </label></div>
+									<div class="checkbox-inline"><label><form:checkbox path="applicationsUsage" value="Other"/> Other </label></div>  
 								</div>
 							</div>
 							<div class="form-group">
 								<form:label path="fuleConsumptionType" for="fuleConsumptionType">Fule Consumption Type</form:label>
 								<div class="container">
-								<div class="checkbox-inline"><label><form:checkbox path="fuleConsumptionType" value="Coal" checked="checked"/>Coal </label></div> 
-							  	<div class="checkbox-inline"><label><form:checkbox path="fuleConsumptionType" value="Natural"/> Natural/PNG </label></div> 
-							  	<div class="checkbox-inline"><label><form:checkbox path="fuleConsumptionType" value="LPG" checked="checked"/> LPG </label></div>
-							  	<div class="checkbox-inline"><label><form:checkbox path="fuleConsumptionType" value="Electric"/> Electric </label></div> 
-							  	</div>
-							  </div>
+									<div class="checkbox-inline"><label><form:checkbox path="fuleConsumptionType" value="Coal" checked="checked"/>Coal </label></div> 
+									<div class="checkbox-inline"><label><form:checkbox path="fuleConsumptionType" value="Natural"/> Natural/PNG </label></div> 
+									<div class="checkbox-inline"><label><form:checkbox path="fuleConsumptionType" value="LPG" checked="checked"/> LPG </label></div>
+									<div class="checkbox-inline"><label><form:checkbox path="fuleConsumptionType" value="Electric"/> Electric </label></div> 
+								</div>
+							</div>
 							<div class="form-group">
 								<form:label path="bodyMaterial" for="bodyMaterial">Outer Body Material</form:label>
-							<form:select path="bodyMaterial" class="form-control" id="bodyMaterial">
+								<form:select path="bodyMaterial" class="form-control" id="bodyMaterial">
 								<form:options items="${listofbodymaterial}" />
 							</form:select>
-							</div>
-							<div class="form-group">
-								<form:label path="shape" for="shape">Shape</form:label>
-							<form:select path="shape" class="form-control" id="shape">
-								<form:options items="${listofbodyshapes}" />
-							</form:select>
-							</div>
-
-							<div class="form-group">
-								<form:label path="brandName" for="brandName">Brand</form:label>
-								<form:input path="brandName" type="text" class="form-control" id="brandName" placeholder="RCS" value="RCS" />
-							</div>
-
-							<div class="form-group">
-								<form:label path="productSize" for="productSize">Product Sizes</form:label>
-								<div class="mycheckbox">	
-
-								<form:checkboxes path="productSize" items="${listofsize}" element="span class='span'" cssStyle="margin-right : 10px"/>
-							</div>
-<%--								<div class="container">	
-								<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Home X Extra Small"/>Home X Extra Small </label></div> 
-							  	<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Home Extra Small"/> Home Extra Small </label></div> 
-							  	<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Home Small"/> Home Small </label></div>
-							  	<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Small" checked="checked"/> Small </label></div> 
-							  	</div>
- 							  	<div class="container"> 
-						  		<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Standard" checked="checked"/> Standard </label></div>
-							  	<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Medium" checked="checked"/> Medium </label></div>
-							  	<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Large" checked="checked"/> Large </label></div>  
-								<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Extra Large" checked="checked"/> Extra Large </label></div>
-								<div class="checkbox-inline"><label><form:checkbox path="productSize" value="Jumbo" checked="checked"/> Jumbo </label></div>
-								</div> --%>
-							</div>
-
-							<div class="form-group">
-								<form:label path="measurementUnit" for="measurementUnit">Measurement Unit</form:label>
-							<form:select path="measurementUnit" class="form-control" id="measurementUnit">
-								<form:option value="Inch" />
-							</form:select>
-							</div>
-
-							<div class="form-group">
-								<form:label path="numberOfWheels" for="numberOfWheels">Number of Wheels</form:label>
-							<form:select path="numberOfWheels" class="form-control" id="numberOfWheels">
-								<form:option value="1" />
-								<form:option value="2" />
-								<form:option value="3" />
-								<form:option value="4" selected="true"/>
-								<form:option value="5" />
-								<form:option value="6" />
-							</form:select>
-							</div>
-
-							<div class="form-group">
-								<form:label path="useCondition" for="useCondition">Used Condition</form:label>
-								<form:input path="useCondition" type="text" class="form-control" id="useCondition" value="New" />
-							</div>
-
-							<%--<div class="form-group">
-								<form:label path="capacityPerBread" for="capacityPerBread">Capacity Per Bread</form:label>
-							<form:select path="capacityPerBread" class="form-control" id="capacityPerBread">
-								<form:option value="10 to 12" />
-								<form:option value="15 to 18" selected="true"/>
-								<form:option value="20 to 22" />
-								<form:option value="24 to 25" />
-								<form:option value="28 to 30" />
-								<form:option value="30+" />
-							</form:select>
-							</div>
-							--%>
-							<div class="form-group">
-								<form:label path="certification" for="certification">Certification</form:label>
-								<form:input path="certification" type="text" class="form-control" id="certification" value="ISO 9001:2008" />
-							</div>
-
-								<div class="form-group">
-								<form:label path="insulation" for="insulation">Insulation</form:label>
-								<div class="container">
-								<div class="checkbox-inline"><label><form:checkbox path="insulation" value="GlassWool"/>GlassWool </label></div> 
-							  	<div class="checkbox-inline"><label><form:checkbox path="insulation" value="Fire Blanket"/> Fire Blanket </label></div> 
-							  	<div class="checkbox-inline"><label><form:checkbox path="insulation" value="Ash"/> Ash </label></div>
-							  	<div class="checkbox-inline"><label><form:checkbox path="insulation" value="Stone"/> Stone </label></div>
-							  	<div class="checkbox-inline"><label><form:checkbox path="insulation" value="Clay"/> Clay </label></div> 
-							  	<div class="checkbox-inline"><label><form:checkbox path="insulation" value="Mix"/> Mix </label></div>
-							</div>
-							<div class="form-group">
-								<form:label path="operatingTemperature" for="operatingTemperature">Operating Inside Temperature</form:label>
-								<form:input path="operatingTemperature" type="text" class="form-control" id="operatingTemperature" value="250-450 Degrees" />
-							</div>
-
-							<div class="form-group">
-								<form:label path="operatingOutsideTemperature" for="operatingOutsideTemperature">Operating Outside Temperature</form:label>
-								<form:input path="operatingOutsideTemperature" type="text" class="form-control" id="operatingOutsideTemperature" value="60-65 Degrees" />
-							</div>
-
-							<div class="form-group">
-								<form:label path="keywordMetadata" for="keywordMetadata">Keyword/Metadata</form:label>
-								<form:input path="keywordMetadata" type="text" class="form-control" id="keywordMetadata" placeholder="Tandoors, Oven, Clay any three or four" />
-							</div>
-
-							<div class="form-group">
-								<form:label path="usageArea" for="usageArea">Usage Area</form:label>
-								<div class="container">
-								<div class="checkbox-inline"><label><form:checkbox path="usageArea" value="Baking"/>Baking </label></div> 
-							  	<div class="checkbox-inline"><label><form:checkbox path="usageArea" value="Grilling"/> Grilling </label></div> 
-						  		<div class="checkbox-inline"><label><form:checkbox path="usageArea" value="Baking & Grilling"/> Baking & Grilling </label></div>
-							  	</div>
-							  </div>
-
-							  <div class="form-group">
-								<form:label path="manufacturingCountry" for="manufacturingCountry">Manufacturing Country</form:label>
-								<form:input path="manufacturingCountry" type="text" class="form-control" id="manufacturingCountry" value="Make in India" />
-							</div>
-
-							  <div class="form-group">
-								<form:label path="packing" for="packing">Packing Material</form:label>
-								<form:input path="packing" type="text" class="form-control" id="packing" value="Wooden" />
-							</div>
-
-
-							<div class="form-group">
-								<form:label path="thermometer" for="thermometer">Thermometer</form:label>
-							<form:select path="thermometer" class="form-control" id="thermometer">
-								<form:option value="Internal" selected="true" />
-								<form:option value="External" />
-								<form:option value="N/A" />
-							</form:select>
-							</div>
-
-							<div class="form-group">
-								<form:label path="includes" for="includes">Package Include</form:label>
-								<form:input path="includes" type="text" class="form-control" id="includes" placeholder="12 Skewers (including 2 bread removal skewers), 1 cushion pad, Stainless Steel Mouth Cover" />
-							</div>
-							<div class="form-group">
-								<form:label path="productTopCategory" for="productTopCategory">Product Top Category</form:label>
-							<form:select path="productTopCategory" class="form-control" id="productTopCategory">
-							<form:options items="${listofProductTopCategory}" />
-							</form:select>
-							</div>
-							<div class="form-group">
-								<form:label path="productCategory" for="productCategory">Product Category</form:label>
-								<div class="container">
-								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="electric" /> Electric </label></div> 
-							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="clay_tandoors"/> Clay Tandoor </label></div>
-							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="catering" /> Catering </label></div> 
-							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="stainless_steel" /> Stainless Steel </label></div>
-							  	</div>
-							  	<div class="container"> 
-						  		<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="ms_body" /> MS Body </label></div>
-							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="barrel" /> Barrel </label></div>
-							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="home" /> Home </label></div>  
-								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="wall_fitting" /> Wall Fitting </label></div>
-								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="barbeque" /> Barbeque </label></div>
-								</div>
-								<div class="container"> 
-							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="live_kitchen" /> Live Kitchen </label></div>
-							  	<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="wood_fire" /> Wood Fire </label></div>  
-								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="gas_fire" /> Gas_Fire </label></div>
-								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="hybrid_fire" /> Hybrid Fire </label></div>
-								</div>
-							</div>
-
 						</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-								<input type="submit" class="btn btn-primary"/>
-							</div>
-					</form:form>
+						<div class="form-group">
+							<form:label path="shape" for="shape">Shape</form:label>
+							<form:select path="shape" class="form-control" id="shape">
+							<form:options items="${listofbodyshapes}" />
+						</form:select>
+					</div>
+
+					<div class="form-group">
+						<form:label path="brandName" for="brandName">Brand</form:label>
+						<form:input path="brandName" type="text" class="form-control" id="brandName" placeholder="RCS" value="RCS" />
+					</div>
+
+					<div class="form-group">
+						<form:label path="productSize" for="productSize">Product Sizes</form:label>
+						<div class="mycheckbox">	
+
+							<form:checkboxes path="productSize" items="${listofsize}" element="span class='span'" cssStyle="margin-right : 10px"/>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<form:label path="measurementUnit" for="measurementUnit">Measurement Unit</form:label>
+						<form:select path="measurementUnit" class="form-control" id="measurementUnit">
+						<form:option value="Inch" />
+					</form:select>
 				</div>
+
+				<div class="form-group">
+					<form:label path="numberOfWheels" for="numberOfWheels">Number of Wheels</form:label>
+					<form:select path="numberOfWheels" class="form-control" id="numberOfWheels">
+					<form:option value="1" />
+					<form:option value="2" />
+					<form:option value="3" />
+					<form:option value="4" selected="true"/>
+					<form:option value="5" />
+					<form:option value="6" />
+				</form:select>
+			</div>
+
+			<div class="form-group">
+				<form:label path="useCondition" for="useCondition">Used Condition</form:label>
+				<form:input path="useCondition" type="text" class="form-control" id="useCondition" value="New" />
+			</div>
+			<div class="form-group">
+				<form:label path="certification" for="certification">Certification</form:label>
+				<form:input path="certification" type="text" class="form-control" id="certification" value="ISO 9001:2008" />
+			</div>
+
+			<div class="form-group">
+				<form:label path="insulation" for="insulation">Insulation</form:label>
+				<div class="container">
+					<div class="checkbox-inline"><label><form:checkbox path="insulation" value="GlassWool"/>GlassWool </label></div> 
+					<div class="checkbox-inline"><label><form:checkbox path="insulation" value="Fire Blanket"/> Fire Blanket </label></div> 
+					<div class="checkbox-inline"><label><form:checkbox path="insulation" value="Ash"/> Ash </label></div>
+					<div class="checkbox-inline"><label><form:checkbox path="insulation" value="Stone"/> Stone </label></div>
+					<div class="checkbox-inline"><label><form:checkbox path="insulation" value="Clay"/> Clay </label></div> 
+					<div class="checkbox-inline"><label><form:checkbox path="insulation" value="Mix"/> Mix </label></div>
+				</div>
+				<div class="form-group">
+					<form:label path="operatingTemperature" for="operatingTemperature">Operating Inside Temperature</form:label>
+					<form:input path="operatingTemperature" type="text" class="form-control" id="operatingTemperature" value="250-450 Degrees" />
+				</div>
+
+				<div class="form-group">
+					<form:label path="operatingOutsideTemperature" for="operatingOutsideTemperature">Operating Outside Temperature</form:label>
+					<form:input path="operatingOutsideTemperature" type="text" class="form-control" id="operatingOutsideTemperature" value="60-65 Degrees" />
+				</div>
+
+				<div class="form-group">
+					<form:label path="keywordMetadata" for="keywordMetadata">Keyword/Metadata</form:label>
+					<form:input path="keywordMetadata" type="text" class="form-control" id="keywordMetadata" placeholder="Tandoors, Oven, Clay any three or four" />
+				</div>
+
+				<div class="form-group">
+					<form:label path="usageArea" for="usageArea">Usage Area</form:label>
+					<div class="container">
+						<div class="checkbox-inline"><label><form:checkbox path="usageArea" value="Baking"/>Baking </label></div> 
+						<div class="checkbox-inline"><label><form:checkbox path="usageArea" value="Grilling"/> Grilling </label></div> 
+						<div class="checkbox-inline"><label><form:checkbox path="usageArea" value="Baking & Grilling"/> Baking & Grilling </label></div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<form:label path="manufacturingCountry" for="manufacturingCountry">Manufacturing Country</form:label>
+					<form:input path="manufacturingCountry" type="text" class="form-control" id="manufacturingCountry" value="Make in India" />
+				</div>
+
+				<div class="form-group">
+					<form:label path="packing" for="packing">Packing Material</form:label>
+					<form:input path="packing" type="text" class="form-control" id="packing" value="Wooden" />
+				</div>
+				<div class="form-group">
+					<form:label path="thermometer" for="thermometer">Thermometer</form:label>
+					<form:select path="thermometer" class="form-control" id="thermometer">
+					<form:option value="Internal" selected="true" />
+					<form:option value="External" />
+					<form:option value="N/A" />
+				</form:select>
+			</div>
+
+			<div class="form-group">
+				<form:label path="includes" for="includes">Package Include</form:label>
+				<form:input path="includes" type="text" class="form-control" id="includes" placeholder="12 Skewers (including 2 bread removal skewers), 1 cushion pad, Stainless Steel Mouth Cover" />
+			</div>
+			<div class="form-group">
+				<form:label path="productTopCategory" for="productTopCategory">Product Top Category</form:label>
+				<form:select path="productTopCategory" class="form-control" id="productTopCategory">
+				<form:options items="${listofProductTopCategory}" />
+			</form:select>
+		</div>
+		<div class="form-group">
+			<form:label path="productCategory" for="productCategory">Product Category</form:label>
+			<div class="container">
+				<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="electric" /> Electric </label></div> 
+				<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="clay_tandoors"/> Clay Tandoor </label></div>
+				<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="catering" /> Catering </label></div> 
+				<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="stainless_steel" /> Stainless Steel </label></div>
+			</div>
+			<div class="container"> 
+				<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="ms_body" /> MS Body </label></div>
+				<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="barrel" /> Barrel </label></div>
+				<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="home" /> Home </label></div>  
+				<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="wall_fitting" /> Wall Fitting </label></div>
+				<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="barbeque" /> Barbeque </label></div>
+			</div>
+			<div class="container"> 
+				<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="live_kitchen" /> Live Kitchen </label></div>
+				<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="wood_fire" /> Wood Fire </label></div>  
+				<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="gas_fire" /> Gas_Fire </label></div>
+				<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="hybrid_fire" /> Hybrid Fire </label></div>
 			</div>
 		</div>
 	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		<input type="submit" class="btn btn-primary"/>
+	</div>
+</form:form>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Add custom size -->
+<!-- Modal -->
+<div class="modal fade" id="addCustomSize" tabindex="-1" role="dialog" aria-labelledby="addCustomSizeLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="addProductModalLabel">Add custom size</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+			<form:form action="/products/submitproductsize" method = "POST" enctype="multipart/form-data"  modelAttribute = "productSizeWeightShapeModel" >
+				<div class="form-group">
+					<div class="form-group">
+						<form:label path="shape" for="shape">Product Shape</form:label>
+						<form:select path="shape" class="form-control" id="shape">
+						<form:options items="${listofbodyshapes}" />
+					</form:select>
+				</div>
+
+				<div class="form-group">
+					<form:label path="productLength" for="productLength">Product Length</form:label>
+					<form:input path="productLength" type="Number" class="form-control" id="productLength" min="1"  />
+				</div>
+
+				<div class="form-group">
+					<form:label path="productWidth" for="productWidth">Product Width</form:label>
+					<form:input path="productWidth" type="Number" class="form-control" id="productWidth" min="1" />
+				</div>
+				<div class="form-group">
+					<form:label path="productHeight" for="productHeight">Product Height</form:label>
+					<form:input path="productHeight" type="Number" class="form-control" id="productHeight" min="1" />
+				</div>
+				<div class="form-group">
+					<form:label path="productMouth" for="productHeight">Product Mouth</form:label>
+					<form:input path="productMouth" type="Number" class="form-control" id="productMouth" min="1" />
+				</div>
+
+				<div class="form-group">
+					<form:label path="capacityPerBread" for="capacityPerBread">Capacity Per Bread</form:label>
+					<form:select path="capacityPerBread" class="form-control" id="capacityPerBread">
+					<form:option value="1 to 4" />
+					<form:option value="4 to 8" />
+					<form:option value="8 to 10" />
+					<form:option value="10 to 12" />
+					<form:option value="15 to 18" selected="true"/>
+					<form:option value="20 to 22" />
+					<form:option value="24 to 25" />
+					<form:option value="28 to 30" />
+					<form:option value="30+" />
+				</form:select>
+			</div>
+
+			<div class="form-group">
+				<form:label path="productSize" for="productHeight">Product Size Name</form:label>
+				<form:input path="productSize" type="text" class="form-control" id="productSize" placeholder="productCategory + Size Specs like Pizzaoven Small" />
+			</div>
+
+			<div class="form-group">
+				<form:label path="productWidth" for="productWidth">Product Gross Weight</form:label>
+				<form:input path="productWidth" type="Number" class="form-control" id="productWidth" min="1" />
+			</div>
+
+			<div class="form-group">
+				<form:label path="productWidth" for="productWidth">Product Net Weight</form:label>
+				<form:input path="productWidth" type="Number" class="form-control" id="productWidth" min="1" />
+			</div>
+
+			
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		<input type="submit" class="btn btn-primary"/>
+	</div>
+</form:form>
+</div>
+</div>
+</div>
+</div>
+
    <!--    <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button> 

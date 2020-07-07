@@ -9,7 +9,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.buytandoors.webapp.entity.Product;
 import com.buytandoors.webapp.entity.ProductList;
+import com.buytandoors.webapp.entity.ProductSizeEntity;
+import com.buytandoors.webapp.entity.ProductWeightEntity;
 import com.buytandoors.webapp.model.ProductModel;
+import com.buytandoors.webapp.model.ProductSizeWeightShapeModel;
 import com.buytandoors.webapp.repository.ProductListRepository;
 import com.buytandoors.webapp.repository.ProductRepository;
 import com.buytandoors.webapp.repository.ProductShapeRepository;
@@ -59,7 +62,6 @@ public class ProductServicesImpli implements ProductService {
 		pl.setProductDescription(productModel.getProductDescription());
 		pl.setProductName(productModel.getProductName());
 		pl.setProductTopCategory(productModel.getProductTopCategory());
-		System.out.println("=======================>"+productModel.getProductid());
 		if(productModel.getProductid() == null || productModel.getProductid() == 0) {
 		pl.setIsAvailable(1);
 		File file = new File("src\\main\\resources\\static", "productimages");
@@ -180,5 +182,32 @@ public class ProductServicesImpli implements ProductService {
 		pl.setIsAvailable(product.getIsAvailable());
 		return pl;
 	}
+
+	@Override
+	public ProductWeightEntity addCustomSizeWeight(ProductSizeWeightShapeModel productSizeWeightShapeModel) throws Exception {
+		
+		ProductSizeEntity productSizeEntity = new ProductSizeEntity();
+		productSizeEntity.setProductHeight(productSizeWeightShapeModel.getProductHeight());
+		productSizeEntity.setCapacityPerBread(productSizeWeightShapeModel.getCapacityPerBread());
+		productSizeEntity.setProductLength(productSizeWeightShapeModel.getProductLength());
+		productSizeEntity.setProductMouth(productSizeWeightShapeModel.getProductMouth());
+		productSizeEntity.setProductSize(productSizeWeightShapeModel.getProductSize());
+		productSizeEntity.setProductWidth(productSizeWeightShapeModel.getProductWidth());
+		if(productSizeRepository.findSizeId(productSizeWeightShapeModel.getProductSize()) == null) {			
+			productSizeEntity = productSizeRepository.save(productSizeEntity);
+			ProductWeightEntity productWeightEntity = new ProductWeightEntity();
+			productWeightEntity.setGrossWeight(productSizeWeightShapeModel.getGrossWeight());
+			productWeightEntity.setNetWeight(productSizeWeightShapeModel.getNetWeight());
+			productWeightEntity.setShape(productSizeWeightShapeModel.getShape());
+			productWeightEntity.setWeightName(productSizeWeightShapeModel.getWeightName());
+			productWeightEntity.setSizeId(productSizeEntity.getSizeId());
+			productWeightEntity =  productWeightRepository.save(productWeightEntity);
+			return productWeightEntity;
+		}else {
+			throw new Exception("Product size name already exist."); 
+		}
+	}
+	
+	
 
 }
