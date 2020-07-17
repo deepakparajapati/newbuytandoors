@@ -149,6 +149,10 @@
 					</button>
 				</div>
 				<br><br>
+				<form class="text-center" action="/index" method="GET">
+					<input class="btn btn-primary" type="submit" value="Go Live Home">
+				</form>
+				<br><br>
 				<form class="text-center" action="/logout" method="POST">
 					<input class="btn btn-primary" type="submit" value="Logout">
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />    

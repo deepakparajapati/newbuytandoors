@@ -23,7 +23,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
             .ignoring()
-                .antMatchers("/", "/home","/auth", "/error", "/productimages/**","/productspecimages/**", "/plugins/**", "/js/**", "/images/**", "/bootstrap/**", "/css/**",
+                .antMatchers("/", "/home", "/index","/auth", "/error", "/productimages/**","/productspecimages/**", "/plugins/**", "/js/**", "/images/**", "/bootstrap/**", "/css/**",
 						"/fonts/**", "/resources/**");
     }
     

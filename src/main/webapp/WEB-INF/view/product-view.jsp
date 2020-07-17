@@ -1,4 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
@@ -140,26 +141,16 @@
 						</div>
 					</div>
 					
-					<table  class="table">
+					<table class="table">
+						<c:forEach var="product" items="${productList}" >
 								<tr>
-									<td>Product Name</td>
-									<td><img src="productimages/sss4g.jpg" width="100px" height="auto"> </td>
-									<td><button name="Update" onclick="window.location.href='products/view-product/1';" style="color: black;">Edit Details</button></td>
-									<!-- <td><input id="productCategory" name="productCategory" type="checkbox" value="1">Hide</td>
-									<td><button name="Update" style="color: black;">Update</button></td> -->
+									<td>${product.productName}</td>
+									<c:set var="imageString" value="${product.productPicUrl}" />
+									<c:set var="imageParts" value="${fn:split(imageString, ',')}" />
+									<td><img src="productimages/${imageParts[0]}" width="100px" height="auto"> </td>
+									<td><button name="Update" onclick="window.location.href='products/view-product/${product.productid}';" style="color: black;">Edit Details</button></td>
 								</tr>
-								<tr>
-									<form action="/products/view-product/1" method = "GET">
-									<td>Product Name</td>
-									<td><img src="productimages/sss4g.jpg" width="100px" height="auto"> </td>
-									<td><button name="Update" style="color: black;">Edit Details</button></td>
-									</form>
-								</tr>
-								<tr>
-									<td>Product Name</td>
-									<td><img src="productimages/sss4g.jpg" width="100px" height="auto"> </td>
-									<td><button name="Update" style="color: black;">Edit Details</button></td>
-								</tr>
+							</c:forEach>
 				</table>
 
 			</div>

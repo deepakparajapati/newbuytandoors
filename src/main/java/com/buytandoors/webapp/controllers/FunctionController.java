@@ -52,10 +52,10 @@ public class FunctionController {
 	@Autowired
 	ProductWeightRepository productWeightRepository;
 
-	@GetMapping(value = { "/", "/home" })
+	@GetMapping(value = { "/", "/home","/index" })
 	public ModelAndView homePage() {
 		ModelAndView model = new ModelAndView("index");
-		List<ProductList> productList = productListRepository.findAll();
+		List<ProductList> productList = productListRepository.findAllAvailable();
 		List<ProductSizeEntity> productSizeEntities = productSizeRepository.findAll();
 		List<ProductWeightEntity> productWeightEntity = productWeightRepository.findAll();
 		HashMap<Integer, String> sizes = new HashMap<>();
