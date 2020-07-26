@@ -261,7 +261,7 @@
 					<div class="media">
 						<div class="media-body text-right">
 							<h4 class="media-heading">Customize Ovens</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure aperiam consequatur quo quis exercitationem reprehenderit dolor vel ducimus, voluptate eaque suscipit iste placeat.</p>
+							<p>We manufacture Ovens & distribute all over the world. We have expertise in all kind of customization in ovens as per customer requirements & usage. </p>
 						</div>
 						<div class="media-right">
 							<i class="fa fa-bitbucket"></i>
@@ -269,29 +269,29 @@
 					</div>
 					<div class="media">
 						<div class="media-body text-right">
-							<h4 class="media-heading">Service 2</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure aperiam consequatur quo quis exercitationem reprehenderit dolor vel ducimus, voluptate eaque suscipit iste placeat.</p>
+							<h4 class="media-heading">Export</h4>
+							<p>We are exporting our end products to our customers around the world, we have almost covered every country in the world. If anyone interested in our products anywhere in the world, we have confident that we can deliver it with every decided commitment, we have expert shipping team as well as expert export team for coordination between customers & consignment.</p>
 						</div>
 						<div class="media-right">
-							<i class="fa fa-check"></i>
+							<i class="fa fa-plane"></i>
 						</div>
 					</div>
 					<div class="media">
 						<div class="media-body text-right">
-							<h4 class="media-heading">Service 3</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure aperiam consequatur quo quis exercitationem reprehenderit dolor vel ducimus, voluptate eaque suscipit iste placeat.</p>
+							<h4 class="media-heading">Development</h4>
+							<p>Development is significant part of every company, with that we are investing in our future to keep up-to date with time & to keep things simplest in use with expected output. We are working on various projects simultaneously & will defiantly surprise you with the time.</p>
 						</div>
 						<div class="media-right">
-							<i class="fa fa-desktop"></i>
+							<i class="fa fa-line-chart"></i>
 						</div>
 					</div>
 					<div class="media">
 						<div class="media-body text-right">
-							<h4 class="media-heading">Service 4</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure aperiam consequatur quo quis exercitationem reprehenderit dolor vel ducimus, voluptate eaque suscipit iste placeat.</p>
+							<h4 class="media-heading">Pizza ovens</h4>
+							<p>We manufacture various type of Wood fire, Gas & Hybrid (Gas + Wood fire) of pizza ovens, based on need. We offer commercial pizza oven range with various outer body available in different tile shapes, steel & stone.</p>
 						</div>
 						<div class="media-right">
-							<i class="fa fa-users"></i>
+							<i class="fa fa-yelp"></i>
 						</div>
 					</div>
 				</div>
@@ -299,38 +299,40 @@
 				<div class="col-sm-6">
 					<div class="media">
 						<div class="media-left">
-							<i class="fa fa-leaf"></i>
+							<i class="fa fa-home"></i>
 						</div>
 						<div class="media-body">
-							<h4 class="media-heading">Service 5</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure aperiam consequatur quo quis exercitationem reprehenderit dolor vel ducimus, voluptate eaque suscipit iste placeat.</p>
+							<h4 class="media-heading">Home Range</h4>
+							<p>Planning for home party with Friends, Family & Loved Ones? Let it be on us, we have various tandoors for home usage, which provide various capacity depends on size of gathering.</p>
 						</div>
 					</div>
 					<div class="media">
 						<div class="media-left">
-							<i class="fa fa-area-chart"></i>
+							<i class="fa fa-recycle"></i>
 						</div>
 						<div class="media-body">
-							<h4 class="media-heading">Service 6</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure aperiam consequatur quo quis exercitationem reprehenderit dolor vel ducimus, voluptate eaque suscipit iste placeat.</p>
+							<h4 class="media-heading">Tandoors Repairing</h4>
+							<p>Everything in this world is comes with expiry tag, When you start using firing tandoors, it works well around 1 to 5 years depends on the use.But dont't worry about it, We also provide cost effective way to recycle tandoors, by repairing inner clay pot then you can work it again.
+								<br><br><br>
+							</p>
 						</div>
 					</div>
 					<div class="media">
 						<div class="media-left">
-							<i class="fa fa-child"></i>
+							<i class="fa fa-cutlery"></i>
 						</div>
 						<div class="media-body">
-							<h4 class="media-heading">Service 7</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure aperiam consequatur quo quis exercitationem reprehenderit dolor vel ducimus, voluptate eaque suscipit iste placeat.</p>
+							<h4 class="media-heading">Hotel ware Products & Accessories</h4>
+							<p>Hotel ware Requirement? Just leave on us, we provide best of industry hotel ware utensils, products, tableware & accessories for life long use. <br><br><br></p>
 						</div>
 					</div>
 					<div class="media">
 						<div class="media-left">
-							<i class="fa fa-codepen"></i>
+							<i class="fa fa-heart-o"></i>
 						</div>
 						<div class="media-body">
-							<h4 class="media-heading">Service 8</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure aperiam consequatur quo quis exercitationem reprehenderit dolor vel ducimus, voluptate eaque suscipit iste placeat.</p>
+							<h4 class="media-heading">After sale service</h4>
+							<p>Selling products is not the last steps in our organization, we are with you no matter what situation it is, any help, question & complaint, just write us back we will back you with any possible help, It's just not for about helping you, it's also help us to improve & server better for next time.</p>
 						</div>
 					</div>
 				</div>
@@ -356,9 +358,9 @@
 	<!-- ================ -->
 	<div class="section">
 		<div class="container">
-			<h1 class="text-center title" id="product">Products</h1>
+			<h1 class="text-center title" id="product">Products <span>Range</span></h1>
 			<div class="separator"></div>
-			<p class="lead text-center">Lorem ipsum dolor sit amet laudantium molestias similique.<br> Quisquam incidunt ut laboriosam.</p>
+			<p class="lead text-center">Select product as per your requirement from our wide range of tandoors and kitchen equipments.</p>
 			<br>			
 			<div class="row object-non-visible" data-animation-effect="fadeIn">
 				<div class="col-md-12">
@@ -449,12 +451,12 @@
 														<c:when test="${item == 1}">
 														<%-- <c:out value = "${fn:split(imageString, ',')}"/> --%>
 														<div class="item active">
-															<img src="productimages/${imageParts[item-1]}" alt="Los Angeles" style="width:100%;">
+															<img src="/productimages/${imageParts[item-1]}" alt="Los Angeles" style="width:100%;">
 														</div>
 													</c:when>
 													<c:otherwise>
 													<div class="item">
-														<img src="productimages/${imageParts[item-1]}" alt="Los Angeles" style="width:100%;">
+														<img src="/productimages/${imageParts[item-1]}" alt="Los Angeles" style="width:100%;">
 													</div>
 												</c:otherwise>
 											</c:choose>
@@ -604,11 +606,7 @@
 	    										<c:forEach var="productsizeitem" begin="0" end="${fn:length(productsizes)-1}">
 	    										<c:out value="${productsizes[productsizeitem]}" />
 	    										<option value="${productsizeitem}" >	
-	    											${allSizes[productsizes[productsizeitem]][0]}&nbsp;inch
-	    											&nbsp;&nbsp;Mouth:
-	    											${allSizes[productsizes[productsizeitem]][1]}&nbsp;inch
-	    											&nbsp;&nbsp;Bread Capacity:
-	    											${allSizes[productsizes[productsizeitem]][2]}&nbsp;breads
+	    											${allSizes[productsizes[productsizeitem]]}
 	    										</option>
 	    									</c:forEach>
 	    								</select>
@@ -618,13 +616,13 @@
 	    						</tr>
 	    					</tbody>
 	    				</table>
-	    				<div style="position: relative; left: 0; top: 0;">
+<!-- 	    				<div style="position: relative; left: 0; top: 0;">
 	    					<h2>Dimension view</h2>
-	    					<img class="img-responsive" src="productspecimages/sizeviewer.jpg" alt="tandoor-dimension-view" width="100%" style="position: relative; left: 0; top: 0;">
+	    					<img class="img-responsive" src="productspecimages/sizeroundviewer.jpg" alt="tandoor-dimension-view" width="100%" style="position: relative; left: 0; top: 0;">
 	    					<img class="img-responsive" src="productspecimages/${productList[productitem].productSpecificationImage}" alt="tandoor-dimension-view" width="250px" style="position: relative; left: 735px; top: -270px;">
-	    				</div>
+	    				</div> -->
 	    				<h4>What's in the box?</h4>
-	    				12 Skewes, 1 Gaddi
+	    				${productList[productitem].includes}
 	    				<h3>Additional information</h3>
 	    				<table class="table table-w50 table-striped table-dark" style="width: -webkit-fill-available;">
 	    					<tbody>
@@ -655,6 +653,9 @@
 </div>
 </div>
 </div>
+<!-- <p class="lead text-center">
+Note: No product available to your critaria, If no product visible.
+</p> -->
 </div>
 <!-- section end -->
 
@@ -673,8 +674,8 @@
 					<div class="media-body">
 						<h3 class="media-heading">You are Amazing!</h3>
 						<blockquote>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure aperiam consequatur quo.</p>
-							<footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+							<p>Radisson Hospitality, Inc. Radisson Hotel Group is one of the world's largest hotel companies with more than 1400 hotels in its portfolio</p>
+							<footer>Chaman kumari,<cite title="Source Title">Purchase Executive</cite></footer>
 						</blockquote>
 					</div>
 				</div>
@@ -687,8 +688,8 @@
 					<div class="media-body">
 						<h3 class="media-heading">Yeah!</h3>
 						<blockquote>
-							<p>Iure aperiam consequatur quo quis exercitationem reprehenderit dolor vel ducimus.</p>
-							<footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+							<p>EIH Ltd, under the aegis of The Oberoi Group, operates hotels and cruisers in five countries under the luxury 'Oberoi' brand.</p>
+							<footer>Rajender Bedi, <cite title="Source Title">Purchase Executive</cite></footer>
 						</blockquote>
 					</div>
 				</div>
@@ -701,8 +702,8 @@
 					<div class="media-body">
 						<h3 class="media-heading">Thank You!</h3>
 						<blockquote>
-							<p>Aperiam consequatur quo quis exercitationem reprehenderit suscipit iste placeat.</p>
-							<footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+							<p>The Imperial, New Delhi, built in 1931, is a luxury hotel in India, located at Janpath, Previously called Queensway.</p>
+							<footer>AKOI SAAB,<cite title="Source Title">Purchase Executive</cite></footer>
 						</blockquote>
 					</div>
 				</div>
@@ -717,8 +718,8 @@
 					<div class="media-body">
 						<h3 class="media-heading">Thank You!</h3>
 						<blockquote>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure aperiam consequatur quo.</p>
-							<footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+							<p>An iconic hotel, Ashok Delhi boasts a luxurious spa and 7 dining venues. Ashok hotel is owned by ITDC, of which the Government of India owns a 87.03% stake.</p>
+							<footer>Radhe, <cite title="Source Title">Purchase Executive</cite></footer>
 						</blockquote>
 					</div>
 				</div>
@@ -731,8 +732,8 @@
 					<div class="media-body">
 						<h3 class="media-heading">Amazing!</h3>
 						<blockquote>
-							<p>Iure aperiam consequatur quo quis exercitationem reprehenderit dolor vel ducimus.</p>
-							<footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+							<p>Lemon Tree Hotels, including Keys Hotels, are located across India, in metro regions. Lemon Tree Hotels Limited is India'es largest hotel chain in the mid-priced hotel sector.</p>
+							<footer>CHEF HIMANSHU, <cite title="Source Title">Executive Chef</cite></footer>
 						</blockquote>
 					</div>
 				</div>
@@ -745,8 +746,8 @@
 					<div class="media-body">
 						<h3 class="media-heading">Best!</h3>
 						<blockquote>
-							<p>Aperiam consequatur quo quis exercitationem reprehenderit suscipit iste placeat.</p>
-							<footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+							<p>The Claridges is one of the best 5 star hotels in Central Delhi, Luxury hotels in New Delhi, India with 132 rooms, events space and dining facilities.</p>
+							<footer>Dharam Pal in <cite title="Source Title">Purchase Executive</cite></footer>
 						</blockquote>
 					</div>
 				</div>
@@ -755,7 +756,7 @@
 	</div>
 	<!-- section start -->
 	<!-- ================ -->
-	<div class="translucent-bg blue">
+<!-- 	<div class="translucent-bg blue">
 		<div class="container">
 			<div class="list-horizontal">
 				<div class="row">
@@ -792,7 +793,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<!-- section end -->
 </div>
 <!-- section end -->
@@ -823,22 +824,22 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="footer-content">
-						<p class="large">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel nam magnam natus tempora cumque, aliquam deleniti voluptatibus voluptas. Repellat vel, et itaque commodi iste ab, laudantium voluptas deserunt nobis.</p>
+						<p class="large">Let's work together and discuss about your requirements, questions and any information you need.</p>
 						<ul class="list-icons">
-							<li><i class="fa fa-map-marker pr-10"></i> One infinity loop, 54100</li>
-							<li><i class="fa fa-phone pr-10"></i> +00 1234567890</li>
-							<li><i class="fa fa-fax pr-10"></i> +00 1234567891 </li>
-							<li><i class="fa fa-envelope-o pr-10"></i> your@email.com</li>
+							<li><i class="fa fa-map-marker pr-10"></i> Plot no. : C-107 and C-120 A, Shradhanand Colony, (Near Nav Jyoti Public School) Opp. Sanjay Gandhi Transport Nagar, Bhalaswa Dairy, Delhi-110042 (INDIA)</li>
+							<li><i class="fa fa-map-marker pr-10"></i> Hno.3715, Roshanara Road, Near Pulbangash Metro Station, Opp. OBC Bank Kumaharan Street Delhi-110007 (INDIA)</li>
+							<li><i class="fa fa-phone pr-10"></i> +91 9810641133, 8750926996</li>
+							<li><i class="fa fa-phone pr-10"></i> +91 9811161433, 9871500162</li>
+							<li><i class="fa fa-fax pr-10"></i> +91 011 23825880 </li>
+							<li><i class="fa fa-envelope-o pr-10"></i> buytandoors@gmail.com, tandoors@rediffmail.com</li>
 						</ul>
 						<ul class="social-links">
 							<li class="facebook"><a target="_blank" href="https://www.facebook.com/pages/HtmlCoder/714570988650168"><i class="fa fa-facebook"></i></a></li>
-							<li class="twitter"><a target="_blank" href="https://twitter.com/HtmlcoderMe"><i class="fa fa-twitter"></i></a></li>
-							<li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
-							<li class="skype"><a target="_blank" href="http://www.skype.com"><i class="fa fa-skype"></i></a></li>
-							<li class="linkedin"><a target="_blank" href="http://www.linkedin.com"><i class="fa fa-linkedin"></i></a></li>
-							<li class="youtube"><a target="_blank" href="http://www.youtube.com"><i class="fa fa-youtube"></i></a></li>
-							<li class="flickr"><a target="_blank" href="http://www.flickr.com"><i class="fa fa-flickr"></i></a></li>
-							<li class="pinterest"><a target="_blank" href="http://www.pinterest.com"><i class="fa fa-pinterest"></i></a></li>
+							<li class="twitter"><a target="_blank" href="https://twitter.com/buytandoors"><i class="fa fa-twitter"></i></a></li>
+							<!-- <li class="skype"><a target="_blank" href="http://www.skype.com"><i class="fa fa-skype"></i></a></li> -->
+							<!-- <li class="linkedin"><a target="_blank" href="http://www.linkedin.com"><i class="fa fa-linkedin"></i></a></li> -->
+							<li class="youtube"><a target="_blank" href="https://www.youtube.com/buytandoors"><i class="fa fa-youtube"></i></a></li>
+							<!-- <li class="pinterest"><a target="_blank" href="http://www.pinterest.com"><i class="fa fa-pinterest"></i></a></li> -->
 						</ul>
 					</div>
 				</div>

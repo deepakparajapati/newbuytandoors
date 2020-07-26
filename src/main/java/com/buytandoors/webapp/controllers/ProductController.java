@@ -60,6 +60,7 @@ public class ProductController {
 		model.setViewName("view-product");
 		//map  product to productModel
 		model.addObject("productModel", productServicesImpli.productToProductModel(product));
+		System.out.println(productServicesImpli.productToProductModel(product));
 //		model.addObject("product", product);
 		
 		List<String> listofbodymaterial = Arrays.asList("Clay", "Stainless Steel", "Mild Steel", "Copper", "Brass",

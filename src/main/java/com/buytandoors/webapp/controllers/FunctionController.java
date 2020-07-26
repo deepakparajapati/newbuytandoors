@@ -58,22 +58,28 @@ public class FunctionController {
 		List<ProductList> productList = productListRepository.findAllAvailable();
 		List<ProductSizeEntity> productSizeEntities = productSizeRepository.findAll();
 		List<ProductWeightEntity> productWeightEntity = productWeightRepository.findAll();
-		HashMap<Integer, String> sizes = new HashMap<>();
+		HashMap<Long, String> sizes = new HashMap<>();
 		HashMap<String, List<String>> allSizes = new HashMap<>();
 		HashMap<String, List<Integer>> weightSize = new HashMap<>();
 		// {Small, [W32xH32xL36 Mouth 15, Small, capacity]}
 		// {smallround, [50, 60]}
 
 		for (ProductSizeEntity productSizeEntity : productSizeEntities) {
-			allSizes.put(productSizeEntity.getProductSize(),
-					Arrays.asList(
-							"W" + productSizeEntity.getProductWidth() + "x" + "H" + productSizeEntity.getProductHeight()
-									+ "x" + "L" + productSizeEntity.getProductLength(),
-							Integer.toString(productSizeEntity.getProductMouth()),
-							productSizeEntity.getCapacityPerBread()));
-			sizes.put(productSizeEntity.getSizeId().intValue(), productSizeEntity.getProductSize());
+			if(productSizeEntity.getProductMouth() == 0 || productSizeEntity.getCapacityPerBread().equals("")) {
+				allSizes.put(productSizeEntity.getProductSize(),
+						Arrays.asList(
+								"W" + productSizeEntity.getProductWidth() + "x" + "H" + productSizeEntity.getProductHeight()
+										+ "x" + "L" + productSizeEntity.getProductLength()));
+			}else {
+				allSizes.put(productSizeEntity.getProductSize(),
+						Arrays.asList(
+								"W" + productSizeEntity.getProductWidth() + "x" + "H" + productSizeEntity.getProductHeight()
+										+ "x" + "L" + productSizeEntity.getProductLength()+" inch",
+								"Mouth: "+Integer.toString(productSizeEntity.getProductMouth())+" inch",
+								"Bread Capacity: "+productSizeEntity.getCapacityPerBread()+"breads"));	
+			}
+			sizes.put(productSizeEntity.getSizeId(), productSizeEntity.getProductSize());
 		}
-		
 		for (ProductWeightEntity pwe : productWeightEntity) {
 			weightSize.put(sizes.get(pwe.getSizeId()) + pwe.getShape(), Arrays.asList(pwe.getGrossWeight(), pwe.getNetWeight()));
 		}
@@ -98,7 +104,6 @@ public class FunctionController {
 
 	@RequestMapping(value = "/myerror", method = RequestMethod.GET)
 	public Model myerror(@RequestParam("message") String errormessage, Model model) {
-		System.out.println(errormessage);
 		model.addAttribute("message", errormessage);
 		return model;
 	}
@@ -175,11 +180,8 @@ public class FunctionController {
 	@PostMapping(value = "/submitproduct")
 	public String submitProduct(@ModelAttribute("productModel") @Valid ProductModel productModel,
 			BindingResult bindingResult, ModelMap model) {
-		System.out.println(productModel.toString());
-		System.err.println(bindingResult);
 //		System.err.println(errors);
 		if (bindingResult.hasErrors()) {
-			System.out.println("myerror?message=" + bindingResult.getFieldError().getDefaultMessage());
 			model.addAttribute("message",
 					bindingResult.getFieldError().getField() + " " + bindingResult.getFieldError().getDefaultMessage());
 			return "myerror";

@@ -37,8 +37,8 @@ public class ProductServicesImpli implements ProductService {
 	@Override
 	public ProductList addProductProcess(ProductModel productModel) throws IllegalStateException {
 		ProductList pl = new ProductList();
-		pl.setApplicationsUsage(String.join(", ", productModel.getApplicationsUsage()));
-		pl.setFuleConsumptionType(String.join(", ", productModel.getFuleConsumptionType()));
+		pl.setApplicationsUsage(String.join(",", productModel.getApplicationsUsage()));
+		pl.setFuleConsumptionType(String.join(",", productModel.getFuleConsumptionType()));
 		pl.setModelName(productModel.getModelName());
 		pl.setShape(productModel.getShape());
 		pl.setBodyMaterial(productModel.getBodyMaterial());
@@ -48,16 +48,16 @@ public class ProductServicesImpli implements ProductService {
 		pl.setNumberOfWheels(productModel.getNumberOfWheels());
 		pl.setUseCondition(productModel.getUseCondition());
 		pl.setCertification(productModel.getCertification());
-		pl.setInsulation(String.join(", ", productModel.getInsulation()));
+		pl.setInsulation(String.join(",", productModel.getInsulation()));
 		pl.setOperatingTemperature(productModel.getOperatingTemperature());
 		pl.setOperatingOutsideTemperature(productModel.getOperatingOutsideTemperature());
 		pl.setKeywordMetadata(productModel.getKeywordMetadata());
-		pl.setUsageArea(String.join(", ", productModel.getUsageArea()));
+		pl.setUsageArea(String.join(",", productModel.getUsageArea()));
 		pl.setManufacturingCountry(productModel.getManufacturingCountry());
 		pl.setPacking(productModel.getPacking());
 		pl.setThermometer(productModel.getThermometer());
 		pl.setIncludes(productModel.getIncludes());
-		pl.setProductCategory(String.join(" ", productModel.getProductCategory()));
+		pl.setProductCategory(String.join(",", productModel.getProductCategory()));
 		pl.setFeature(productModel.getFeature());
 		pl.setProductDescription(productModel.getProductDescription());
 		pl.setProductName(productModel.getProductName());
@@ -111,6 +111,8 @@ public class ProductServicesImpli implements ProductService {
 				System.out.println("Failed to productspecimages create directory!");
 			}
 		}
+		if(productModel.getProductSpecificationImage() != null) {
+
 		String filePath = productspecimages.getAbsolutePath() + "\\"
 				+ productModel.getProductSpecificationImage().getOriginalFilename();
 		try {
@@ -120,8 +122,8 @@ public class ProductServicesImpli implements ProductService {
 		}
 
 		pl.setProductSpecificationImage(productModel.getProductSpecificationImage().getOriginalFilename());
-		pl.setProductPicUrl(urls);
-		
+		pl.setProductPicUrl(urls);	
+	}
 		}else {
 			ProductList oldProduct = productListRepository.getOne(productModel.productid);
 			System.out.println(oldProduct.toString());

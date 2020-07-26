@@ -190,10 +190,11 @@
 				<div class="form-group">
 					<form:label path="fuleConsumptionType" for="fuleConsumptionType">Fule Consumption Type</form:label>
 					<div class="container">
-						<div class="checkbox-inline"><label><form:checkbox path="fuleConsumptionType" value="Coal" checked="checked"/>Coal </label></div> 
+						<div class="checkbox-inline"><label><form:checkbox path="fuleConsumptionType" value="Coal" />Coal </label></div> 
 						<div class="checkbox-inline"><label><form:checkbox path="fuleConsumptionType" value="Natural"/> Natural/PNG </label></div> 
-						<div class="checkbox-inline"><label><form:checkbox path="fuleConsumptionType" value="LPG" checked="checked"/> LPG </label></div>
+						<div class="checkbox-inline"><label><form:checkbox path="fuleConsumptionType" value="LPG" /> LPG </label></div>
 						<div class="checkbox-inline"><label><form:checkbox path="fuleConsumptionType" value="Electric"/> Electric </label></div> 
+						<div class="checkbox-inline"><label><form:checkbox path="fuleConsumptionType" value="N/A"/> N/A </label></div> 
 					</div>
 				</div>
 				<div class="form-group">
@@ -232,6 +233,7 @@
 					<div class="form-group">
 						<form:label path="numberOfWheels" for="numberOfWheels">Number of Wheels</form:label>
 						<form:select path="numberOfWheels" class="form-control" id="numberOfWheels">
+						<form:option value="0" />
 						<form:option value="1" />
 						<form:option value="2" />
 						<form:option value="3" />
@@ -259,6 +261,7 @@
 									<div class="checkbox-inline"><label><form:checkbox path="insulation" value="Stone"/> Stone </label></div>
 									<div class="checkbox-inline"><label><form:checkbox path="insulation" value="Clay"/> Clay </label></div> 
 									<div class="checkbox-inline"><label><form:checkbox path="insulation" value="Mix"/> Mix </label></div>
+									<div class="checkbox-inline"><label><form:checkbox path="insulation" value="N/A"/> N/A </label></div>
 								</div>
 								<div class="form-group">
 									<form:label path="operatingTemperature" for="operatingTemperature">Operating Inside Temperature</form:label>
@@ -281,6 +284,7 @@
 										<div class="checkbox-inline"><label><form:checkbox path="usageArea" value="Baking"/>Baking </label></div> 
 										<div class="checkbox-inline"><label><form:checkbox path="usageArea" value="Grilling"/> Grilling </label></div> 
 										<div class="checkbox-inline"><label><form:checkbox path="usageArea" value="Baking & Grilling"/> Baking & Grilling </label></div>
+										<div class="checkbox-inline"><label><form:checkbox path="usageArea" value="N/A"/>N/A </label></div> 
 									</div>
 								</div>
 
@@ -334,6 +338,7 @@
 								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="wood_fire" /> Wood Fire </label></div>  
 								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="gas_fire" /> Gas_Fire </label></div>
 								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="hybrid_fire" /> Hybrid Fire </label></div>
+								<div class="checkbox-inline"><label><form:checkbox path="productCategory" value="N/A" /> N/A </label></div>
 							</div>
 						</div>
 						<div class="form-group">
