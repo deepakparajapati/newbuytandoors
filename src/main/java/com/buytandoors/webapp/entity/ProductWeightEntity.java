@@ -12,8 +12,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import org.hibernate.validator.constraints.UniqueElements;
-
 import lombok.Data;
 
 @Entity
