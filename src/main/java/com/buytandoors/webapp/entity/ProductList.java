@@ -26,9 +26,9 @@ public class ProductList implements Serializable {
 	private Long productid;
 	@Column(unique = true)
 	private String productName;
-	@Column
+	@Column(columnDefinition="TEXT")
 	private String productDescription;
-	@Column
+	@Column(columnDefinition="TEXT")
 	private String feature;
 	@Column
 	private String productPicUrl;
@@ -56,7 +56,7 @@ public class ProductList implements Serializable {
 	private String useCondition;
 	@Column
 	private String certification;
-	@Column
+	@Column(columnDefinition="TEXT")
 	private String insulation;
 	@Column
 	private String operatingTemperature;

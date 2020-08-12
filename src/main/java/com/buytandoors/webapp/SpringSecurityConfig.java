@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.firewall.HttpFirewall;
+import org.springframework.security.web.firewall.StrictHttpFirewall;
 
 @Configuration
 @EnableWebSecurity
@@ -21,11 +23,18 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web
+        web.httpFirewall(allowUrlEncodedSlashHttpFirewall())
             .ignoring()
                 .antMatchers("/", "/home", "/index","/auth", "/error", "/productimages/**","/productspecimages/**", "/plugins/**", "/js/**", "/images/**", "/bootstrap/**", "/css/**",
 						"/fonts/**", "/resources/**");
     }
+    
+	@Bean
+	public HttpFirewall allowUrlEncodedSlashHttpFirewall() {
+	    StrictHttpFirewall firewall = new StrictHttpFirewall();
+	    firewall.setAllowUrlEncodedSlash(true);    
+	    return firewall;
+	}
     
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {

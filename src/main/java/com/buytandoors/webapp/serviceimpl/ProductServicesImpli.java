@@ -33,10 +33,13 @@ public class ProductServicesImpli implements ProductService {
 	ProductRepository productRepository;
 	@Autowired
 	ProductWeightRepository productWeightRepository;
-	
+
 	@Override
-	public ProductList addProductProcess(ProductModel productModel) throws IllegalStateException {
+	public ProductList addProductProcess(ProductModel productModel){
 		ProductList pl = new ProductList();
+		try {
+		String uploadDir = System.getProperty("user.dir");
+		System.out.println(uploadDir);
 		pl.setApplicationsUsage(String.join(",", productModel.getApplicationsUsage()));
 		pl.setFuleConsumptionType(String.join(",", productModel.getFuleConsumptionType()));
 		pl.setModelName(productModel.getModelName());
@@ -62,69 +65,69 @@ public class ProductServicesImpli implements ProductService {
 		pl.setProductDescription(productModel.getProductDescription());
 		pl.setProductName(productModel.getProductName());
 		pl.setProductTopCategory(productModel.getProductTopCategory());
-		if(productModel.getProductid() == null || productModel.getProductid() == 0) {
-		pl.setIsAvailable(1);
-		File file = new File("src\\main\\resources\\static", "productimages");
-		if (!file.exists()) {
-			if (file.mkdir()) {
-				System.out.println("Directory is created!");
-			} else {
-				System.out.println("Failed to create directory!");
-			}
-		}
-
-		String dirName = productModel.getProductName().replace(" ", "-");
-		File subImageFolder = new File("src\\main\\resources\\static\\productimages", dirName);
-
-		if (!subImageFolder.exists()) {
-			if (subImageFolder.mkdir()) {
-				System.out.println("subImageFolder Directory is created!");
-			} else {
-				System.out.println("Failed to create subImageFolder directory!");
-			}
-		}
-		int i = 0;
-		String urls = "";
-		for (MultipartFile iterable_element : productModel.getProductPicUrl()) {
-			String filePath = subImageFolder.getAbsolutePath() + "\\"
-					+ productModel.getProductPicUrl()[i].getOriginalFilename();
-			try {
-				productModel.getProductPicUrl()[i].transferTo(new File(filePath));
-			} catch (IOException e) {
-				e.printStackTrace();
+		if (productModel.getProductid() == null || productModel.getProductid() == 0) {
+			pl.setIsAvailable(1);
+			File file = new File(uploadDir, "productimages");
+			if (!file.exists()) {
+				if (file.mkdir()) {
+					System.out.println("Directory is created!");
+				} else {
+					System.out.println("Failed to create directory!");
+				}
 			}
 
-			if (i == 0)
-				urls = dirName + "\\" + iterable_element.getOriginalFilename();
-			else
-				urls += "," + dirName + "\\" + iterable_element.getOriginalFilename();
+			String dirName = productModel.getProductName().replace(" ", "-");
+			File subImageFolder = new File(uploadDir + "/productimages", dirName);
 
-			i++;
-		}
-
-		// specification image
-		File productspecimages = new File("src\\main\\resources\\static", "productspecimages");
-		if (!productspecimages.exists()) {
-			if (productspecimages.mkdir()) {
-				System.out.println("Directory productspecimages is created!");
-			} else {
-				System.out.println("Failed to productspecimages create directory!");
+			if (!subImageFolder.exists()) {
+				if (subImageFolder.mkdir()) {
+					System.out.println("subImageFolder Directory is created!");
+				} else {
+					System.out.println("Failed to create subImageFolder directory!");
+				}
 			}
-		}
-		if(productModel.getProductSpecificationImage() != null) {
+			int i = 0;
+			String urls = "";
+			for (MultipartFile iterable_element : productModel.getProductPicUrl()) {
+				String filePath = subImageFolder.getAbsolutePath() + "/"
+						+ productModel.getProductPicUrl()[i].getOriginalFilename();
+				try {
+					productModel.getProductPicUrl()[i].transferTo(new File(filePath));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 
-		String filePath = productspecimages.getAbsolutePath() + "\\"
-				+ productModel.getProductSpecificationImage().getOriginalFilename();
-		try {
-			productModel.getProductSpecificationImage().transferTo(new File(filePath));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+				if (i == 0)
+					urls = dirName + "/" + iterable_element.getOriginalFilename();
+				else
+					urls += "," + dirName + "/" + iterable_element.getOriginalFilename();
 
-		pl.setProductSpecificationImage(productModel.getProductSpecificationImage().getOriginalFilename());
-		pl.setProductPicUrl(urls);	
-	}
-		}else {
+				i++;
+			}
+			pl.setProductPicUrl(urls);
+
+		
+			if (!productModel.getProductSpecificationImage().isEmpty()) {
+				// specification image
+				File productspecimages = new File(uploadDir, "productspecimages");
+				if (!productspecimages.exists()) {
+					if (productspecimages.mkdir()) {
+						System.out.println("Directory productspecimages is created!");
+					} else {
+						System.out.println("Failed to productspecimages create directory!");
+					}
+				}
+				String filePath = productspecimages.getAbsolutePath() + "/"
+						+ productModel.getProductSpecificationImage().getOriginalFilename();
+				try {
+					productModel.getProductSpecificationImage().transferTo(new File(filePath));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
+				pl.setProductSpecificationImage(productModel.getProductSpecificationImage().getOriginalFilename());
+			}
+		} else {
 			ProductList oldProduct = productListRepository.getOne(productModel.productid);
 			System.out.println(oldProduct.toString());
 			pl.setProductPicUrl(oldProduct.getProductPicUrl());
@@ -132,6 +135,7 @@ public class ProductServicesImpli implements ProductService {
 			pl.setProductid(productModel.productid);
 			pl.setIsAvailable(productModel.getIsAvailable());
 		}
+		System.out.println(pl);
 		pl = productListRepository.save(pl);
 
 		// setting shape id
@@ -147,8 +151,8 @@ public class ProductServicesImpli implements ProductService {
 			product.setWeightId(weightId);
 			productRepository.save(product);
 		}
-	
-		
+
+		}catch(Exception e) {System.out.println(e);}
 		return pl;
 	}
 
@@ -186,8 +190,9 @@ public class ProductServicesImpli implements ProductService {
 	}
 
 	@Override
-	public ProductWeightEntity addCustomSizeWeight(ProductSizeWeightShapeModel productSizeWeightShapeModel) throws Exception {
-		
+	public ProductWeightEntity addCustomSizeWeight(ProductSizeWeightShapeModel productSizeWeightShapeModel)
+			throws Exception {
+
 		ProductSizeEntity productSizeEntity = new ProductSizeEntity();
 		productSizeEntity.setProductHeight(productSizeWeightShapeModel.getProductHeight());
 		productSizeEntity.setCapacityPerBread(productSizeWeightShapeModel.getCapacityPerBread());
@@ -195,7 +200,7 @@ public class ProductServicesImpli implements ProductService {
 		productSizeEntity.setProductMouth(productSizeWeightShapeModel.getProductMouth());
 		productSizeEntity.setProductSize(productSizeWeightShapeModel.getProductSize());
 		productSizeEntity.setProductWidth(productSizeWeightShapeModel.getProductWidth());
-		if(productSizeRepository.findSizeId(productSizeWeightShapeModel.getProductSize()) == null) {			
+		if (productSizeRepository.findSizeId(productSizeWeightShapeModel.getProductSize()) == null) {
 			productSizeEntity = productSizeRepository.save(productSizeEntity);
 			ProductWeightEntity productWeightEntity = new ProductWeightEntity();
 			productWeightEntity.setGrossWeight(productSizeWeightShapeModel.getGrossWeight());
@@ -203,13 +208,11 @@ public class ProductServicesImpli implements ProductService {
 			productWeightEntity.setShape(productSizeWeightShapeModel.getShape());
 			productWeightEntity.setWeightName(productSizeWeightShapeModel.getWeightName());
 			productWeightEntity.setSizeId(productSizeEntity.getSizeId());
-			productWeightEntity =  productWeightRepository.save(productWeightEntity);
+			productWeightEntity = productWeightRepository.save(productWeightEntity);
 			return productWeightEntity;
-		}else {
-			throw new Exception("Product size name already exist."); 
+		} else {
+			throw new Exception("Product size name already exist.");
 		}
 	}
-	
-	
 
 }

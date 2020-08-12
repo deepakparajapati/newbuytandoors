@@ -412,7 +412,7 @@
 								<div class="overlay-container">
 									<c:set var="imageString" value="${productList[productitem].productPicUrl}" />
 									<c:set var="imageParts" value="${fn:split(imageString, ',')}" />
-									<img src="productimages/${imageParts[0]}" alt="">
+									<img src="/productimages/${imageParts[0]}" alt="">
 									<a class="overlay" data-toggle="modal" data-target="#project-${productitem}">
 										<i class="fa fa-search-plus"></i>
 										<span>Click for more details</span>
