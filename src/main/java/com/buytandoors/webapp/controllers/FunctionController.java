@@ -118,7 +118,7 @@ public class FunctionController {
 		List<String> listofbodymaterial = Arrays.asList("Clay", "Stainless Steel", "Mild Steel", "Copper", "Brass",
 				"Other");
 //		List<String> listofbodyshapes = Arrays.asList("Round","Square","Ractangular", "Barrel", "Dome Shape","Cylindrical", "Other");
-		List<String> listofProductTopCategory = Arrays.asList("tandoor", "pizza_ovens", "accessories");
+		List<String> listofProductTopCategory = Arrays.asList("tandoors", "pizza_ovens", "accessories");
 		List<String> listofsize = productSizeRepository.findSize();
 		List<String> listofbodyshapes = productShapeRepository.findShapes();
 //		System.out.println(listofsize);

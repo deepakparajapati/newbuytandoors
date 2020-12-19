@@ -76,7 +76,7 @@ public class ProductServicesImpli implements ProductService {
 				}
 			}
 
-			String dirName = productModel.getProductName().replace(" ", "-");
+			String dirName = productModel.getProductName().trim().replace(" ", "-");
 			File subImageFolder = new File(uploadDir + "/productimages", dirName);
 
 			if (!subImageFolder.exists()) {

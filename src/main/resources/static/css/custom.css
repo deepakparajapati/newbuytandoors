@@ -13,3 +13,11 @@
 .table-w50 > tbody > tr > td {
   width: 50%;
   }
+  
+  #navbar-collapse-1{
+  background: none;
+  }
+  
+  @media (max-width: 786px) {
+    #navbar-collapse-1 { background: rgb(32, 31, 37); }
+}
